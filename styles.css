@@ -12,12 +12,12 @@
 .container {
     margin: 50px auto;
     width: 90%;           /* Responsive width */
-    max-width: 800px;     /* Increased max-width */
+    max-width: 1200px;    /* Increased max-width for larger frame */
     transition: max-width 0.3s ease; /* Smooth transition */
 }
 
 .container.test-mode {
-    max-width: 1000px;    /* Further increase for test mode */
+    max-width: 1400px;    /* Further increased max-width for expansive test mode */
 }
 
 /* =========================================
@@ -61,6 +61,9 @@
    ========================================= */
 .mode-selection {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .mode-button {
@@ -219,44 +222,50 @@
 /* =========================================
    Test Mode Styles
    ========================================= */
-
-   .test-container {
+.test-container {
     margin-top: 20px;
-    overflow: hidden; /* Prevent scrollbars */
+    overflow: hidden; /* Prevent scrollbars on container */
 }
 
 .test-layout {
     display: flex;
-    gap: 20px;
-    padding: 20px;
+    gap: 30px; /* Increased gap between columns */
+    padding: 30px; /* Increased padding */
     box-sizing: border-box;
-    height: calc(100vh - 200px); /* Adjust based on other elements */
-    overflow-y: auto; /* Allow internal scrolling if necessary */
+    height: calc(100vh - 150px); /* Adjust height based on other elements */
+    overflow-y: auto; /* Allow vertical scrolling if necessary */
+    justify-content: center; /* Center the columns horizontally */
+    align-items: flex-start; /* Align items to the top */
 }
 
 .test-column {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    flex: 3; /* Updated flex ratio for Questions */
+    flex: 3; /* Adjusted flex ratio for Questions */
     max-height: 100%; /* Ensure columns don't exceed container height */
 }
 
 .test-column.large {
-    flex: 4; /* Updated flex ratio for Answers */
-    /* Added width and height adjustments */
-    width: calc(30% + 30% * 0.3); /* 30% wider */
-    height: calc(100% + 100% * 0.1); /* 10% taller */
+    flex: 4; /* Adjusted flex ratio for Answers */
+    /* Adjusted width and height */
+    width: 130%; /* 30% wider */
+    height: 120%; /* 20% taller */
 }
 
 .test-column.large .test-card {
-    /* Increased width by 30% and height by 10% */
     width: 130%; /* 30% wider */
-    height: 110%; /* 10% taller */
+    height: 120%; /* 20% taller */
 }
 
 /* Ensure that on smaller screens, adjustments are scaled appropriately */
 @media (max-width: 900px) {
+    .test-layout {
+        flex-direction: column;
+        padding: 20px; /* Reduced padding for smaller screens */
+        gap: 20px;      /* Reduced gap for smaller screens */
+    }
+
     .test-column.large {
         width: 100%; /* Full width on smaller screens */
         height: auto;
@@ -264,10 +273,26 @@
 
     .test-column.large .test-card {
         width: 100%; /* Reset to full width */
-        height: auto;
+        height: auto; /* Reset to auto height */
     }
 }
 
+/* Additional media query for very large screens (optional) */
+@media (min-width: 1600px) {
+    .test-layout {
+        padding: 40px; /* Further increased padding */
+        gap: 40px;     /* Further increased gap */
+    }
+
+    .test-column.large .test-card {
+        width: 150%; /* Additional width if desired */
+        height: 140%; /* Additional height if desired */
+    }
+}
+
+/* =========================================
+   Test Card Styles
+   ========================================= */
 .test-column h2 {
     text-align: center;
     margin-bottom: 10px;
@@ -352,20 +377,6 @@
     }
 }
 
-@media (max-width: 900px) {
-    .test-layout {
-        flex-direction: column;
-    }
-
-    .test-column.large {
-        flex: 1; /* Adjust flex ratio for smaller screens */
-    }
-
-    .test-column {
-        flex: 1;
-    }
-}
-
 @media (max-width: 600px) {
     .test-column h2 {
         font-size: 1.2em;
@@ -417,7 +428,6 @@
         font-size: 0.9em;
     }
 }
-
 
 /* =========================================
    Reset Button Styles
@@ -441,75 +451,4 @@
 
 .reset-button:active {
     transform: translateY(0);
-}
-
-/* =========================================
-   Responsive Design Adjustments
-   ========================================= */
-@media (max-width: 1200px) {
-    .test-layout {
-        gap: 15px;
-    }
-}
-
-@media (max-width: 900px) {
-    .test-layout {
-        flex-direction: column;
-    }
-
-    .test-column.large {
-        flex: 1;
-    }
-}
-
-@media (max-width: 600px) {
-    .test-column h2 {
-        font-size: 1.2em;
-    }
-
-    .test-card {
-        font-size: 12px;
-        padding: 10px;
-        min-height: 50px;
-    }
-
-    .selector label, .selector select {
-        font-size: 1em;
-    }
-
-    .mode-button {
-        padding: 10px 18px;
-        font-size: 1em;
-    }
-
-    .controls button {
-        padding: 10px;
-        font-size: 1.1em;
-        width: 50px;
-        height: 50px;
-    }
-}
-
-@media (max-width: 400px) {
-    .flashcard .front, .flashcard .back {
-        font-size: 12px;
-    }
-
-    .controls button {
-        padding: 8px;
-        font-size: 1em;
-        width: 40px;
-        height: 40px;
-    }
-
-    .test-card {
-        font-size: 10px;
-        padding: 8px;
-        min-height: 40px;
-    }
-
-    .reset-button {
-        padding: 10px 20px;
-        font-size: 0.9em;
-    }
 }
