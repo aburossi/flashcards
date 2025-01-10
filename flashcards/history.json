@@ -1,0 +1,10 @@
+[
+    {
+      "question": "What is the capital of France?",
+      "answer": "Paris"
+    },
+    {
+      "question": "What is the integral of 1/x dx?",
+      "answer": "ln|x| + C"
+    }
+  ]
