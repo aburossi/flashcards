@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let secondCard = null;
     let lockBoard = false;
 
+    let currentSubject = ""; // Tracks the active subject
+
     /**
      * Utility function to get URL parameters
      * @returns {Object} Key-value pairs of URL parameters
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     async function loadSubjects() {
         try {
-            const response = await fetch('./subjects.json'); // Ensure subjects.json is inside flashcards/
+            const response = await fetch('./flashcards/subjects.json'); // Ensure the correct path
             if (!response.ok) {
                 throw new Error(`Failed to load subjects.json: ${response.status}`);
             }
@@ -90,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {string} subject 
      */
     async function fetchFlashcards(subject) {
-        const flashcardUrl = `./flashcards/${subject}.json`; // Corrected path
+        const flashcardUrl = `./flashcards/${subject}.json`; // Ensure this path is correct
 
         try {
             const response = await fetch(flashcardUrl);
@@ -205,12 +207,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const assignmentId = params['assignmentId'];
 
         if (assignmentId) {
-            // Attempt to load flashcards for the given assignmentId
-            const success = await fetchFlashcards(assignmentId);
+            currentSubject = assignmentId; // Set the current subject
+            const success = await fetchFlashcards(currentSubject);
             if (!success) return;
 
             // Update the page title
-            pageTitle.textContent = `Flashcards - ${capitalizeFirstLetter(assignmentId.replace(/_/g, ' '))}`;
+            pageTitle.textContent = `Flashcards - ${capitalizeFirstLetter(currentSubject.replace(/_/g, ' '))}`;
             // Hide the subject selector
             subjectSelector.style.display = 'none';
             // Show mode selection
@@ -285,7 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Generate the grid
         generateTestGrid();
         adjustTestGridHeight(); // Adjust height on initialization
-        // Removed setUniformCardHeights call
     }
 
     /**
@@ -397,17 +398,29 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Hide the subject selector
-        subjectSelector.style.display = 'none';
-        // Show mode selection
-        modeSelection.style.display = 'flex';
+        currentSubject = subject; // Set the current subject based on user selection
+
+        // Fetch flashcards if not already loaded
+        fetchFlashcards(currentSubject).then(success => {
+            if (!success) return;
+
+            // Hide the subject selector
+            subjectSelector.style.display = 'none';
+            // Show mode selection
+            modeSelection.style.display = 'flex';
+        });
     });
 
     // Event listener for the Learn mode button
     learnModeButton.addEventListener('click', async () => {
-        const subject = subjectSelect.value;
-        const success = await fetchFlashcards(subject);
-        if (!success) return;
+        if (!currentSubject) {
+            alert('No subject selected.');
+            return;
+        }
+
+        // Since flashcards are already loaded during initialization (if assignmentId is present),
+        // no need to fetch again. However, if you allow switching subjects without assignmentId,
+        // you might need to handle fetching accordingly.
 
         // Show Learn Mode elements
         flashcardContainer.style.display = 'block';
@@ -422,10 +435,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listener for the Test mode button
     testModeButton.addEventListener('click', async () => {
-        const subject = subjectSelect.value;
-        const success = await fetchFlashcards(subject);
-        if (!success) return;
+        if (!currentSubject) {
+            alert('No subject selected.');
+            return;
+        }
 
+        // Initialize Test Mode
         initializeTestMode();
     });
 
@@ -490,12 +505,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         adjustFlashcardHeight();
         adjustTestGridHeight();
-        // Removed setUniformCardHeights call
     });
 
     // Initial adjustment on window load
     window.addEventListener('load', () => {
         adjustTestGridHeight();
-        // Removed setUniformCardHeights call
     });
 });
