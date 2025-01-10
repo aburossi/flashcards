@@ -50,6 +50,9 @@ body {
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+    font-family: Arial, sans-serif, 'Segoe UI Emoji', 'Apple Color Emoji'; /* Ensure emojis render correctly */
+    text-align: left; /* Align text to the left for better readability */
   }
   
   /* Back face needs to be rotated */
@@ -91,4 +94,3 @@ body {
       margin: 0 3px;
     }
   }
-  

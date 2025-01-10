@@ -104,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function displayFlashcard() {
       const card = flashcards[currentIndex];
-      front.textContent = card.question;
-      back.textContent = card.answer;
+      front.innerHTML = card.question; // Use innerHTML in case there are HTML entities
+      back.innerHTML = card.answer.replace(/\n/g, '<br>'); // Replace line breaks with <br>
       flashcard.classList.remove('flipped'); // Ensure card is showing front
     }
   
@@ -174,5 +174,4 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Initialize the application
     initializeApp();
-  });
-  
+});

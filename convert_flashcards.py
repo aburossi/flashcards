@@ -1,9 +1,10 @@
 import os
 import json
 import tkinter as tk
-from tkinter import filedialog, messagebox, scrolledtext
+from tkinter import filedialog, messagebox, scrolledtext, simpledialog
 import sys
 import subprocess
+from tkinter import ttk
 
 def parse_flashcards(content):
     """
@@ -17,6 +18,7 @@ def parse_flashcards(content):
         lines = raw_card.strip().split('\n')
         if len(lines) >= 2:
             front = lines[0].strip()
+            # Preserve emojis and line breaks in the answer
             back = '\n'.join(line.strip() for line in lines[1:])
             flashcards.append({'question': front, 'answer': back})
     return flashcards
@@ -72,6 +74,7 @@ def run_update_subjects():
 def choose_folder():
     folder_selected = filedialog.askdirectory()
     if folder_selected:
+        # Optionally, prompt for a subject name override
         subject_name = simpledialog.askstring("Subject Name", "Enter the subject name (optional):")
         process_files(folder_selected, subject_name)
         run_update_subjects()
@@ -99,7 +102,7 @@ def paste_flashcards():
 def create_gui():
     root = tk.Tk()
     root.title("Flashcards Converter")
-    root.geometry("600x500")
+    root.geometry("700x600")
     
     # Tabs
     tab_control = ttk.Notebook(root)
@@ -122,7 +125,7 @@ def create_gui():
     instruction_label = ttk.Label(tab2, text="Paste your flashcards below:\n\nEach flashcard should be in the following format:\nFront of flashcard\nBack of flashcard (can be multiple lines)\n\nSeparate each flashcard with an empty line.")
     instruction_label.pack(pady=10)
     
-    paste_text_area = scrolledtext.ScrolledText(tab2, wrap=tk.WORD, width=70, height=20)
+    paste_text_area = scrolledtext.ScrolledText(tab2, wrap=tk.WORD, width=80, height=25)
     paste_text_area.pack(padx=10, pady=10)
     
     subject_label = ttk.Label(tab2, text="Subject Name:")
@@ -140,9 +143,6 @@ def create_gui():
     subject_entry_widget = subject_entry
     
     root.mainloop()
-
-# Import necessary modules for GUI
-from tkinter import ttk, simpledialog
 
 if __name__ == "__main__":
     # Assign the global widgets
