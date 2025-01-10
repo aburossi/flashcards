@@ -298,8 +298,8 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function generateTestColumns() {
         // Clear existing content
-        testQuestions.innerHTML = '<h2>Questions</h2>';
-        testAnswers.innerHTML = '<h2>Answers</h2>';
+        testQuestions.innerHTML = '<h2>Questions</h2><p>Select an answer to match with the corresponding question.</p>';
+        testAnswers.innerHTML = '<h2>Answers</h2><p>Select a question to match with the selected answer.</p>';
 
         testCards.forEach(card => {
             if (card.type === 'question') {
@@ -335,43 +335,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const clickedCard = e.target.closest('.test-card');
         if (!clickedCard || lockBoard || clickedCard.classList.contains('correct') || clickedCard.classList.contains('selected')) return;
 
-        if (clickedCard.dataset.type === 'answer') {
-            // Answers are to be matched with questions
-            if (!firstCard) {
-                firstCard = clickedCard;
-                firstCard.classList.add('selected');
-                return;
-            }
-
-            secondCard = clickedCard;
-            secondCard.classList.add('selected');
-            lockBoard = true;
-
-            // Check for match
-            const isMatch = firstCard.dataset.matchId === secondCard.dataset.id;
-
-            if (isMatch) {
-                // Correct match
-                firstCard.classList.add('correct');
-                secondCard.classList.add('correct');
-                resetSelection();
-                checkTestCompletion();
-            } else {
-                // Incorrect match
-                firstCard.classList.add('incorrect');
-                secondCard.classList.add('incorrect');
-
-                setTimeout(() => {
-                    firstCard.classList.remove('incorrect', 'selected');
-                    secondCard.classList.remove('incorrect', 'selected');
-                    resetSelection();
-                }, 500); // 0.5 second delay for animation
-            }
-        } else {
-            // If the clicked card is a question, do nothing or you can implement additional logic
-            // For simplicity, we allow matching only answers to questions
-            alert('Please select an answer card to match with the question.');
+        // Select the first card
+        if (!firstCard) {
+            firstCard = clickedCard;
+            firstCard.classList.add('selected');
             return;
+        }
+
+        // Select the second card
+        secondCard = clickedCard;
+        secondCard.classList.add('selected');
+        lockBoard = true;
+
+        // Determine if the selected pair is a match
+        const firstType = firstCard.dataset.type;
+        const secondType = secondCard.dataset.type;
+
+        let isMatch = false;
+
+        if (firstType === 'answer' && secondType === 'question') {
+            isMatch = firstCard.dataset.matchId === secondCard.dataset.id;
+        } else if (firstType === 'question' && secondType === 'answer') {
+            isMatch = secondCard.dataset.matchId === firstCard.dataset.id;
+        }
+
+        if (isMatch) {
+            // Correct match
+            firstCard.classList.add('correct');
+            secondCard.classList.add('correct');
+            resetSelection();
+            checkTestCompletion();
+        } else {
+            // Incorrect match
+            firstCard.classList.add('incorrect');
+            secondCard.classList.add('incorrect');
+
+            setTimeout(() => {
+                firstCard.classList.remove('incorrect', 'selected');
+                secondCard.classList.remove('incorrect', 'selected');
+                resetSelection();
+            }, 500); // 0.5 second delay for animation
         }
     }
 
@@ -412,8 +415,8 @@ document.addEventListener('DOMContentLoaded', () => {
         firstCard = null;
         secondCard = null;
         lockBoard = false;
-        testQuestions.innerHTML = '<h2>Questions</h2>';
-        testAnswers.innerHTML = '<h2>Answers</h2>';
+        testQuestions.innerHTML = '<h2>Questions</h2><p>Select an answer to match with the corresponding question.</p>';
+        testAnswers.innerHTML = '<h2>Answers</h2><p>Select a question to match with the selected answer.</p>';
     }
 
     /**
@@ -456,10 +459,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('No subject selected.');
             return;
         }
-
-        // Since flashcards are already loaded during initialization (if assignmentId is present),
-        // no need to fetch again. However, if you allow switching subjects without assignmentId,
-        // you might need to handle fetching accordingly.
 
         // Show Learn Mode elements
         flashcardContainer.style.display = 'block';

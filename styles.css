@@ -195,6 +195,13 @@ body {
     color: #333;
 }
 
+.test-column p {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
 .test-card {
     background-color: #fff;
     border: 2px solid #ccc;
@@ -212,6 +219,11 @@ body {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+}
+
+.test-card.selected {
+    border-color: #007BFF;
+    background-color: #e7f1ff;
 }
 
 .test-card.correct {
@@ -240,29 +252,7 @@ body {
     to { opacity: 0; }
 }
 
-/* Responsive Adjustments */
-@media (max-width: 900px) {
-    .test-layout {
-        flex-direction: column;
-    }
-
-    .test-column.large {
-        flex: 1;
-    }
-}
-
-@media (max-width: 600px) {
-    .test-column h2 {
-        font-size: 1.2em;
-    }
-
-    .test-card {
-        font-size: 12px;
-        padding: 10px;
-        min-height: 50px;
-    }
-}
-
+/* Reset Button Styles */
 .reset-button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -279,7 +269,8 @@ body {
     background-color: #e0a800;
 }
 
-/* Responsive Design Adjustments */
+/* Remove or Comment Out Unused .test-grid Styles */
+/*
 @media (max-width: 1200px) {
     .test-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust min-width */
@@ -293,28 +284,33 @@ body {
 }
 
 @media (max-width: 600px) {
-    .container {
-        width: 90%;
-    }
-
-    .flashcard-container {
-        min-height: 150px;
-    }
-
-    .flashcard .front, .flashcard .back {
-        font-size: 14px;
-    }
-
-    .controls button {
-        padding: 8px;
-        font-size: 18px;
-        width: 40px;
-        height: 40px;
-    }
-
     .test-grid {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Reduce min-width */
         grid-gap: 10px;
+    }
+}
+*/
+
+/* Responsive Design Adjustments */
+@media (max-width: 1200px) {
+    .test-layout {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 900px) {
+    .test-layout {
+        flex-direction: column;
+    }
+
+    .test-column.large {
+        flex: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .test-column h2 {
+        font-size: 1.2em;
     }
 
     .test-card {
