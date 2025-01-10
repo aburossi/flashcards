@@ -76,28 +76,29 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {string} subject 
      */
     async function loadFlashcards(subject) {
-      const flashcardUrl = `./flashcards/${subject}.json`; // Ensure relative path
-  
-      try {
-        const response = await fetch(flashcardUrl);
-        if (!response.ok) {
-          throw new Error(`Failed to load flashcards for subject: ${subject}`);
+        const flashcardUrl = `./flashcards/${subject}.json`; // Ensure relative path
+      
+        try {
+          const response = await fetch(flashcardUrl);
+          if (!response.ok) {
+            throw new Error(`Failed to load flashcards for subject: ${subject}. Status: ${response.status}`);
+          }
+      
+          const data = await response.json();
+          flashcards = data;
+          if (flashcards.length === 0) {
+            alert('No flashcards available for this subject.');
+            return;
+          }
+          currentIndex = 0;
+          displayFlashcard();
+          flashcardContainer.style.display = 'block';
+        } catch (error) {
+          console.error('Error details:', error);
+          alert(`Failed to load flashcards for subject "${subject}". Please check the console for more details.`);
         }
-  
-        const data = await response.json();
-        flashcards = data;
-        if (flashcards.length === 0) {
-          alert('No flashcards available for this subject.');
-          return;
-        }
-        currentIndex = 0;
-        displayFlashcard();
-        flashcardContainer.style.display = 'block';
-      } catch (error) {
-        console.error(error);
-        alert('Failed to load flashcards.');
       }
-    }
+      
   
 /**
  * Display the current flashcard
