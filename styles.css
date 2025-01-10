@@ -163,13 +163,13 @@ body {
 
 .test-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
     grid-gap: 15px;
     justify-items: center;
     align-items: center;
     padding: 10px;
     box-sizing: border-box;
-    height: calc(100vh - 200px); /* Adjust 200px based on your header and controls height */
+    height: calc(100vh - 250px); /* Adjust based on your header and controls height */
     overflow: hidden;
 }
 
@@ -192,6 +192,7 @@ body {
     box-sizing: border-box;
     padding: 10px;
     word-break: break-word;
+    white-space: normal;
     min-height: 60px; /* Minimum height for single-line text */
     max-height: 200px; /* Maximum height to prevent excessively tall cards */
     overflow: hidden;
@@ -242,13 +243,13 @@ body {
 /* Responsive Design Adjustments */
 @media (max-width: 1200px) {
     .test-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(4, 1fr); /* Maintain 4 columns */
     }
 }
 
 @media (max-width: 900px) {
     .test-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        grid-template-columns: repeat(3, 1fr); /* Reduce to 3 columns */
     }
 }
 
@@ -273,7 +274,7 @@ body {
     }
 
     .test-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-columns: repeat(2, 1fr); /* Reduce to 2 columns */
         grid-gap: 10px;
     }
 

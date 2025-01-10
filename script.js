@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     async function loadSubjects() {
         try {
-            const response = await fetch('./subjects.json'); // Ensure relative path
+            const response = await fetch('./subjects.json'); // Ensure subjects.json is inside flashcards/
             if (!response.ok) {
                 throw new Error(`Failed to load subjects.json: ${response.status}`);
             }
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {string} subject 
      */
     async function fetchFlashcards(subject) {
-        const flashcardUrl = `./flashcards/${subject}.json`; // Ensure relative path
+        const flashcardUrl = `./${subject}.json`; // Corrected path
 
         try {
             const response = await fetch(flashcardUrl);
@@ -259,9 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
         testContainer.style.display = 'block';
         modeSelection.style.display = 'none';
         
-        // Prepare Test Cards (6 questions and 6 answers)
+        // Prepare Test Cards (6 random flashcards)
         testCards = [];
-        const selectedFlashcards = flashcards.slice(0, 6); // Select first 6 flashcards
+        const selectedFlashcards = shuffle([...flashcards]).slice(0, 6); // Select 6 random flashcards
         selectedFlashcards.forEach((card, index) => {
             testCards.push({
                 id: `front-${index}`,
@@ -276,12 +276,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        // Shuffle the test cards
+        // Shuffle the test cards to randomize their positions
         testCards = shuffle(testCards);
         
         // Generate the grid
         generateTestGrid();
         adjustTestGridHeight(); // Adjust height on initialization
+        setTimeout(setUniformCardHeights, 100); // Optional: Set uniform heights
     }
 
     /**
@@ -382,6 +383,23 @@ document.addEventListener('DOMContentLoaded', () => {
         testGrid.style.height = `${newHeight}px`;
     }
 
+    /**
+     * Set Uniform Heights for All Test Cards (Optional)
+     */
+    function setUniformCardHeights() {
+        const cards = document.querySelectorAll('.test-card');
+        let maxHeight = 0;
+        cards.forEach(card => {
+            card.style.height = 'auto'; // Reset height
+            if (card.offsetHeight > maxHeight) {
+                maxHeight = card.offsetHeight;
+            }
+        });
+        cards.forEach(card => {
+            card.style.height = `${maxHeight}px`;
+        });
+    }
+
     // Event listener for the Start button
     startButton.addEventListener('click', () => {
         const subject = subjectSelect.value;
@@ -480,8 +498,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         adjustFlashcardHeight();
         adjustTestGridHeight();
+        setTimeout(setUniformCardHeights, 100); // Optional: Re-adjust uniform heights
     });
 
     // Initial adjustment on window load
-    window.addEventListener('load', adjustTestGridHeight);
+    window.addEventListener('load', () => {
+        adjustTestGridHeight();
+        setTimeout(setUniformCardHeights, 100); // Optional: Set uniform heights
+    });
 });
