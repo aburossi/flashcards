@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {string} subject 
      */
     async function fetchFlashcards(subject) {
-        const flashcardUrl = `./${subject}.json`; // Corrected path
+        const flashcardUrl = `./flashcards/${subject}.json`; // Corrected path
 
         try {
             const response = await fetch(flashcardUrl);
