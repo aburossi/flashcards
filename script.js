@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next');
     const subjectSelector = document.getElementById('subject-selector');
     const pageTitle = document.getElementById('page-title');
-    const controls = document.getElementById('controls'); // Added reference to controls
+    const controls = document.getElementById('controls'); // Reference to controls
     const modeSelection = document.getElementById('mode-selection'); // Mode Selection Section
     const learnModeButton = document.getElementById('learn-mode');
     const testModeButton = document.getElementById('test-mode');
@@ -86,10 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Fetch and display flashcards for a given subject
+     * Fetch and store flashcards for a given subject
      * @param {string} subject 
      */
-    async function loadFlashcards(subject) {
+    async function fetchFlashcards(subject) {
         const flashcardUrl = `./flashcards/${subject}.json`; // Ensure relative path
 
         try {
@@ -102,16 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
             flashcards = data;
             if (flashcards.length === 0) {
                 alert('No flashcards available for this subject.');
-                return;
+                return false;
             }
             currentIndex = 0;
-            displayFlashcard();
-            flashcardContainer.style.display = 'block';
-            controls.style.display = 'flex'; // Show controls
-            modeSelection.style.display = 'none'; // Hide mode selection if previously visible
+            return true;
         } catch (error) {
             console.error('Error details:', error);
             alert(`Failed to load flashcards for subject "${subject}". Please check the console for more details.`);
+            return false;
         }
     }
 
@@ -208,7 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (assignmentId) {
             // Attempt to load flashcards for the given assignmentId
-            await loadFlashcards(assignmentId);
+            const success = await fetchFlashcards(assignmentId);
+            if (!success) return;
+
             // Update the page title
             pageTitle.textContent = `Flashcards ${capitalizeFirstLetter(assignmentId)}`;
             // Hide the subject selector
@@ -306,7 +306,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lockBoard || clickedCard.classList.contains('flipped') || clickedCard.classList.contains('correct')) return;
 
         clickedCard.classList.add('flipped');
-        clickedCard.innerHTML = clickedCard.dataset.matchId ? back.innerHTML : front.innerHTML;
+        // Display the content based on the type
+        const cardType = clickedCard.dataset.id.startsWith('front') ? 'front' : 'back';
+        const cardIndex = clickedCard.dataset.id.split('-')[1];
+        const cardData = flashcards[cardIndex];
+        if (cardType === 'front') {
+            clickedCard.innerHTML = cardData.question;
+        } else {
+            clickedCard.innerHTML = cardData.answer.replace(/\n/g, '<br>');
+        }
 
         if (!firstCard) {
             firstCard = clickedCard;
@@ -366,13 +374,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        loadFlashcards(subject);
+        // Hide the subject selector
+        subjectSelector.style.display = 'none';
         // Show mode selection
         modeSelection.style.display = 'flex';
     });
 
     // Event listener for the Learn mode button
-    learnModeButton.addEventListener('click', () => {
+    learnModeButton.addEventListener('click', async () => {
+        const subject = subjectSelect.value;
+        const success = await fetchFlashcards(subject);
+        if (!success) return;
+
         // Show Learn Mode elements
         flashcardContainer.style.display = 'block';
         controls.style.display = 'flex';
@@ -382,7 +395,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Event listener for the Test mode button
-    testModeButton.addEventListener('click', () => {
+    testModeButton.addEventListener('click', async () => {
+        const subject = subjectSelect.value;
+        const success = await fetchFlashcards(subject);
+        if (!success) return;
+
         initializeTestMode();
     });
 
