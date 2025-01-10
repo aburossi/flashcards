@@ -166,12 +166,12 @@ body {
     grid-template-columns: repeat(4, 1fr); /* 4 columns */
     grid-gap: 15px;
     justify-items: center;
-    align-items: center;
+    align-items: start; /* Align items to the start to accommodate varying heights */
     padding: 10px;
     box-sizing: border-box;
-    height: calc(100vh - 250px); /* Adjust based on your header and controls height */
-    overflow: hidden;
+    /* Removed fixed height and overflow */
 }
+
 
 /* Adjust Test Card Styles for Dynamic Sizing */
 .test-card {
@@ -182,7 +182,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     position: relative;
-    transition: background-color 0.3s, transform 0.3s, height 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,10 +193,10 @@ body {
     padding: 10px;
     word-break: break-word;
     white-space: normal;
-    min-height: 60px; /* Minimum height for single-line text */
-    max-height: 200px; /* Maximum height to prevent excessively tall cards */
-    overflow: hidden;
+    min-height: 60px; /* Maintain a reasonable minimum height */
+    /* Removed max-height and overflow to allow dynamic sizing */
 }
+
 
 .test-card.correct {
     background-color: #28a745;

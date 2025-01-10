@@ -370,35 +370,6 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeTestMode();
     }
 
-    /**
-     * Adjust Test Grid Height Dynamically
-     */
-    function adjustTestGridHeight() {
-        const headerHeight = pageTitle.offsetHeight;
-        const modeSelectionHeightValue = modeSelection.offsetHeight || 0;
-        const controlsHeightValue = controls.offsetHeight || 0;
-        const resetButtonHeightValue = resetTestButton.offsetHeight || 0;
-        const otherHeights = headerHeight + modeSelectionHeightValue + controlsHeightValue + resetButtonHeightValue + 100; // 100px buffer
-        const newHeight = window.innerHeight - otherHeights;
-        testGrid.style.height = `${newHeight}px`;
-    }
-
-    /**
-     * Set Uniform Heights for All Test Cards (Optional)
-     */
-    function setUniformCardHeights() {
-        const cards = document.querySelectorAll('.test-card');
-        let maxHeight = 0;
-        cards.forEach(card => {
-            card.style.height = 'auto'; // Reset height
-            if (card.offsetHeight > maxHeight) {
-                maxHeight = card.offsetHeight;
-            }
-        });
-        cards.forEach(card => {
-            card.style.height = `${maxHeight}px`;
-        });
-    }
 
     // Event listener for the Start button
     startButton.addEventListener('click', () => {
@@ -498,7 +469,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         adjustFlashcardHeight();
         adjustTestGridHeight();
-        setTimeout(setUniformCardHeights, 100); // Optional: Re-adjust uniform heights
     });
 
     // Initial adjustment on window load
