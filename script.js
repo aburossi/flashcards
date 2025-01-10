@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = flashcards[currentIndex];
       front.textContent = card.question;
       back.textContent = card.answer;
-      flashcard.classList.remove('flipped');
+      flashcard.classList.remove('flipped'); // Ensure card is showing front
     }
     
     flipButton.addEventListener('click', () => {
