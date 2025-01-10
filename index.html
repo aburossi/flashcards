@@ -7,15 +7,13 @@
 </head>
 <body>
   <div class="container">
-    <h1>Flashcards</h1>
+    <h1 id="page-title">Flashcards</h1>
     
-    <div class="selector">
+    <div class="selector" id="subject-selector">
       <label for="subject">Choose a subject:</label>
       <select id="subject">
         <option value="">--Select--</option>
-        <option value="math">Math</option>
-        <option value="science">Science</option>
-        <option value="history">History</option>
+        <!-- Options will be populated dynamically -->
       </select>
       <button id="start">Start</button>
     </div>
