@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
       
-  
+
 /**
  * Display the current flashcard
  */
