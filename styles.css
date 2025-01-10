@@ -17,35 +17,32 @@ body {
   /* Flashcard Styles */
   .flashcard-container {
     perspective: 1000px; /* Container needs perspective for 3D effect */
+    position: relative; /* To position flashcards absolutely for sliding */
+    overflow: hidden; /* Hide overflow during sliding */
   }
   
   .flashcard {
     width: 100%;
-    /* Remove fixed height */
-    /* height: 200px; */
     min-height: 200px; /* Set minimum height */
     height: auto; /* Allow height to adjust based on content */
-    position: relative;
-    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
     text-align: center;
-    transition: transform 0.6s, height 0.6s;
+    transition: transform 0.6s, height 0.6s, opacity 0.6s;
     transform-style: preserve-3d;
     cursor: pointer;
     box-sizing: border-box; /* Ensure padding and borders are included in size */
-  }
-  
-  /* Apply rotation when flipped */
-  .flashcard.flipped {
-    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    opacity: 1;
+    z-index: 1;
   }
   
   /* Front and Back Faces */
   .flashcard .front, .flashcard .back {
     position: absolute;
     width: 100%;
-    /* Remove fixed height */
-    /* height: 100%; */
-    height: auto; /* Allow height to adjust based on content */
+    height: 100%;
     backface-visibility: hidden; /* Hide the back face when not visible */
     background-color: #fff;
     border: 1px solid #ccc;
@@ -63,9 +60,14 @@ body {
     transition: height 0.6s;
   }
   
-  /* Back face needs to be rotated */
+  /* Back face needs to be rotated vertically */
   .flashcard .back {
-    transform: rotateY(180deg);
+    transform: rotateX(180deg);
+  }
+  
+  /* Apply vertical rotation when flipped */
+  .flashcard.flipped {
+    transform: rotateX(180deg);
   }
   
   /* Controls Styles */
@@ -81,10 +83,64 @@ body {
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
   }
   
   .controls button:hover {
     background-color: #0056b3;
+  }
+  
+  /* Animation Classes for Sliding */
+  .flashcard.slide-in-left {
+    transform: translateX(-100%);
+    opacity: 0;
+    animation: slideInLeft 0.6s forwards;
+  }
+  
+  .flashcard.slide-out-left {
+    transform: translateX(0);
+    opacity: 1;
+    animation: slideOutLeft 0.6s forwards;
+  }
+  
+  .flashcard.slide-in-right {
+    transform: translateX(100%);
+    opacity: 0;
+    animation: slideInRight 0.6s forwards;
+  }
+  
+  .flashcard.slide-out-right {
+    transform: translateX(0);
+    opacity: 1;
+    animation: slideOutRight 0.6s forwards;
+  }
+  
+  @keyframes slideInLeft {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutLeft {
+    to {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slideInRight {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutRight {
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
   }
   
   /* Responsive Design */
@@ -94,12 +150,12 @@ body {
     }
   
     .flashcard {
-      /* Adjust min-height for smaller screens if necessary */
       min-height: 150px;
     }
   
     .controls button {
       padding: 8px 16px;
       margin: 0 3px;
+      font-size: 14px;
     }
   }
