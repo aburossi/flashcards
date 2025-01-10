@@ -268,15 +268,26 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add 'test-mode' class to the container for expanded width
         document.querySelector('.container').classList.add('test-mode');
         
-        // Prepare Test Cards (6 random flashcards)
+        // Prepare Test Cards
         testCards = [];
-        const selectedFlashcards = shuffle([...flashcards]).slice(0, 6); // Select 6 random flashcards
+        const totalQuestions = 10;
+        const matchingPairs = 6;
+        const additionalFronts = 4;
 
-        // Create separate arrays for questions and answers
+        // Shuffle flashcards to ensure randomness
+        const shuffledFlashcards = shuffle([...flashcards]);
+
+        // Select matching pairs
+        const selectedMatchingFlashcards = shuffledFlashcards.slice(0, matchingPairs);
+
+        // Select additional fronts without matching backs
+        const selectedAdditionalFlashcards = shuffledFlashcards.slice(matchingPairs, matchingPairs + additionalFronts);
+
+        // Create question and answer arrays
         let questions = [];
         let answers = [];
 
-        selectedFlashcards.forEach((card, index) => {
+        selectedMatchingFlashcards.forEach((card, index) => {
             questions.push({
                 id: `front-${index}`,
                 content: card.question,
@@ -288,6 +299,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 type: 'answer',
                 matchId: `front-${index}`
             });
+        });
+
+        // Add additional fronts (without backs)
+        selectedAdditionalFlashcards.forEach((card, index) => {
+            questions.push({
+                id: `front-extra-${index}`,
+                content: card.question,
+                type: 'question'
+            });
+            // No corresponding answer is added
         });
 
         // Shuffle questions and answers independently
@@ -374,15 +395,29 @@ document.addEventListener('DOMContentLoaded', () => {
             resetSelection();
             checkTestCompletion();
         } else {
-            // Incorrect match
-            firstCard.classList.add('incorrect');
-            secondCard.classList.add('incorrect');
+            // Check if either card is an unmatched question
+            const isFirstExtra = firstCard.dataset.id.startsWith('front-extra');
+            const isSecondExtra = secondCard.dataset.id.startsWith('front-extra');
 
-            setTimeout(() => {
-                firstCard.classList.remove('incorrect', 'selected');
-                secondCard.classList.remove('incorrect', 'selected');
-                resetSelection();
-            }, 500); // 0.5 second delay for animation
+            if (isFirstExtra || isSecondExtra) {
+                // Provide feedback that one of the selected cards has no match
+                alert('One of the selected questions does not have a corresponding answer.');
+                // Optionally, you can disable these cards to prevent further attempts
+                if (isFirstExtra) firstCard.classList.add('no-match');
+                if (isSecondExtra) secondCard.classList.add('no-match');
+            } else {
+                // Incorrect match
+                firstCard.classList.add('incorrect');
+                secondCard.classList.add('incorrect');
+
+                setTimeout(() => {
+                    firstCard.classList.remove('incorrect', 'selected');
+                    secondCard.classList.remove('incorrect', 'selected');
+                    resetSelection();
+                }, 500); // 0.5 second delay for animation
+            }
+
+            resetSelection();
         }
     }
 
@@ -438,6 +473,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const otherHeights = headerHeight + modeSelectionHeightValue + controlsHeightValue + resetButtonHeightValue + 100; // 100px buffer
         const newHeight = window.innerHeight - otherHeights;
         testContainer.style.height = `${newHeight}px`;
+
+        // Additionally, set the height of the test-layout to fit within the test-container
+        const testLayout = document.querySelector('.test-layout');
+        if (testLayout) {
+            testLayout.style.height = `100%`;
+        }
     }
 
     // Event listener for the Start button

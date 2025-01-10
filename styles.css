@@ -221,6 +221,7 @@
    ========================================= */
 .test-container {
     margin-top: 20px;
+    overflow: hidden; /* Prevent scrollbars */
 }
 
 .test-layout {
@@ -228,6 +229,8 @@
     gap: 20px;
     padding: 20px;
     box-sizing: border-box;
+    height: calc(100vh - 200px); /* Adjust as needed based on other elements */
+    overflow-y: auto; /* Allow scrolling within the test container if necessary */
 }
 
 .test-column {
@@ -235,6 +238,7 @@
     flex-direction: column;
     gap: 15px;
     flex: 1;
+    max-height: 100%; /* Ensure columns don't exceed container height */
 }
 
 .test-column.large {
@@ -290,6 +294,12 @@
     background-color: #dc3545;
     color: #fff;
     animation: shake 0.5s;
+}
+
+.test-card.no-match {
+    background-color: #6c757d; /* Grey color */
+    color: #fff;
+    cursor: not-allowed;
 }
 
 @keyframes shake {
