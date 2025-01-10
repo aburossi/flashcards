@@ -271,44 +271,52 @@ document.addEventListener('DOMContentLoaded', () => {
         // Prepare Test Cards (6 random flashcards)
         testCards = [];
         const selectedFlashcards = shuffle([...flashcards]).slice(0, 6); // Select 6 random flashcards
+
+        // Create separate arrays for questions and answers
+        let questions = [];
+        let answers = [];
+
         selectedFlashcards.forEach((card, index) => {
-            testCards.push({
+            questions.push({
                 id: `front-${index}`,
                 content: card.question,
                 type: 'question'
             });
-            testCards.push({
+            answers.push({
                 id: `back-${index}`,
                 content: card.answer.replace(/\n/g, '<br>'),
                 type: 'answer',
                 matchId: `front-${index}`
             });
         });
-        
-        // Shuffle the test cards to randomize their positions
-        // Removed shuffling since we are separating into two columns
+
+        // Shuffle questions and answers independently
+        const shuffledQuestions = shuffle(questions);
+        const shuffledAnswers = shuffle(answers);
 
         // Generate the questions and answers
-        generateTestColumns();
+        generateTestColumns(shuffledQuestions, shuffledAnswers);
         adjustTestGridHeight(); // Adjust height on initialization
     }
 
     /**
      * Generate Test Columns with Questions and Answers
+     * @param {Array} shuffledQuestions 
+     * @param {Array} shuffledAnswers 
      */
-    function generateTestColumns() {
+    function generateTestColumns(shuffledQuestions, shuffledAnswers) {
         // Clear existing content
         testQuestions.innerHTML = '<h2>Questions</h2><p>Select an answer to match with the corresponding question.</p>';
         testAnswers.innerHTML = '<h2>Answers</h2><p>Select a question to match with the selected answer.</p>';
 
-        testCards.forEach(card => {
-            if (card.type === 'question') {
-                const cardElement = createTestCard(card);
-                testQuestions.appendChild(cardElement);
-            } else if (card.type === 'answer') {
-                const cardElement = createTestCard(card);
-                testAnswers.appendChild(cardElement);
-            }
+        shuffledQuestions.forEach(card => {
+            const cardElement = createTestCard(card);
+            testQuestions.appendChild(cardElement);
+        });
+
+        shuffledAnswers.forEach(card => {
+            const cardElement = createTestCard(card);
+            testAnswers.appendChild(cardElement);
         });
     }
 
