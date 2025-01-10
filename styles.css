@@ -5,47 +5,40 @@ body {
     text-align: center;
     margin: 0; /* Reset default margin */
     padding: 0; /* Reset default padding */
-  }
-  
-  .container {
+}
+
+.container {
     margin: 50px auto;
-    width: 90%; /* Make container width responsive */
-    max-width: 600px; /* Set a maximum width for larger screens */
-    padding: 20px;
-    box-sizing: border-box; /* Include padding in width */
-  }
-  
-  .selector {
+    width: 300px; /* Fixed width as in old implementation */
+}
+
+.selector {
     margin-bottom: 20px;
-  }
-  
-  /* Flashcard Styles */
-  .flashcard-container {
+}
+
+/* Flashcard Styles */
+.flashcard-container {
     perspective: 1000px; /* Container needs perspective for 3D effect */
-    position: relative; /* Keep relative positioning for animations */
-    overflow: hidden; /* Hide overflow during sliding */
-    height: auto; /* Let the height adjust based on content */
-    transition: height 0.6s ease; /* Smooth height transition */
-  }
-  
-  .flashcard {
+}
+
+.flashcard {
     width: 100%;
-    min-height: 200px; /* Set minimum height */
-    height: auto; /* Allow height to adjust based on content */
+    height: 200px; /* Fixed height as in old implementation */
+    position: relative;
+    margin: 0 auto;
     text-align: center;
-    transition: transform 0.6s, height 0.6s, opacity 0.6s;
+    transition: transform 0.6s;
     transform-style: preserve-3d;
     cursor: pointer;
-    box-sizing: border-box; /* Ensure padding and borders are included in size */
-    backface-visibility: hidden;
-    opacity: 1;
-    position: relative; /* Change to relative for proper stacking */
-    margin: 0 auto; /* Center the flashcard */
-    padding: 20px; /* Add padding for better text spacing */
-  }
-  
-  /* Front and Back Faces */
-  .flashcard .front, .flashcard .back {
+    box-sizing: border-box;
+}
+
+.flashcard.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back Faces */
+.flashcard .front, .flashcard .back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -62,125 +55,74 @@ body {
     white-space: pre-wrap; /* Preserve whitespace and line breaks */
     font-family: Arial, sans-serif, 'Segoe UI Emoji', 'Apple Color Emoji'; /* Ensure emojis render correctly */
     text-align: left; /* Align text to the left for better readability */
-    transition: height 0.6s;
     /* Responsive Font Size */
-    font-size: clamp(14px, 2vw, 24px); /* Minimum 14px, scalable with viewport, maximum 24px */
+    font-size: 16px; /* Base font size */
     line-height: 1.4; /* Improve readability */
-  }
-  
-  /* Back face needs to be rotated vertically */
-  .flashcard .back {
-    transform: rotateX(180deg);
-  }
-  
-  /* Apply vertical rotation when flipped */
-  .flashcard.flipped {
-    transform: rotateX(180deg);
-  }
-  
-  /* Controls Styles */
-  .controls {
+}
+
+/* Back face needs to be rotated */
+.flashcard .back {
+    transform: rotateY(180deg);
+}
+
+/* Controls Styles */
+.controls {
     margin-top: 20px;
     display: flex; /* Use Flexbox for horizontal alignment */
     justify-content: center; /* Center the buttons */
     gap: 10px; /* Add space between buttons */
     flex-wrap: nowrap; /* Prevent buttons from wrapping to the next line */
-  }
-  
-  .controls button {
-    flex: 1; /* Make buttons flexible to occupy equal space */
-    padding: 10px 0; /* Adjust vertical padding */
-    margin: 0; /* Remove horizontal margin */
+}
+
+.controls button {
+    padding: 10px 20px;
+    margin: 0;
     border: none;
     background-color: #007BFF;
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    max-width: 150px; /* Set a maximum width to prevent overly wide buttons */
-    box-sizing: border-box; /* Ensure padding is included in width */
+    flex: 1; /* Make buttons grow equally */
+    max-width: 100px; /* Prevent buttons from becoming too wide */
+    box-sizing: border-box; /* Include padding and border in width */
     transition: background-color 0.3s ease; /* Smooth hover transition */
-  }
-  
-  .controls button:hover {
+}
+
+.controls button:hover {
     background-color: #0056b3;
-  }
-  
-  /* Animation Classes for Sliding */
-  .flashcard.slide-in-left {
-    transform: translateX(-100%);
-    opacity: 0;
-    animation: slideInLeft 0.6s forwards;
-  }
-  
-  .flashcard.slide-out-left {
-    transform: translateX(0);
-    opacity: 1;
-    animation: slideOutLeft 0.6s forwards;
-  }
-  
-  .flashcard.slide-in-right {
-    transform: translateX(100%);
-    opacity: 0;
-    animation: slideInRight 0.6s forwards;
-  }
-  
-  .flashcard.slide-out-right {
-    transform: translateX(0);
-    opacity: 1;
-    animation: slideOutRight 0.6s forwards;
-  }
-  
-  @keyframes slideInLeft {
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideOutLeft {
-    to {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes slideInRight {
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideOutRight {
-    to {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 600px) {
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
     .container {
-      width: 95%;
-      margin: 20px auto;
+        width: 90%; /* Adjust container width for smaller screens */
     }
-  
+
     .flashcard {
-      min-height: 150px;
-      padding: 15px;
+        height: 150px; /* Reduce flashcard height for smaller screens */
     }
-  
+
     .flashcard .front, .flashcard .back {
-      font-size: clamp(12px, 4vw, 20px); /* Adjust font size for smaller screens */
+        font-size: 14px; /* Reduce font size for smaller screens */
     }
-  
-    .controls {
-      flex-direction: column; /* Stack buttons vertically on very small screens */
-      gap: 10px;
-    }
-  
+
     .controls button {
-      max-width: 100%; /* Allow buttons to take full width */
+        padding: 8px 16px; /* Adjust button padding */
+        font-size: 14px; /* Adjust button font size */
+        max-width: 80px; /* Further limit button width */
     }
-  }
+}
+
+/* Additional Responsive Font Scaling */
+@media (max-width: 400px) {
+    .flashcard .front, .flashcard .back {
+        font-size: 12px; /* Further reduce font size on very small screens */
+    }
+
+    .controls button {
+        padding: 6px 12px;
+        font-size: 12px;
+        max-width: 70px;
+    }
+}
