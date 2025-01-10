@@ -12,12 +12,12 @@
 .container {
     margin: 50px auto;
     width: 90%;           /* Responsive width */
-    max-width: 1200px;    /* Increased max-width for larger frame */
+    max-width: 1400px;    /* Further increased max-width for expansive test mode */
     transition: max-width 0.3s ease; /* Smooth transition */
 }
 
 .container.test-mode {
-    max-width: 1400px;    /* Further increased max-width for expansive test mode */
+    max-width: 1600px;    /* Further increased max-width for even larger frames */
 }
 
 /* =========================================
@@ -242,12 +242,12 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    flex: 3; /* Adjusted flex ratio for Questions */
+    flex: 2.1; /* Reduced flex ratio by 30% from previous 3 */
     max-height: 100%; /* Ensure columns don't exceed container height */
 }
 
 .test-column.large {
-    flex: 4; /* Adjusted flex ratio for Answers */
+    flex: 4; /* Maintain or adjust flex ratio as needed */
     /* Adjusted width and height */
     width: 130%; /* 30% wider */
     height: 120%; /* 20% taller */
@@ -256,6 +256,7 @@
 .test-column.large .test-card {
     width: 130%; /* 30% wider */
     height: 120%; /* 20% taller */
+    min-height: 170px; /* Minimum height to accommodate 7 lines */
 }
 
 /* Ensure that on smaller screens, adjustments are scaled appropriately */
@@ -274,6 +275,7 @@
     .test-column.large .test-card {
         width: 100%; /* Reset to full width */
         height: auto; /* Reset to auto height */
+        min-height: 0; /* Remove min-height on smaller screens */
     }
 }
 
@@ -287,6 +289,7 @@
     .test-column.large .test-card {
         width: 150%; /* Additional width if desired */
         height: 140%; /* Additional height if desired */
+        min-height: 200px; /* Increased min-height for larger screens */
     }
 }
 
