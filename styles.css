@@ -3,78 +3,26 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     text-align: center;
-    margin: 0; /* Reset default margin */
-    padding: 0; /* Reset default padding */
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     margin: 50px auto;
-    width: 300px; /* Fixed width as in old implementation */
+    width: 300px;
 }
 
 .selector {
     margin-bottom: 20px;
 }
 
-/* Flashcard Styles */
-.flashcard-container {
-    perspective: 1000px; /* Container needs perspective for 3D effect */
-    position: relative; /* For positioning child elements */
-    transition: height 0.6s ease; /* Smooth transition for height changes */
-    min-height: 200px; /* Minimum height */
-}
-
-.flashcard {
-    width: 100%;
-    min-height: 200px; /* Ensure flashcard doesn't shrink below 200px */
-    height: auto; /* Allow height to adjust based on content */
-    position: relative;
-    margin: 0 auto;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-    box-sizing: border-box; /* Include padding and borders in width and height */
-}
-
-.flashcard.flipped {
-    transform: rotateY(180deg);
-}
-
-/* Front and Back Faces */
-.flashcard .front, .flashcard .back {
-    position: absolute;
-    width: 100%;
-    /* Remove fixed height to allow dynamic sizing */
-    /* height: 100%; */ 
-    backface-visibility: hidden; /* Hide the back face when not visible */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box; /* Ensure padding and borders are included */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    white-space: pre-wrap; /* Preserve whitespace and line breaks */
-    font-family: Arial, sans-serif, 'Segoe UI Emoji', 'Apple Color Emoji'; /* Ensure emojis render correctly */
-    text-align: left; /* Align text to the left for better readability */
-    font-size: 16px; /* Base font size */
-    line-height: 1.4; /* Improve readability */
-}
-
-.flashcard .back {
-    transform: rotateY(180deg);
-}
-
 /* Controls Styles */
 .controls {
-    margin-top: 20px;
-    display: flex; /* Use Flexbox for horizontal alignment */
-    justify-content: center; /* Center the buttons */
-    gap: 10px; /* Add space between buttons */
-    flex-wrap: nowrap; /* Prevent buttons from wrapping to the next line */
+    margin-bottom: 20px; /* Add space below controls */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: nowrap;
 }
 
 .controls button {
@@ -85,38 +33,130 @@ body {
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 20px; /* Increased font size for better visibility */
-    flex: 0 0 auto; /* Prevent buttons from stretching */
-    width: 50px; /* Fixed width to accommodate arrow symbols */
-    height: 50px; /* Fixed height for uniformity */
+    font-size: 20px;
+    flex: 0 0 auto;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box; /* Include padding and border in width */
-    transition: background-color 0.3s ease; /* Smooth hover transition */
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
 .controls button:hover {
     background-color: #0056b3;
 }
 
+/* Flashcard Styles */
+.flashcard-container {
+    perspective: 1000px;
+    position: relative;
+    transition: height 0.6s ease;
+    min-height: 200px;
+}
+
+.flashcard {
+    width: 100%;
+    min-height: 200px;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.flashcard.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back Faces */
+.flashcard .front, .flashcard .back {
+    position: absolute;
+    width: 100%;
+    backface-visibility: hidden;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    white-space: pre-wrap;
+    font-family: Arial, sans-serif, 'Segoe UI Emoji', 'Apple Color Emoji';
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.flashcard .back {
+    transform: rotateY(180deg);
+}
+
+/* Sliding Animations */
+@keyframes slideOutLeft {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(-100%); opacity: 0; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.slide-out-left {
+    animation: slideOutLeft 0.5s forwards;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.5s forwards;
+}
+
+.slide-out-right {
+    animation: slideOutRight 0.5s forwards;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.5s forwards;
+}
+
+/* Controls hidden by default */
+#controls {
+    display: none;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
     .container {
-        width: 90%; /* Adjust container width for smaller screens */
+        width: 90%;
     }
 
     .flashcard-container {
-        min-height: 150px; /* Reduce minimum height for smaller screens */
+        min-height: 150px;
     }
 
     .flashcard .front, .flashcard .back {
-        font-size: 14px; /* Reduce font size for smaller screens */
+        font-size: 14px;
     }
 
     .controls button {
         padding: 8px;
-        font-size: 18px; /* Slightly smaller font size */
+        font-size: 18px;
         width: 40px;
         height: 40px;
     }
@@ -124,7 +164,7 @@ body {
 
 @media (max-width: 400px) {
     .flashcard .front, .flashcard .back {
-        font-size: 12px; /* Further reduce font size on very small screens */
+        font-size: 12px;
     }
 
     .controls button {

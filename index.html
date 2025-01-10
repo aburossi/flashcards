@@ -18,16 +18,17 @@
       <button id="start">Start</button>
     </div>
     
+    <!-- Moved Controls Above Flashcards -->
+    <div class="controls" id="controls" style="display: none;">
+      <button id="prev" title="Previous (←)" aria-label="Previous">&#8592;</button>
+      <button id="flip" title="Flip (↑/↓)" aria-label="Flip">&#8593;&#8595;</button>
+      <button id="next" title="Next (→)" aria-label="Next">&#8594;</button>
+    </div>
+    
     <div class="flashcard-container" id="flashcard-container" style="display: none;">
       <div class="flashcard" id="flashcard">
         <div class="front" id="front">Question</div>
         <div class="back" id="back">Answer</div>
-      </div>
-      
-      <div class="controls">
-        <button id="prev" title="Previous (←)" aria-label="Previous">&#8592;</button>
-        <button id="flip" title="Flip (↑/↓)" aria-label="Flip">&#8593;&#8595;</button>
-        <button id="next" title="Next (→)" aria-label="Next">&#8594;</button>
       </div>
     </div>
   </div>

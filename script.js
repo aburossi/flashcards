@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next');
     const subjectSelector = document.getElementById('subject-selector');
     const pageTitle = document.getElementById('page-title');
+    const controls = document.getElementById('controls'); // Added reference to controls
 
     let flashcards = [];
     let currentIndex = 0;
+    let isAnimating = false; // Flag to prevent overlapping animations
 
     /**
      * Utility function to get URL parameters
@@ -93,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentIndex = 0;
             displayFlashcard();
             flashcardContainer.style.display = 'block';
+            controls.style.display = 'flex'; // Show controls
         } catch (error) {
             console.error('Error details:', error);
             alert(`Failed to load flashcards for subject "${subject}". Please check the console for more details.`);
@@ -100,14 +103,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
+     * Display the current flashcard without animation
+     */
+    function showFlashcard() {
+        const card = flashcards[currentIndex];
+        front.innerHTML = card.question;
+        back.innerHTML = card.answer.replace(/\n/g, '<br>');
+        flashcard.classList.remove('flipped');
+        adjustFlashcardHeight();
+    }
+
+    /**
+     * Display the current flashcard with animation based on direction
+     * @param {string} direction - 'next' or 'prev'
+     */
+    function displayFlashcardWithAnimation(direction) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        if (direction === 'next') {
+            flashcard.classList.add('slide-out-left');
+        } else if (direction === 'prev') {
+            flashcard.classList.add('slide-out-right');
+        }
+
+        flashcard.addEventListener('animationend', handleAnimationEnd);
+
+        function handleAnimationEnd() {
+            flashcard.removeEventListener('animationend', handleAnimationEnd);
+            flashcard.classList.remove(direction === 'next' ? 'slide-out-left' : 'slide-out-right');
+
+            // Update index
+            if (direction === 'next') {
+                currentIndex++;
+            } else if (direction === 'prev') {
+                currentIndex--;
+            }
+
+            // Update content
+            const card = flashcards[currentIndex];
+            front.innerHTML = card.question;
+            back.innerHTML = card.answer.replace(/\n/g, '<br>');
+            flashcard.classList.remove('flipped');
+
+            // Add slide-in animation
+            if (direction === 'next') {
+                flashcard.classList.add('slide-in-right');
+            } else if (direction === 'prev') {
+                flashcard.classList.add('slide-in-left');
+            }
+
+            flashcard.addEventListener('animationend', () => {
+                flashcard.classList.remove(direction === 'next' ? 'slide-in-right' : 'slide-in-left');
+                isAnimating = false;
+                adjustFlashcardHeight();
+            }, { once: true });
+        }
+    }
+
+    /**
      * Display the current flashcard
      */
     function displayFlashcard() {
-        const card = flashcards[currentIndex];
-        front.innerHTML = card.question; // Use innerHTML in case there are HTML entities
-        back.innerHTML = card.answer.replace(/\n/g, '<br>'); // Replace line breaks with <br>
-        flashcard.classList.remove('flipped'); // Ensure card is showing front
-        adjustFlashcardHeight(); // Adjust container height based on front content
+        showFlashcard();
     }
 
     /**
@@ -163,15 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listener for the Flip button
     flipButton.addEventListener('click', () => {
+        if (isAnimating) return; // Prevent flipping during animation
         flashcard.classList.toggle('flipped');
-        adjustFlashcardHeight(); // Adjust height after flipping
+        adjustFlashcardHeight();
     });
 
     // Event listener for the Next button
     nextButton.addEventListener('click', () => {
+        if (isAnimating) return;
         if (currentIndex < flashcards.length - 1) {
-            currentIndex++;
-            displayFlashcard();
+            displayFlashcardWithAnimation('next');
         } else {
             alert('This is the last flashcard.');
         }
@@ -179,9 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listener for the Previous button
     prevButton.addEventListener('click', () => {
+        if (isAnimating) return;
         if (currentIndex > 0) {
-            currentIndex--;
-            displayFlashcard();
+            displayFlashcardWithAnimation('prev');
         } else {
             alert('This is the first flashcard.');
         }
@@ -189,12 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Allow flipping the card by clicking on it
     flashcard.addEventListener('click', () => {
+        if (isAnimating) return; // Prevent flipping during animation
         flashcard.classList.toggle('flipped');
-        adjustFlashcardHeight(); // Adjust height after flipping
+        adjustFlashcardHeight();
     });
 
     // Keyboard Navigation
     document.addEventListener('keydown', (event) => {
+        if (isAnimating) return; // Prevent actions during animation
         switch(event.key) {
             case 'ArrowLeft':
                 prevButton.click();
