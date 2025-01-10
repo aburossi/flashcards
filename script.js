@@ -362,49 +362,58 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function handleTestCardClick(e) {
         const clickedCard = e.target.closest('.test-card');
-        if (!clickedCard || lockBoard || clickedCard.classList.contains('correct') || clickedCard.classList.contains('selected')) return;
+        if (!clickedCard || lockBoard || clickedCard.classList.contains('correct') || clickedCard.classList.contains('no-match')) return;
 
-        // Select the first card
-        if (!firstCard) {
-            firstCard = clickedCard;
-            firstCard.classList.add('selected');
+        // Deselect if the same card is clicked again
+        if (clickedCard.classList.contains('selected')) {
+            clickedCard.classList.remove('selected');
+            if (clickedCard.dataset.type === 'question') {
+                firstCard = null;
+            } else if (clickedCard.dataset.type === 'answer') {
+                secondCard = null;
+            }
             return;
         }
 
-        // Select the second card
-        secondCard = clickedCard;
-        secondCard.classList.add('selected');
-        lockBoard = true;
+        // Select the card
+        clickedCard.classList.add('selected');
 
-        // Determine if the selected pair is a match
-        const firstType = firstCard.dataset.type;
-        const secondType = secondCard.dataset.type;
-
-        let isMatch = false;
-
-        if (firstType === 'answer' && secondType === 'question') {
-            isMatch = firstCard.dataset.matchId === secondCard.dataset.id;
-        } else if (firstType === 'question' && secondType === 'answer') {
-            isMatch = secondCard.dataset.matchId === firstCard.dataset.id;
+        if (clickedCard.dataset.type === 'question') {
+            if (firstCard) {
+                // Already a question selected, do not allow selecting another question
+                alert('You have already selected a question. Please select an answer.');
+                clickedCard.classList.remove('selected');
+                return;
+            }
+            firstCard = clickedCard;
+        } else if (clickedCard.dataset.type === 'answer') {
+            if (secondCard) {
+                // Already an answer selected, do not allow selecting another answer
+                alert('You have already selected an answer. Please select a question.');
+                clickedCard.classList.remove('selected');
+                return;
+            }
+            secondCard = clickedCard;
         }
 
-        if (isMatch) {
-            // Correct match
-            firstCard.classList.add('correct');
-            secondCard.classList.add('correct');
-            resetSelection();
-            checkTestCompletion();
-        } else {
-            // Check if either card is an unmatched question
-            const isFirstExtra = firstCard.dataset.id.startsWith('front-extra');
-            const isSecondExtra = secondCard.dataset.id.startsWith('front-extra');
+        // If both cards are selected, check for a match
+        if (firstCard && secondCard) {
+            lockBoard = true;
 
-            if (isFirstExtra || isSecondExtra) {
-                // Provide feedback that one of the selected cards has no match
-                alert('One of the selected questions does not have a corresponding answer.');
-                // Optionally, you can disable these cards to prevent further attempts
-                if (isFirstExtra) firstCard.classList.add('no-match');
-                if (isSecondExtra) secondCard.classList.add('no-match');
+            const isMatch = firstCard.dataset.id === secondCard.dataset.matchId || secondCard.dataset.id === firstCard.dataset.matchId;
+
+            if (isMatch) {
+                // Correct match: remove both cards
+                firstCard.classList.add('correct');
+                secondCard.classList.add('correct');
+
+                // Optionally, you can add a fade-out animation before removing
+                setTimeout(() => {
+                    firstCard.remove();
+                    secondCard.remove();
+                    resetSelection();
+                    checkTestCompletion();
+                }, 500); // Adjust delay as needed
             } else {
                 // Incorrect match
                 firstCard.classList.add('incorrect');
@@ -414,13 +423,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     firstCard.classList.remove('incorrect', 'selected');
                     secondCard.classList.remove('incorrect', 'selected');
                     resetSelection();
+                    lockBoard = false;
                 }, 500); // 0.5 second delay for animation
             }
-
-            resetSelection();
         }
     }
-
+    
     /**
      * Reset Selection Variables
      */

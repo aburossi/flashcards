@@ -219,6 +219,7 @@
 /* =========================================
    Test Mode Styles
    ========================================= */
+
    .test-container {
     margin-top: 20px;
     overflow: hidden; /* Prevent scrollbars */
@@ -243,6 +244,28 @@
 
 .test-column.large {
     flex: 4; /* Updated flex ratio for Answers */
+    /* Added width and height adjustments */
+    width: calc(30% + 30% * 0.3); /* 30% wider */
+    height: calc(100% + 100% * 0.1); /* 10% taller */
+}
+
+.test-column.large .test-card {
+    /* Increased width by 30% and height by 10% */
+    width: 130%; /* 30% wider */
+    height: 110%; /* 10% taller */
+}
+
+/* Ensure that on smaller screens, adjustments are scaled appropriately */
+@media (max-width: 900px) {
+    .test-column.large {
+        width: 100%; /* Full width on smaller screens */
+        height: auto;
+    }
+
+    .test-column.large .test-card {
+        width: 100%; /* Reset to full width */
+        height: auto;
+    }
 }
 
 .test-column h2 {
