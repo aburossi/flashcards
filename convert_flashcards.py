@@ -100,6 +100,7 @@ def paste_flashcards():
         messagebox.showwarning("Empty Input", "Please paste some flashcards.")
 
 def create_gui():
+    global paste_text_area, subject_entry  # Declare as global to be accessible in paste_flashcards
     root = tk.Tk()
     root.title("Flashcards Converter")
     root.geometry("700x600")
@@ -137,16 +138,8 @@ def create_gui():
     paste_convert_button = ttk.Button(tab2, text="Convert Pasted Flashcards", command=paste_flashcards)
     paste_convert_button.pack(pady=10)
     
-    # Make paste_text_area and subject_entry accessible globally
-    global paste_text_area_widget, subject_entry_widget
-    paste_text_area_widget = paste_text_area
-    subject_entry_widget = subject_entry
-    
     root.mainloop()
 
 if __name__ == "__main__":
-    # Assign the global widgets
-    paste_text_area = None
-    subject_entry = None
     # Create the GUI
     create_gui()
