@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Generate the grid
         generateTestGrid();
         adjustTestGridHeight(); // Adjust height on initialization
-        setTimeout(setUniformCardHeights, 100); // Optional: Set uniform heights
+        // Removed setUniformCardHeights call
     }
 
     /**
@@ -370,6 +370,18 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeTestMode();
     }
 
+    /**
+     * Adjust Test Grid Height Dynamically
+     */
+    function adjustTestGridHeight() {
+        const headerHeight = pageTitle.offsetHeight;
+        const modeSelectionHeightValue = modeSelection.offsetHeight || 0;
+        const controlsHeightValue = controls.offsetHeight || 0;
+        const resetButtonHeightValue = resetTestButton.offsetHeight || 0;
+        const otherHeights = headerHeight + modeSelectionHeightValue + controlsHeightValue + resetButtonHeightValue + 100; // 100px buffer
+        const newHeight = window.innerHeight - otherHeights;
+        testGrid.style.height = `${newHeight}px`;
+    }
 
     // Event listener for the Start button
     startButton.addEventListener('click', () => {
@@ -469,11 +481,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         adjustFlashcardHeight();
         adjustTestGridHeight();
+        // Removed setUniformCardHeights call
     });
 
     // Initial adjustment on window load
     window.addEventListener('load', () => {
         adjustTestGridHeight();
-        setTimeout(setUniformCardHeights, 100); // Optional: Set uniform heights
+        // Removed setUniformCardHeights call
     });
 });
