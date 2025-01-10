@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     let flashcards = [];
     let currentIndex = 0;
+    let isFlipped = false; // Track the current state of the flashcard
   
     /**
      * Utility function to get URL parameters
@@ -108,6 +109,7 @@ function displayFlashcard() {
     front.innerHTML = card.question; // Use innerHTML in case there are HTML entities
     back.innerHTML = card.answer.replace(/\n/g, '<br>'); // Replace line breaks with <br>
     flashcard.classList.remove('flipped'); // Ensure card is showing front
+    isFlipped = false; // Reset flip state
   
     // After content is updated, allow the browser to recalculate the height
     setTimeout(() => {
@@ -167,32 +169,83 @@ function displayFlashcard() {
     // Event listener for the Flip button
     flipButton.addEventListener('click', () => {
       flashcard.classList.toggle('flipped');
+      isFlipped = !isFlipped;
     });
   
     // Event listener for the Next button
     nextButton.addEventListener('click', () => {
+      goToNextCard();
+    });
+  
+    // Event listener for the Previous button
+    prevButton.addEventListener('click', () => {
+      goToPreviousCard();
+    });
+  
+    // Allow flipping the card by clicking on it
+    flashcard.addEventListener('click', () => {
+      flashcard.classList.toggle('flipped');
+      isFlipped = !isFlipped;
+    });
+  
+    /**
+     * Navigate to the next flashcard
+     */
+    function goToNextCard() {
       if (currentIndex < flashcards.length - 1) {
         currentIndex++;
         displayFlashcard();
       } else {
         alert('This is the last flashcard.');
       }
-    });
+    }
   
-    // Event listener for the Previous button
-    prevButton.addEventListener('click', () => {
+    /**
+     * Navigate to the previous flashcard
+     */
+    function goToPreviousCard() {
       if (currentIndex > 0) {
         currentIndex--;
         displayFlashcard();
       } else {
         alert('This is the first flashcard.');
       }
-    });
+    }
   
-    // Allow flipping the card by clicking on it
-    flashcard.addEventListener('click', () => {
-      flashcard.classList.toggle('flipped');
-    });
+    /**
+     * Handle keyboard navigation
+     * Up/Down Arrow: Flip the card
+     * Right Arrow: Next card
+     * Left Arrow: Previous card
+     */
+    function handleKeyboardNavigation(event) {
+      const key = event.key;
+  
+      switch (key) {
+        case 'ArrowUp':
+        case 'ArrowDown':
+          // Prevent default scrolling behavior
+          event.preventDefault();
+          flashcard.classList.toggle('flipped');
+          isFlipped = !isFlipped;
+          break;
+        case 'ArrowRight':
+          // Prevent default scrolling behavior
+          event.preventDefault();
+          goToNextCard();
+          break;
+        case 'ArrowLeft':
+          // Prevent default scrolling behavior
+          event.preventDefault();
+          goToPreviousCard();
+          break;
+        default:
+          break;
+      }
+    }
+  
+    // Add keyboard event listener
+    document.addEventListener('keydown', handleKeyboardNavigation);
   
     // Initialize the application
     initializeApp();
