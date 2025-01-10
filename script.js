@@ -12,10 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const subjectSelector = document.getElementById('subject-selector');
     const pageTitle = document.getElementById('page-title');
     const controls = document.getElementById('controls'); // Added reference to controls
+    const modeSelection = document.getElementById('mode-selection'); // Mode Selection Section
+    const learnModeButton = document.getElementById('learn-mode');
+    const testModeButton = document.getElementById('test-mode');
+    const testContainer = document.getElementById('test-container');
+    const testGrid = document.getElementById('test-grid');
+    const resetTestButton = document.getElementById('reset-test');
 
     let flashcards = [];
     let currentIndex = 0;
     let isAnimating = false; // Flag to prevent overlapping animations
+
+    // Variables for Test Mode
+    let testCards = [];
+    let firstCard = null;
+    let secondCard = null;
+    let lockBoard = false;
 
     /**
      * Utility function to get URL parameters
@@ -96,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayFlashcard();
             flashcardContainer.style.display = 'block';
             controls.style.display = 'flex'; // Show controls
+            modeSelection.style.display = 'none'; // Hide mode selection if previously visible
         } catch (error) {
             console.error('Error details:', error);
             alert(`Failed to load flashcards for subject "${subject}". Please check the console for more details.`);
@@ -200,12 +213,149 @@ document.addEventListener('DOMContentLoaded', () => {
             pageTitle.textContent = `Flashcards ${capitalizeFirstLetter(assignmentId)}`;
             // Hide the subject selector
             subjectSelector.style.display = 'none';
+            // Show mode selection
+            modeSelection.style.display = 'flex';
         } else {
             // No assignmentId, load subjects for selection
             await loadSubjects();
             // Show the subject selector
             subjectSelector.style.display = 'block';
         }
+    }
+
+    /**
+     * Shuffle an array using Fisher-Yates algorithm
+     * @param {Array} array 
+     * @returns {Array}
+     */
+    function shuffle(array) {
+        let currentIndex = array.length, temporaryValue, randomIndex;
+      
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+      
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+      
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+      
+        return array;
+    }
+
+    /**
+     * Initialize Test Mode
+     */
+    function initializeTestMode() {
+        // Hide Learn Mode elements
+        flashcardContainer.style.display = 'none';
+        controls.style.display = 'none';
+        
+        // Show Test Mode elements
+        testContainer.style.display = 'block';
+        modeSelection.style.display = 'none';
+        
+        // Prepare Test Cards (fronts and backs)
+        testCards = [];
+        flashcards.forEach((card, index) => {
+            testCards.push({
+                id: `front-${index}`,
+                content: card.question,
+                type: 'front'
+            });
+            testCards.push({
+                id: `back-${index}`,
+                content: card.answer.replace(/\n/g, '<br>'),
+                type: 'back',
+                matchId: `front-${index}`
+            });
+        });
+        
+        // Shuffle the test cards
+        testCards = shuffle(testCards);
+        
+        // Generate the grid
+        generateTestGrid();
+    }
+
+    /**
+     * Generate Test Grid
+     */
+    function generateTestGrid() {
+        testGrid.innerHTML = '';
+        testCards.forEach(card => {
+            const cardElement = document.createElement('div');
+            cardElement.classList.add('test-card');
+            cardElement.dataset.id = card.id;
+            cardElement.dataset.matchId = card.matchId || '';
+            cardElement.innerHTML = '🔍'; // Backface content
+            testGrid.appendChild(cardElement);
+        });
+    }
+
+    /**
+     * Handle Card Click in Test Mode
+     * @param {Event} e 
+     */
+    function handleTestCardClick(e) {
+        const clickedCard = e.target;
+        if (lockBoard || clickedCard.classList.contains('flipped') || clickedCard.classList.contains('correct')) return;
+
+        clickedCard.classList.add('flipped');
+        clickedCard.innerHTML = clickedCard.dataset.matchId ? back.innerHTML : front.innerHTML;
+
+        if (!firstCard) {
+            firstCard = clickedCard;
+            return;
+        }
+
+        secondCard = clickedCard;
+        lockBoard = true;
+
+        // Check for match
+        const isMatch = firstCard.dataset.matchId === secondCard.dataset.id || secondCard.dataset.matchId === firstCard.dataset.id;
+
+        if (isMatch) {
+            // Correct match
+            firstCard.classList.add('correct');
+            secondCard.classList.add('correct');
+            resetSelection();
+        } else {
+            // Incorrect match
+            firstCard.classList.add('incorrect');
+            secondCard.classList.add('incorrect');
+
+            setTimeout(() => {
+                firstCard.classList.remove('flipped', 'incorrect');
+                secondCard.classList.remove('flipped', 'incorrect');
+                firstCard.innerHTML = '🔍';
+                secondCard.innerHTML = '🔍';
+                resetSelection();
+            }, 1000); // 1 second delay for animation
+        }
+    }
+
+    /**
+     * Reset Selection Variables
+     */
+    function resetSelection() {
+        [firstCard, secondCard] = [null, null];
+        lockBoard = false;
+    }
+
+    /**
+     * Reset Test Mode
+     */
+    function resetTest() {
+        testCards = [];
+        firstCard = null;
+        secondCard = null;
+        lockBoard = false;
+        initializeTestMode();
     }
 
     // Event listener for the Start button
@@ -217,6 +367,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         loadFlashcards(subject);
+        // Show mode selection
+        modeSelection.style.display = 'flex';
+    });
+
+    // Event listener for the Learn mode button
+    learnModeButton.addEventListener('click', () => {
+        // Show Learn Mode elements
+        flashcardContainer.style.display = 'block';
+        controls.style.display = 'flex';
+        testContainer.style.display = 'none';
+        modeSelection.style.display = 'none';
+        displayFlashcard();
+    });
+
+    // Event listener for the Test mode button
+    testModeButton.addEventListener('click', () => {
+        initializeTestMode();
+    });
+
+    // Event listener for the Reset Test button
+    resetTestButton.addEventListener('click', () => {
+        resetTest();
     });
 
     // Event listener for the Flip button
@@ -271,6 +443,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
     });
+
+    // Test Grid Event Listener
+    testGrid.addEventListener('click', handleTestCardClick);
 
     // Initialize the application
     initializeApp();

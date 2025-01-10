@@ -16,6 +16,27 @@ body {
     margin-bottom: 20px;
 }
 
+/* Mode Selection Styles */
+.mode-selection {
+    margin-bottom: 20px;
+}
+
+.mode-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.mode-button:hover {
+    background-color: #1e7e34;
+}
+
 /* Controls Styles */
 .controls {
     margin-bottom: 20px; /* Add space below controls */
@@ -135,9 +156,79 @@ body {
     animation: slideInLeft 0.5s forwards;
 }
 
-/* Controls hidden by default */
-#controls {
-    display: none;
+/* Test Mode Styles */
+.test-container {
+    margin-top: 20px;
+}
+
+.test-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    justify-items: center;
+}
+
+.test-card {
+    width: 70px;
+    height: 100px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s, background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    backface-visibility: hidden;
+}
+
+.test-card.flipped {
+    background-color: #e9ecef;
+}
+
+.test-card.correct {
+    background-color: #28a745;
+    color: #fff;
+    cursor: default;
+    animation: fadeOut 0.5s forwards;
+}
+
+.test-card.incorrect {
+    background-color: #dc3545;
+    color: #fff;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.reset-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #ffc107;
+    color: #212529;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+    background-color: #e0a800;
 }
 
 /* Responsive Design */
@@ -160,6 +251,17 @@ body {
         width: 40px;
         height: 40px;
     }
+
+    .test-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+
+    .test-card {
+        width: 60px;
+        height: 90px;
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 400px) {
@@ -172,5 +274,11 @@ body {
         font-size: 16px;
         width: 35px;
         height: 35px;
+    }
+
+    .test-card {
+        width: 50px;
+        height: 80px;
+        font-size: 10px;
     }
 }
