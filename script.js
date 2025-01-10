@@ -259,6 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
         testContainer.style.display = 'block';
         modeSelection.style.display = 'none';
         
+        // Add 'test-mode' class to the container for expanded width
+        document.querySelector('.container').classList.add('test-mode');
+        
         // Prepare Test Cards (6 random flashcards)
         testCards = [];
         const selectedFlashcards = shuffle([...flashcards]).slice(0, 6); // Select 6 random flashcards
@@ -368,6 +371,9 @@ document.addEventListener('DOMContentLoaded', () => {
         secondCard = null;
         lockBoard = false;
         initializeTestMode();
+        
+        // Remove 'test-mode' class when resetting
+        document.querySelector('.container').classList.remove('test-mode');
     }
 
     /**
@@ -409,6 +415,9 @@ document.addEventListener('DOMContentLoaded', () => {
         testContainer.style.display = 'none';
         modeSelection.style.display = 'none';
         displayFlashcard();
+        
+        // Remove 'test-mode' class in case it's present
+        document.querySelector('.container').classList.remove('test-mode');
     });
 
     // Event listener for the Test mode button
