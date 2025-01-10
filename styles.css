@@ -17,17 +17,20 @@ body {
   /* Flashcard Styles */
   .flashcard-container {
     perspective: 1000px; /* Container needs perspective for 3D effect */
-    position: relative; /* To position flashcards absolutely for sliding */
+    position: relative; /* Keep relative positioning for animations */
     overflow: hidden; /* Hide overflow during sliding */
+    height: auto; /* Let the height adjust based on content */
+    transition: height 0.6s ease; /* Smooth height transition */
   }
   
   .flashcard {
     width: 100%;
     min-height: 200px; /* Set minimum height */
     height: auto; /* Allow height to adjust based on content */
-    position: absolute;
-    top: 0;
-    left: 0;
+    /* Remove absolute positioning */
+    /* position: absolute; */
+    /* top: 0;
+    left: 0; */
     text-align: center;
     transition: transform 0.6s, height 0.6s, opacity 0.6s;
     transform-style: preserve-3d;
@@ -35,7 +38,10 @@ body {
     box-sizing: border-box; /* Ensure padding and borders are included in size */
     backface-visibility: hidden;
     opacity: 1;
-    z-index: 1;
+    /* Remove z-index to maintain natural stacking */
+    /* z-index: 1; */
+    position: relative; /* Change to relative for proper stacking */
+    margin: 0 auto; /* Center the flashcard */
   }
   
   /* Front and Back Faces */
@@ -73,6 +79,8 @@ body {
   /* Controls Styles */
   .controls {
     margin-top: 20px;
+    position: relative; /* Ensure positioning context for z-index */
+    z-index: 2; /* Higher than flashcard */
   }
   
   .controls button {
@@ -84,6 +92,8 @@ body {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    position: relative; /* Ensure buttons respect z-index */
+    z-index: 2; /* Higher than flashcard */
   }
   
   .controls button:hover {

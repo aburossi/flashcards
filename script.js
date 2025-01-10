@@ -135,11 +135,11 @@ function displayFlashcard(direction = null) {
     const frontHeight = front.offsetHeight;
     const backHeight = back.offsetHeight;
   
-    // Set the container's height to the taller of the two
-    const newHeight = Math.max(frontHeight, backHeight);
+    // Set the container's height to the taller of the two plus some buffer for controls
+    const newHeight = Math.max(frontHeight, backHeight) + 80; // Adjust buffer as needed
   
     // Apply the new height to the flashcard container
-    flashcard.style.height = `${newHeight}px`;
+    flashcardContainer.style.height = `${newHeight}px`;
   }
   
   /**
@@ -151,9 +151,9 @@ function displayFlashcard(direction = null) {
       isAnimating = true;
       const previousIndex = currentIndex;
       currentIndex++;
-      displayFlashcard('right');
       // Add slide-out-left to previous card
       flashcard.classList.add('slide-out-left');
+      displayFlashcard('right');
       flashcard.addEventListener('animationend', onAnimationEnd);
     } else {
       alert('This is the last flashcard.');
@@ -169,9 +169,9 @@ function displayFlashcard(direction = null) {
       isAnimating = true;
       const previousIndex = currentIndex;
       currentIndex--;
-      displayFlashcard('left');
       // Add slide-out-right to previous card
       flashcard.classList.add('slide-out-right');
+      displayFlashcard('left');
       flashcard.addEventListener('animationend', onAnimationEnd);
     } else {
       alert('This is the first flashcard.');
