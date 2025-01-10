@@ -41,11 +41,19 @@
     
     <!-- Test Mode Container -->
     <div class="test-container" id="test-container" style="display: none;">
-      <div class="test-grid" id="test-grid">
-        <!-- Cards will be generated dynamically -->
-      </div>
-      <button id="reset-test" class="reset-button">Reset Test</button>
+        <div class="test-layout">
+        <div class="test-column" id="test-questions">
+            <h2>Questions</h2>
+            <!-- Question Cards will be generated dynamically here -->
+        </div>
+        <div class="test-column large" id="test-answers">
+            <h2>Answers</h2>
+            <!-- Answer Cards will be generated dynamically here -->
+        </div>
+        </div>
+        <button id="reset-test" class="reset-button">Reset Test</button>
     </div>
+  
     
   </div>
   

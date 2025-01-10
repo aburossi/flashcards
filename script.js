@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const learnModeButton = document.getElementById('learn-mode');
     const testModeButton = document.getElementById('test-mode');
     const testContainer = document.getElementById('test-container');
-    const testGrid = document.getElementById('test-grid');
+    const testQuestions = document.getElementById('test-questions');
+    const testAnswers = document.getElementById('test-answers');
     const resetTestButton = document.getElementById('reset-test');
 
     let flashcards = [];
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         subjects.forEach(subject => {
             const option = document.createElement('option');
             option.value = subject;
-            option.textContent = capitalizeFirstLetter(subject);
+            option.textContent = capitalizeFirstLetter(subject.replace(/_/g, ' '));
             subjectSelect.appendChild(option);
         });
     }
@@ -253,6 +254,9 @@ document.addEventListener('DOMContentLoaded', () => {
      * Initialize Test Mode
      */
     function initializeTestMode() {
+        // Reset previous test state
+        resetTestState();
+
         // Hide Learn Mode elements
         flashcardContainer.style.display = 'none';
         controls.style.display = 'none';
@@ -282,27 +286,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Shuffle the test cards to randomize their positions
-        testCards = shuffle(testCards);
-        
-        // Generate the grid
-        generateTestGrid();
+        // Removed shuffling since we are separating into two columns
+
+        // Generate the questions and answers
+        generateTestColumns();
         adjustTestGridHeight(); // Adjust height on initialization
     }
 
     /**
-     * Generate Test Grid with Responsive Columns
+     * Generate Test Columns with Questions and Answers
      */
-    function generateTestGrid() {
-        testGrid.innerHTML = '';
+    function generateTestColumns() {
+        // Clear existing content
+        testQuestions.innerHTML = '<h2>Questions</h2>';
+        testAnswers.innerHTML = '<h2>Answers</h2>';
+
         testCards.forEach(card => {
-            const cardElement = document.createElement('div');
-            cardElement.classList.add('test-card');
-            cardElement.dataset.id = card.id;
-            cardElement.dataset.matchId = card.matchId || '';
-            cardElement.dataset.type = card.type;
-            cardElement.innerHTML = card.content; // Display content directly
-            testGrid.appendChild(cardElement);
+            if (card.type === 'question') {
+                const cardElement = createTestCard(card);
+                testQuestions.appendChild(cardElement);
+            } else if (card.type === 'answer') {
+                const cardElement = createTestCard(card);
+                testAnswers.appendChild(cardElement);
+            }
         });
+    }
+
+    /**
+     * Create a Test Card Element
+     * @param {Object} card 
+     * @returns {HTMLElement}
+     */
+    function createTestCard(card) {
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('test-card');
+        cardElement.dataset.id = card.id;
+        cardElement.dataset.matchId = card.matchId || '';
+        cardElement.dataset.type = card.type;
+        cardElement.innerHTML = card.content; // Display content directly
+        return cardElement;
     }
 
     /**
@@ -310,38 +332,46 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {Event} e 
      */
     function handleTestCardClick(e) {
-        const clickedCard = e.target;
-        if (lockBoard || clickedCard.classList.contains('correct')) return;
+        const clickedCard = e.target.closest('.test-card');
+        if (!clickedCard || lockBoard || clickedCard.classList.contains('correct') || clickedCard.classList.contains('selected')) return;
 
-        if (!firstCard) {
-            firstCard = clickedCard;
-            firstCard.classList.add('selected');
-            return;
-        }
+        if (clickedCard.dataset.type === 'answer') {
+            // Answers are to be matched with questions
+            if (!firstCard) {
+                firstCard = clickedCard;
+                firstCard.classList.add('selected');
+                return;
+            }
 
-        secondCard = clickedCard;
-        secondCard.classList.add('selected');
-        lockBoard = true;
+            secondCard = clickedCard;
+            secondCard.classList.add('selected');
+            lockBoard = true;
 
-        // Check for match
-        const isMatch = firstCard.dataset.matchId === secondCard.dataset.id || secondCard.dataset.matchId === firstCard.dataset.id;
+            // Check for match
+            const isMatch = firstCard.dataset.matchId === secondCard.dataset.id;
 
-        if (isMatch) {
-            // Correct match
-            firstCard.classList.add('correct');
-            secondCard.classList.add('correct');
-            resetSelection();
-            checkTestCompletion();
-        } else {
-            // Incorrect match
-            firstCard.classList.add('incorrect');
-            secondCard.classList.add('incorrect');
-
-            setTimeout(() => {
-                firstCard.classList.remove('incorrect', 'selected');
-                secondCard.classList.remove('incorrect', 'selected');
+            if (isMatch) {
+                // Correct match
+                firstCard.classList.add('correct');
+                secondCard.classList.add('correct');
                 resetSelection();
-            }, 500); // 0.5 second delay for animation
+                checkTestCompletion();
+            } else {
+                // Incorrect match
+                firstCard.classList.add('incorrect');
+                secondCard.classList.add('incorrect');
+
+                setTimeout(() => {
+                    firstCard.classList.remove('incorrect', 'selected');
+                    secondCard.classList.remove('incorrect', 'selected');
+                    resetSelection();
+                }, 500); // 0.5 second delay for animation
+            }
+        } else {
+            // If the clicked card is a question, do nothing or you can implement additional logic
+            // For simplicity, we allow matching only answers to questions
+            alert('Please select an answer card to match with the question.');
+            return;
         }
     }
 
@@ -357,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * Check if Test is Completed
      */
     function checkTestCompletion() {
-        const remainingCards = testGrid.querySelectorAll('.test-card:not(.correct)');
+        const remainingCards = testContainer.querySelectorAll('.test-card:not(.correct)');
         if (remainingCards.length === 0) {
             alert('Congratulations! You have matched all the cards.');
         }
@@ -367,14 +397,23 @@ document.addEventListener('DOMContentLoaded', () => {
      * Reset Test Mode
      */
     function resetTest() {
-        testCards = [];
-        firstCard = null;
-        secondCard = null;
-        lockBoard = false;
+        resetTestState();
         initializeTestMode();
         
         // Remove 'test-mode' class when resetting
         document.querySelector('.container').classList.remove('test-mode');
+    }
+
+    /**
+     * Reset Test State
+     */
+    function resetTestState() {
+        testCards = [];
+        firstCard = null;
+        secondCard = null;
+        lockBoard = false;
+        testQuestions.innerHTML = '<h2>Questions</h2>';
+        testAnswers.innerHTML = '<h2>Answers</h2>';
     }
 
     /**
@@ -387,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const resetButtonHeightValue = resetTestButton.offsetHeight || 0;
         const otherHeights = headerHeight + modeSelectionHeightValue + controlsHeightValue + resetButtonHeightValue + 100; // 100px buffer
         const newHeight = window.innerHeight - otherHeights;
-        testGrid.style.height = `${newHeight}px`;
+        testContainer.style.height = `${newHeight}px`;
     }
 
     // Event listener for the Start button
@@ -495,8 +534,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Test Grid Event Listener
-    testGrid.addEventListener('click', handleTestCardClick);
+    // Test Columns Event Listener
+    testContainer.addEventListener('click', handleTestCardClick);
 
     // Initialize the application
     initializeApp();

@@ -170,40 +170,48 @@ body {
     margin-top: 20px;
 }
 
-.test-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
-    grid-gap: 20px;       /* Increased gap for better spacing */
-    justify-items: stretch; /* Allow cards to stretch */
-    align-items: start;    /* Align items to the start */
-    padding: 20px;         /* Increased padding */
+.test-layout {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
     box-sizing: border-box;
-    /* Removed fixed height and overflow */
 }
 
-/* Adjust Test Card Styles for Dynamic Sizing */
+.test-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+}
+
+.test-column.large {
+    flex: 2; /* Makes the answers column larger */
+}
+
+.test-column h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #333;
+}
+
 .test-card {
-    width: 100%;
-    min-width: 150px; /* Ensure a reasonable minimum width */
-    height: auto;
     background-color: #fff;
     border: 2px solid #ccc;
     border-radius: 8px;
     cursor: pointer;
-    position: relative;
     transition: background-color 0.3s, transform 0.3s;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    font-size: 14px;
+    word-break: break-word;
+    white-space: normal;
+    min-height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    font-size: 14px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     box-sizing: border-box;
-    padding: 15px; /* Increased padding for better text display */
-    word-break: break-word;
-    white-space: normal;
-    min-height: 60px; /* Retain minimum height */
-    /* Removed max-height and overflow to allow dynamic sizing */
 }
 
 .test-card.correct {
@@ -230,6 +238,29 @@ body {
 @keyframes fadeOut {
     from { opacity: 1; }
     to { opacity: 0; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .test-layout {
+        flex-direction: column;
+    }
+
+    .test-column.large {
+        flex: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .test-column h2 {
+        font-size: 1.2em;
+    }
+
+    .test-card {
+        font-size: 12px;
+        padding: 10px;
+        min-height: 50px;
+    }
 }
 
 .reset-button {
