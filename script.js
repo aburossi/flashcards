@@ -99,15 +99,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   
-    /**
-     * Display the current flashcard
-     */
-    function displayFlashcard() {
-      const card = flashcards[currentIndex];
-      front.innerHTML = card.question; // Use innerHTML in case there are HTML entities
-      back.innerHTML = card.answer.replace(/\n/g, '<br>'); // Replace line breaks with <br>
-      flashcard.classList.remove('flipped'); // Ensure card is showing front
-    }
+/**
+ * Display the current flashcard
+ */
+function displayFlashcard() {
+    const card = flashcards[currentIndex];
+    front.innerHTML = card.question; // Use innerHTML in case there are HTML entities
+    back.innerHTML = card.answer.replace(/\n/g, '<br>'); // Replace line breaks with <br>
+    flashcard.classList.remove('flipped'); // Ensure card is showing front
+  
+    // After content is updated, allow the browser to recalculate the height
+    setTimeout(() => {
+      adjustFlashcardHeight();
+    }, 100);
+  }
+  
+  /**
+   * Adjust the flashcard container height based on the current card's content
+   */
+  function adjustFlashcardHeight() {
+    // Get the heights of front and back
+    const frontHeight = front.offsetHeight;
+    const backHeight = back.offsetHeight;
+  
+    // Set the container's height to the taller of the two
+    const newHeight = Math.max(frontHeight, backHeight);
+  
+    // Apply the new height to the flashcard container
+    flashcard.style.height = `${newHeight}px`;
+  }
+  
   
     /**
      * Initialize the app based on URL parameters
