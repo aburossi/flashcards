@@ -163,11 +163,17 @@ body {
 
 .test-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 15px;
     justify-items: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    height: calc(100vh - 200px); /* Adjust 200px based on your header and controls height */
+    overflow: hidden;
 }
 
+/* Adjust Test Card Styles for Dynamic Sizing */
 .test-card {
     width: 100%;
     height: auto;
@@ -176,15 +182,19 @@ body {
     border-radius: 8px;
     cursor: pointer;
     position: relative;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s, height 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     font-size: 14px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     box-sizing: border-box;
     padding: 10px;
-    word-wrap: break-word;
+    word-break: break-word;
+    min-height: 60px; /* Minimum height for single-line text */
+    max-height: 200px; /* Maximum height to prevent excessively tall cards */
+    overflow: hidden;
 }
 
 .test-card.correct {
@@ -229,16 +239,16 @@ body {
     background-color: #e0a800;
 }
 
-/* Responsive Design */
+/* Responsive Design Adjustments */
 @media (max-width: 1200px) {
     .test-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
 }
 
 @media (max-width: 900px) {
     .test-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     }
 }
 
@@ -263,13 +273,15 @@ body {
     }
 
     .test-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         grid-gap: 10px;
     }
 
     .test-card {
         font-size: 12px;
         padding: 8px;
+        min-height: 50px;
+        max-height: 180px;
     }
 }
 
@@ -288,5 +300,7 @@ body {
     .test-card {
         font-size: 10px;
         padding: 6px;
+        min-height: 40px;
+        max-height: 160px;
     }
 }

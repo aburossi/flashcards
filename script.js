@@ -281,10 +281,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Generate the grid
         generateTestGrid();
+        adjustTestGridHeight(); // Adjust height on initialization
     }
 
     /**
-     * Generate Test Grid with 4 columns and 3 rows
+     * Generate Test Grid with Responsive Columns
      */
     function generateTestGrid() {
         testGrid.innerHTML = '';
@@ -309,10 +310,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!firstCard) {
             firstCard = clickedCard;
+            firstCard.classList.add('selected');
             return;
         }
 
         secondCard = clickedCard;
+        secondCard.classList.add('selected');
         lockBoard = true;
 
         // Check for match
@@ -330,8 +333,8 @@ document.addEventListener('DOMContentLoaded', () => {
             secondCard.classList.add('incorrect');
 
             setTimeout(() => {
-                firstCard.classList.remove('incorrect');
-                secondCard.classList.remove('incorrect');
+                firstCard.classList.remove('incorrect', 'selected');
+                secondCard.classList.remove('incorrect', 'selected');
                 resetSelection();
             }, 500); // 0.5 second delay for animation
         }
@@ -364,6 +367,19 @@ document.addEventListener('DOMContentLoaded', () => {
         secondCard = null;
         lockBoard = false;
         initializeTestMode();
+    }
+
+    /**
+     * Adjust Test Grid Height Dynamically
+     */
+    function adjustTestGridHeight() {
+        const headerHeight = pageTitle.offsetHeight;
+        const modeSelectionHeightValue = modeSelection.offsetHeight || 0;
+        const controlsHeightValue = controls.offsetHeight || 0;
+        const resetButtonHeightValue = resetTestButton.offsetHeight || 0;
+        const otherHeights = headerHeight + modeSelectionHeightValue + controlsHeightValue + resetButtonHeightValue + 100; // 100px buffer
+        const newHeight = window.innerHeight - otherHeights;
+        testGrid.style.height = `${newHeight}px`;
     }
 
     // Event listener for the Start button
@@ -461,5 +477,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
 
     // Adjust height when the window is resized to ensure proper fit
-    window.addEventListener('resize', adjustFlashcardHeight);
+    window.addEventListener('resize', () => {
+        adjustFlashcardHeight();
+        adjustTestGridHeight();
+    });
+
+    // Initial adjustment on window load
+    window.addEventListener('load', adjustTestGridHeight);
 });
