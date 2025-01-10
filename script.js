@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     async function loadSubjects() {
         try {
-            const response = await fetch('./flashcards/subjects.json'); // Ensure the correct path
+            const response = await fetch('./subjects.json'); // Ensure the correct path
             if (!response.ok) {
                 throw new Error(`Failed to load subjects.json: ${response.status}`);
             }
