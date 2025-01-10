@@ -169,24 +169,22 @@ body {
 }
 
 .test-card {
-    width: 70px;
-    height: 100px;
+    width: 100%;
+    height: auto;
     background-color: #fff;
     border: 2px solid #ccc;
     border-radius: 8px;
     cursor: pointer;
     position: relative;
-    transition: transform 0.3s, background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    backface-visibility: hidden;
-}
-
-.test-card.flipped {
-    background-color: #e9ecef;
+    box-sizing: border-box;
+    padding: 10px;
+    word-wrap: break-word;
 }
 
 .test-card.correct {
@@ -232,6 +230,18 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .test-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .test-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media (max-width: 600px) {
     .container {
         width: 90%;
@@ -253,14 +263,13 @@ body {
     }
 
     .test-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px;
     }
 
     .test-card {
-        width: 60px;
-        height: 90px;
         font-size: 12px;
+        padding: 8px;
     }
 }
 
@@ -277,8 +286,7 @@ body {
     }
 
     .test-card {
-        width: 50px;
-        height: 80px;
         font-size: 10px;
+        padding: 6px;
     }
 }

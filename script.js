@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!success) return;
 
             // Update the page title
-            pageTitle.textContent = `Flashcards ${capitalizeFirstLetter(assignmentId)}`;
+            pageTitle.textContent = `Flashcards - ${capitalizeFirstLetter(assignmentId.replace(/_/g, ' '))}`;
             // Hide the subject selector
             subjectSelector.style.display = 'none';
             // Show mode selection
@@ -259,18 +259,19 @@ document.addEventListener('DOMContentLoaded', () => {
         testContainer.style.display = 'block';
         modeSelection.style.display = 'none';
         
-        // Prepare Test Cards (fronts and backs)
+        // Prepare Test Cards (6 questions and 6 answers)
         testCards = [];
-        flashcards.forEach((card, index) => {
+        const selectedFlashcards = flashcards.slice(0, 6); // Select first 6 flashcards
+        selectedFlashcards.forEach((card, index) => {
             testCards.push({
                 id: `front-${index}`,
                 content: card.question,
-                type: 'front'
+                type: 'question'
             });
             testCards.push({
                 id: `back-${index}`,
                 content: card.answer.replace(/\n/g, '<br>'),
-                type: 'back',
+                type: 'answer',
                 matchId: `front-${index}`
             });
         });
@@ -283,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Generate Test Grid
+     * Generate Test Grid with 4 columns and 3 rows
      */
     function generateTestGrid() {
         testGrid.innerHTML = '';
@@ -292,7 +293,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cardElement.classList.add('test-card');
             cardElement.dataset.id = card.id;
             cardElement.dataset.matchId = card.matchId || '';
-            cardElement.innerHTML = '🔍'; // Backface content
+            cardElement.dataset.type = card.type;
+            cardElement.innerHTML = card.content; // Display content directly
             testGrid.appendChild(cardElement);
         });
     }
@@ -303,18 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function handleTestCardClick(e) {
         const clickedCard = e.target;
-        if (lockBoard || clickedCard.classList.contains('flipped') || clickedCard.classList.contains('correct')) return;
-
-        clickedCard.classList.add('flipped');
-        // Display the content based on the type
-        const cardType = clickedCard.dataset.id.startsWith('front') ? 'front' : 'back';
-        const cardIndex = clickedCard.dataset.id.split('-')[1];
-        const cardData = flashcards[cardIndex];
-        if (cardType === 'front') {
-            clickedCard.innerHTML = cardData.question;
-        } else {
-            clickedCard.innerHTML = cardData.answer.replace(/\n/g, '<br>');
-        }
+        if (lockBoard || clickedCard.classList.contains('correct')) return;
 
         if (!firstCard) {
             firstCard = clickedCard;
@@ -332,18 +323,17 @@ document.addEventListener('DOMContentLoaded', () => {
             firstCard.classList.add('correct');
             secondCard.classList.add('correct');
             resetSelection();
+            checkTestCompletion();
         } else {
             // Incorrect match
             firstCard.classList.add('incorrect');
             secondCard.classList.add('incorrect');
 
             setTimeout(() => {
-                firstCard.classList.remove('flipped', 'incorrect');
-                secondCard.classList.remove('flipped', 'incorrect');
-                firstCard.innerHTML = '🔍';
-                secondCard.innerHTML = '🔍';
+                firstCard.classList.remove('incorrect');
+                secondCard.classList.remove('incorrect');
                 resetSelection();
-            }, 1000); // 1 second delay for animation
+            }, 500); // 0.5 second delay for animation
         }
     }
 
@@ -353,6 +343,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetSelection() {
         [firstCard, secondCard] = [null, null];
         lockBoard = false;
+    }
+
+    /**
+     * Check if Test is Completed
+     */
+    function checkTestCompletion() {
+        const remainingCards = testGrid.querySelectorAll('.test-card:not(.correct)');
+        if (remainingCards.length === 0) {
+            alert('Congratulations! You have matched all the cards.');
+        }
     }
 
     /**
@@ -433,13 +433,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             alert('This is the first flashcard.');
         }
-    });
-
-    // Allow flipping the card by clicking on it
-    flashcard.addEventListener('click', () => {
-        if (isAnimating) return; // Prevent flipping during animation
-        flashcard.classList.toggle('flipped');
-        adjustFlashcardHeight();
     });
 
     // Keyboard Navigation
