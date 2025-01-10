@@ -3,11 +3,16 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     text-align: center;
+    margin: 0; /* Reset default margin */
+    padding: 0; /* Reset default padding */
   }
   
   .container {
     margin: 50px auto;
-    width: 300px;
+    width: 90%; /* Make container width responsive */
+    max-width: 600px; /* Set a maximum width for larger screens */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width */
   }
   
   .selector {
@@ -27,10 +32,6 @@ body {
     width: 100%;
     min-height: 200px; /* Set minimum height */
     height: auto; /* Allow height to adjust based on content */
-    /* Remove absolute positioning */
-    /* position: absolute; */
-    /* top: 0;
-    left: 0; */
     text-align: center;
     transition: transform 0.6s, height 0.6s, opacity 0.6s;
     transform-style: preserve-3d;
@@ -38,10 +39,9 @@ body {
     box-sizing: border-box; /* Ensure padding and borders are included in size */
     backface-visibility: hidden;
     opacity: 1;
-    /* Remove z-index to maintain natural stacking */
-    /* z-index: 1; */
     position: relative; /* Change to relative for proper stacking */
     margin: 0 auto; /* Center the flashcard */
+    padding: 20px; /* Add padding for better text spacing */
   }
   
   /* Front and Back Faces */
@@ -62,8 +62,10 @@ body {
     white-space: pre-wrap; /* Preserve whitespace and line breaks */
     font-family: Arial, sans-serif, 'Segoe UI Emoji', 'Apple Color Emoji'; /* Ensure emojis render correctly */
     text-align: left; /* Align text to the left for better readability */
-    /* Add transition for height changes */
     transition: height 0.6s;
+    /* Responsive Font Size */
+    font-size: clamp(14px, 2vw, 24px); /* Minimum 14px, scalable with viewport, maximum 24px */
+    line-height: 1.4; /* Improve readability */
   }
   
   /* Back face needs to be rotated vertically */
@@ -79,21 +81,25 @@ body {
   /* Controls Styles */
   .controls {
     margin-top: 20px;
-    position: relative; /* Ensure positioning context for z-index */
-    z-index: 2; /* Higher than flashcard */
+    display: flex; /* Use Flexbox for horizontal alignment */
+    justify-content: center; /* Center the buttons */
+    gap: 10px; /* Add space between buttons */
+    flex-wrap: nowrap; /* Prevent buttons from wrapping to the next line */
   }
   
   .controls button {
-    padding: 10px 20px;
-    margin: 0 5px;
+    flex: 1; /* Make buttons flexible to occupy equal space */
+    padding: 10px 0; /* Adjust vertical padding */
+    margin: 0; /* Remove horizontal margin */
     border: none;
     background-color: #007BFF;
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    position: relative; /* Ensure buttons respect z-index */
-    z-index: 2; /* Higher than flashcard */
+    max-width: 150px; /* Set a maximum width to prevent overly wide buttons */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
   }
   
   .controls button:hover {
@@ -156,16 +162,25 @@ body {
   /* Responsive Design */
   @media (max-width: 600px) {
     .container {
-      width: 90%;
+      width: 95%;
+      margin: 20px auto;
     }
   
     .flashcard {
       min-height: 150px;
+      padding: 15px;
+    }
+  
+    .flashcard .front, .flashcard .back {
+      font-size: clamp(12px, 4vw, 20px); /* Adjust font size for smaller screens */
+    }
+  
+    .controls {
+      flex-direction: column; /* Stack buttons vertically on very small screens */
+      gap: 10px;
     }
   
     .controls button {
-      padding: 8px 16px;
-      margin: 0 3px;
-      font-size: 14px;
+      max-width: 100%; /* Allow buttons to take full width */
     }
   }
