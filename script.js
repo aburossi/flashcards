@@ -107,6 +107,25 @@ document.addEventListener('DOMContentLoaded', () => {
         front.innerHTML = card.question; // Use innerHTML in case there are HTML entities
         back.innerHTML = card.answer.replace(/\n/g, '<br>'); // Replace line breaks with <br>
         flashcard.classList.remove('flipped'); // Ensure card is showing front
+        adjustFlashcardHeight(); // Adjust container height based on front content
+    }
+
+    /**
+     * Adjust the flashcard container's height based on the visible content
+     */
+    function adjustFlashcardHeight() {
+        // Temporarily reset the height to get the natural height
+        flashcardContainer.style.height = 'auto';
+
+        // Determine which side is currently visible
+        const isFlipped = flashcard.classList.contains('flipped');
+
+        // Get the height of the visible side
+        const visibleSide = isFlipped ? back : front;
+        const newHeight = visibleSide.scrollHeight + 40; // Adding some padding
+
+        // Set the container height with a smooth transition
+        flashcardContainer.style.height = `${newHeight}px`;
     }
 
     /**
@@ -145,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener for the Flip button
     flipButton.addEventListener('click', () => {
         flashcard.classList.toggle('flipped');
+        adjustFlashcardHeight(); // Adjust height after flipping
     });
 
     // Event listener for the Next button
@@ -170,34 +190,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Allow flipping the card by clicking on it
     flashcard.addEventListener('click', () => {
         flashcard.classList.toggle('flipped');
+        adjustFlashcardHeight(); // Adjust height after flipping
     });
 
-    // Optional: Adjust font size on window resize to ensure text fits
-    window.addEventListener('resize', adjustFontSize);
-
-    /**
-     * Adjust the font size of the flashcard content based on window width
-     */
-    function adjustFontSize() {
-        const minFontSize = 12; // Minimum font size in pixels
-        const maxFontSize = 20; // Maximum font size in pixels
-        const windowWidth = window.innerWidth;
-
-        // Calculate font size based on window width
-        let fontSize = (windowWidth / 30); // Example scaling factor
-
-        // Clamp the font size between min and max
-        fontSize = Math.max(minFontSize, Math.min(fontSize, maxFontSize));
-
-        front.style.fontSize = `${fontSize}px`;
-        back.style.fontSize = `${fontSize}px`;
-    }
-
-    /**
-     * Initial font size adjustment
-     */
-    adjustFontSize();
+    // Keyboard Navigation
+    document.addEventListener('keydown', (event) => {
+        switch(event.key) {
+            case 'ArrowLeft':
+                prevButton.click();
+                break;
+            case 'ArrowRight':
+                nextButton.click();
+                break;
+            case 'ArrowUp':
+            case 'ArrowDown':
+                flipButton.click();
+                break;
+            default:
+                break;
+        }
+    });
 
     // Initialize the application
     initializeApp();
+
+    // Adjust height when the window is resized to ensure proper fit
+    window.addEventListener('resize', adjustFlashcardHeight);
 });
