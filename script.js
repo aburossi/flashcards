@@ -359,13 +359,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
+     * Resets the selection variables and unlocks the board.
+     */
+    function resetSelection() {
+        firstCard = null;
+        secondCard = null;
+        lockBoard = false;
+    }
+    
+    /**
      * Handle Card Click in Test Mode
      * @param {Event} e 
      */
     function handleTestCardClick(e) {
         const clickedCard = e.target.closest('.test-card');
         if (!clickedCard || lockBoard || clickedCard.classList.contains('correct') || clickedCard.classList.contains('no-match')) return;
-
+    
         // Deselect if the same card is clicked again
         if (clickedCard.classList.contains('selected')) {
             clickedCard.classList.remove('selected');
@@ -376,10 +385,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return;
         }
-
+    
         // Select the card
         clickedCard.classList.add('selected');
-
+    
         if (clickedCard.dataset.type === 'question') {
             if (firstCard) {
                 alert('You have already selected a question. Please select an answer.');
@@ -395,34 +404,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             secondCard = clickedCard;
         }
-
+    
         // If both cards are selected, check for a match
         if (firstCard && secondCard) {
             moveCount++; // Increment move counter for every attempt
             lockBoard = true;
-
+    
             const isMatch = firstCard.dataset.id === secondCard.dataset.matchId ||
                             secondCard.dataset.id === firstCard.dataset.matchId;
-
+    
             if (isMatch) {
                 firstCard.classList.add('correct');
                 secondCard.classList.add('correct');
-
+    
                 setTimeout(() => {
                     firstCard.remove();
                     secondCard.remove();
-                    resetSelection();
+                    resetSelection(); // Reset selection and unlock board
                     checkTestCompletion();
                 }, 500);
             } else {
                 firstCard.classList.add('incorrect');
                 secondCard.classList.add('incorrect');
-
+    
                 setTimeout(() => {
                     firstCard.classList.remove('incorrect', 'selected');
                     secondCard.classList.remove('incorrect', 'selected');
-                    resetSelection();
-                    lockBoard = false;
+                    resetSelection(); // Reset selection and unlock board
                 }, 500);
             }
         }
