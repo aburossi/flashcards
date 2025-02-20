@@ -6,7 +6,7 @@
   <title>Test Mode 4</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Additional styles specific to Test Mode 4 */
+    /* Setup container styles */
     .setup-container {
       max-width: 600px;
       margin: 30px auto;
@@ -16,6 +16,33 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
+    .setup-container label {
+      font-size: 16px;
+      margin-right: 5px;
+    }
+    .setup-container input[type="number"] {
+      width: 60px;
+      margin-right: 15px;
+    }
+    .setup-container .mode-choice {
+      margin: 15px 0;
+    }
+    .setup-container .mode-choice input {
+      margin-left: 10px;
+    }
+    .setup-container button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: 2px solid #007BFF;
+      border-radius: 4px;
+      background-color: #fff;
+      transition: background-color 0.3s;
+    }
+    .setup-container button:hover {
+      background-color: #e7f1ff;
+    }
+    /* Test container styles */
     .test-4-container {
       max-width: 600px;
       margin: 30px auto;
@@ -23,7 +50,7 @@
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: none; /* Hidden until test starts */
+      display: none;
     }
     #question-counter {
       font-size: 16px;
@@ -70,7 +97,7 @@
       margin-bottom: 20px;
     }
     .print-button {
-      display: none; /* Will be shown only at the end */
+      display: none;
       margin: 0 auto;
       padding: 10px 20px;
       font-size: 16px;
@@ -90,11 +117,22 @@
   <div class="container">
     <h1 id="page-title">Test Mode 4</h1>
     
-    <!-- Setup Container: Choose number of cards -->
+    <!-- Setup Container: Choose number of cards and mode -->
     <div class="setup-container" id="setup-container">
       <label for="num-cards">How many cards do you want to play?</label>
-      <input type="number" id="num-cards" min="1" value="10" style="width: 60px; margin-left: 10px;">
-      <button id="start-test" class="option-button" style="margin-left: 10px;">Start Test</button>
+      <input type="number" id="num-cards" min="1" value="10">
+      <div class="mode-choice">
+        <span>Choose Mode:</span>
+        <label>
+          <input type="radio" name="test-mode" value="basic" checked>
+          Basic
+        </label>
+        <label>
+          <input type="radio" name="test-mode" value="advanced">
+          Advanced
+        </label>
+      </div>
+      <button id="start-test">Start Test</button>
     </div>
 
     <!-- Test Container -->

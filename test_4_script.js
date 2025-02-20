@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let totalQuestions = 10;
     let correctCount = 0;
     let lock = false;
+    let testMode = 'basic';  // default mode
   
     // DOM Elements
     const cardBackElem = document.getElementById('card-back');
@@ -91,8 +92,16 @@ document.addEventListener('DOMContentLoaded', function() {
       questionCounterElem.textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
       
       const currentCard = testCards[currentQuestionIndex];
-      // Show the card's back (answer) at the top
-      cardBackElem.innerHTML = currentCard.answer.replace(/\n/g, '<br>');
+      let displayAnswer;
+      if (testMode === 'advanced') {
+        // Select a single random non-empty line from the answer
+        const answerLines = currentCard.answer.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+        displayAnswer = answerLines[Math.floor(Math.random() * answerLines.length)];
+      } else {
+        // Basic mode shows the full answer (with newlines converted)
+        displayAnswer = currentCard.answer.replace(/\n/g, '<br>');
+      }
+      cardBackElem.innerHTML = displayAnswer;
       
       // Generate and display the four front options
       const options = generateOptions(currentCard);
@@ -192,6 +201,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start the test when the user clicks the Start Test button
     startTestButton.addEventListener('click', function() {
       totalQuestions = parseInt(numCardsInput.value, 10) || 10;
+      // Determine the selected mode
+      const modeRadio = document.querySelector('input[name="test-mode"]:checked');
+      testMode = modeRadio ? modeRadio.value : 'basic';
       // Hide the setup container and show the test container
       setupContainer.style.display = 'none';
       testContainer.style.display = 'block';
