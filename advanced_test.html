@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Advanced Test Mode</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Advanced test layout: Questions column (25%) and Answers column (75%) */
+    .test-layout {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      width: 100%;
+    }
+    #test-questions {
+      flex: 0 0 25%;
+      box-sizing: border-box;
+      padding: 10px;
+      white-space: normal;
+      word-break: break-word;
+    }
+    #test-answers {
+      flex: 0 0 75%;
+      box-sizing: border-box;
+      padding: 10px;
+      text-align: center;
+      white-space: normal;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- The page title will be updated via advanced_script.js -->
+    <h1 id="page-title"></h1>
+    <!-- Test Mode Container -->
+    <div class="test-container" id="test-container" style="display: none;">
+      <div class="test-layout">
+        <div class="test-column" id="test-questions">
+          <h2>Questions</h2>
+          <p>Select an answer to match with the corresponding question.</p>
+        </div>
+        <div class="test-column large" id="test-answers">
+          <h2>Answers</h2>
+          <p>Select a question to match with the selected answer.</p>
+        </div>
+      </div>
+      <button id="reset-test" class="reset-button">Reset Test</button>
+    </div>
+  </div>
+
+  <!-- Set a global flag to signal advanced test mode -->
+  <script>
+    window.appMode = 'advanced';
+  </script>
+  <!-- Include the advanced test mode script -->
+  <script src="advanced_script.js"></script>
+</body>
+</html>
