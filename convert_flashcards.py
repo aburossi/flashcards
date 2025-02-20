@@ -6,6 +6,12 @@ import sys
 import subprocess
 from tkinter import ttk
 
+def clean(text):
+    """
+    Replace all occurrences of 'ß' with 'ss' in the given text.
+    """
+    return text.replace('ß', 'ss')
+
 def parse_flashcards(content):
     """
     Parses flashcards from a given string.
@@ -35,6 +41,8 @@ def process_files(folder_path, subject_name=None):
             file_path = os.path.join(folder_path, filename)
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
+                # Clean the content by replacing 'ß' with 'ss'
+                content = clean(content)
                 flashcards = parse_flashcards(content)
                 if flashcards:
                     subject = subject_name if subject_name else os.path.splitext(filename)[0]
@@ -83,6 +91,8 @@ def choose_folder():
 def paste_flashcards():
     content = paste_text_area.get("1.0", tk.END)
     if content.strip():
+        # Clean the pasted content by replacing 'ß' with 'ss'
+        content = clean(content)
         subject_name = subject_entry.get().strip()
         if not subject_name:
             messagebox.showwarning("Input Needed", "Please enter a subject name.")
