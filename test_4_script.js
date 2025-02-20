@@ -94,8 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const currentCard = testCards[currentQuestionIndex];
       let displayAnswer;
       if (testMode === 'advanced') {
-        // Select a single random non-empty line from the answer
-        const answerLines = currentCard.answer.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+        // Try splitting by newline
+        let answerLines = currentCard.answer.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+        // If there's only one line, try splitting by period as a fallback
+        if(answerLines.length <= 1) {
+          answerLines = currentCard.answer.split('.').map(line => line.trim()).filter(line => line.length > 0);
+        }
+        // Pick a random line (or the whole answer if only one exists)
         displayAnswer = answerLines[Math.floor(Math.random() * answerLines.length)];
       } else {
         // Basic mode shows the full answer (with newlines converted)
