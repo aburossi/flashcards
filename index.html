@@ -8,6 +8,8 @@
 <body>
   <div class="container">
     <h1 id="page-title">Flashcards</h1>
+    <!-- Reset button placed directly below the heading; initially hidden -->
+    <button id="reset-test" class="reset-button" style="display:none;">Reset Test</button>
     
     <div class="selector" id="subject-selector">
       <label for="subject">Choose a subject:</label>
@@ -41,20 +43,18 @@
     
     <!-- Test Mode Container -->
     <div class="test-container" id="test-container" style="display: none;">
-        <div class="test-layout">
+      <div class="test-layout">
         <div class="test-column" id="test-questions">
-            <h2>Questions</h2>
-            <!-- Question Cards will be generated dynamically here -->
+          <h2>Questions</h2>
+          <!-- Question Cards will be generated dynamically here -->
         </div>
         <div class="test-column large" id="test-answers">
-            <h2>Answers</h2>
-            <!-- Answer Cards will be generated dynamically here -->
+          <h2>Answers</h2>
+          <!-- Answer Cards will be generated dynamically here -->
         </div>
-        </div>
-        <button id="reset-test" class="reset-button">Reset Test</button>
+      </div>
     </div>
   
-    
   </div>
   
   <script src="script.js"></script>
