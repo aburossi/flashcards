@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const testAnswers = document.getElementById('test-answers');
     const resetTestButton = document.getElementById('reset-test');
 
+    // Global move counter for test mode
+    let moveCount = 0;
     let flashcards = [];
     let currentIndex = 0;
     let isAnimating = false; // Flag to prevent overlapping animations
@@ -380,7 +382,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (clickedCard.dataset.type === 'question') {
             if (firstCard) {
-                // Already a question selected, do not allow selecting another question
                 alert('You have already selected a question. Please select an answer.');
                 clickedCard.classList.remove('selected');
                 return;
@@ -388,7 +389,6 @@ document.addEventListener('DOMContentLoaded', () => {
             firstCard = clickedCard;
         } else if (clickedCard.dataset.type === 'answer') {
             if (secondCard) {
-                // Already an answer selected, do not allow selecting another answer
                 alert('You have already selected an answer. Please select a question.');
                 clickedCard.classList.remove('selected');
                 return;
@@ -398,24 +398,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // If both cards are selected, check for a match
         if (firstCard && secondCard) {
+            moveCount++; // Increment move counter for every attempt
             lockBoard = true;
 
-            const isMatch = firstCard.dataset.id === secondCard.dataset.matchId || secondCard.dataset.id === firstCard.dataset.matchId;
+            const isMatch = firstCard.dataset.id === secondCard.dataset.matchId ||
+                            secondCard.dataset.id === firstCard.dataset.matchId;
 
             if (isMatch) {
-                // Correct match: remove both cards
                 firstCard.classList.add('correct');
                 secondCard.classList.add('correct');
 
-                // Optionally, you can add a fade-out animation before removing
                 setTimeout(() => {
                     firstCard.remove();
                     secondCard.remove();
                     resetSelection();
                     checkTestCompletion();
-                }, 500); // Adjust delay as needed
+                }, 500);
             } else {
-                // Incorrect match
                 firstCard.classList.add('incorrect');
                 secondCard.classList.add('incorrect');
 
@@ -424,26 +423,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     secondCard.classList.remove('incorrect', 'selected');
                     resetSelection();
                     lockBoard = false;
-                }, 500); // 0.5 second delay for animation
+                }, 500);
             }
         }
     }
     
-    /**
-     * Reset Selection Variables
-     */
-    function resetSelection() {
-        [firstCard, secondCard] = [null, null];
-        lockBoard = false;
-    }
-
     /**
      * Check if Test is Completed
      */
     function checkTestCompletion() {
         const remainingCards = testContainer.querySelectorAll('.test-card:not(.correct)');
         if (remainingCards.length === 0) {
-            alert('Congratulations! You have matched all the cards.');
+            const idealMoves = 6; // 6 matching pairs ideal
+            const efficiency = (idealMoves / moveCount) * 100;
+            alert(`Congratulations! You have matched all the cards.\nTotal Moves: ${moveCount}\nEfficiency: ${efficiency.toFixed(2)}%`);
         }
     }
 
@@ -453,15 +446,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetTest() {
         resetTestState();
         initializeTestMode();
-        
-        // Remove 'test-mode' class when resetting
-        document.querySelector('.container').classList.remove('test-mode');
+        // The reset button remains visible during test mode.
     }
 
     /**
      * Reset Test State
      */
     function resetTestState() {
+        moveCount = 0; // Reset move counter
         testCards = [];
         firstCard = null;
         secondCard = null;
@@ -471,22 +463,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Adjust Test Grid Height Dynamically
+     * Initialize Test Mode
      */
-    function adjustTestGridHeight() {
-        const headerHeight = pageTitle.offsetHeight;
-        const modeSelectionHeightValue = modeSelection.offsetHeight || 0;
-        const controlsHeightValue = controls.offsetHeight || 0;
-        const resetButtonHeightValue = resetTestButton.offsetHeight || 0;
-        const otherHeights = headerHeight + modeSelectionHeightValue + controlsHeightValue + resetButtonHeightValue + 100; // 100px buffer
-        const newHeight = window.innerHeight - otherHeights;
-        testContainer.style.height = `${newHeight}px`;
+    function initializeTestMode() {
+        resetTestState();
+        flashcardContainer.style.display = 'none';
+        controls.style.display = 'none';
+        testContainer.style.display = 'block';
+        modeSelection.style.display = 'none';
+        // Add 'test-mode' class for expanded width
+        document.querySelector('.container').classList.add('test-mode');
+        
+        // Ensure the reset button is visible in test mode
+        resetTestButton.style.display = 'block';
 
-        // Additionally, set the height of the test-layout to fit within the test-container
-        const testLayout = document.querySelector('.test-layout');
-        if (testLayout) {
-            testLayout.style.height = `100%`;
-        }
+        // Prepare Test Cards
+        testCards = [];
+        const totalQuestions = 10;
+        const matchingPairs = 6;
+        const additionalFronts = 4;
+        const shuffledFlashcards = shuffle([...flashcards]);
+        const selectedMatchingFlashcards = shuffledFlashcards.slice(0, matchingPairs);
+        const selectedAdditionalFlashcards = shuffledFlashcards.slice(matchingPairs, matchingPairs + additionalFronts);
+        let questions = [];
+        let answers = [];
+
+        selectedMatchingFlashcards.forEach((card, index) => {
+            questions.push({
+                id: `front-${index}`,
+                content: card.question,
+                type: 'question'
+            });
+            answers.push({
+                id: `back-${index}`,
+                content: card.answer.replace(/\n/g, '<br>'),
+                type: 'answer',
+                matchId: `front-${index}`
+            });
+        });
+
+        selectedAdditionalFlashcards.forEach((card, index) => {
+            questions.push({
+                id: `front-extra-${index}`,
+                content: card.question,
+                type: 'question'
+            });
+        });
+
+        const shuffledQuestions = shuffle(questions);
+        const shuffledAnswers = shuffle(answers);
+        generateTestColumns(shuffledQuestions, shuffledAnswers);
+        adjustTestGridHeight();
     }
 
     // Event listener for the Start button
@@ -496,16 +523,10 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please select a subject.');
             return;
         }
-
-        currentSubject = subject; // Set the current subject based on user selection
-
-        // Fetch flashcards if not already loaded
+        currentSubject = subject;
         fetchFlashcards(currentSubject).then(success => {
             if (!success) return;
-
-            // Hide the subject selector
             subjectSelector.style.display = 'none';
-            // Show mode selection
             modeSelection.style.display = 'flex';
         });
     });
@@ -516,16 +537,14 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('No subject selected.');
             return;
         }
-
-        // Show Learn Mode elements
         flashcardContainer.style.display = 'block';
         controls.style.display = 'flex';
         testContainer.style.display = 'none';
         modeSelection.style.display = 'none';
         displayFlashcard();
-        
-        // Remove 'test-mode' class in case it's present
         document.querySelector('.container').classList.remove('test-mode');
+        // Hide reset button when leaving test mode
+        resetTestButton.style.display = 'none';
     });
 
     // Event listener for the Test mode button
@@ -534,19 +553,17 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('No subject selected.');
             return;
         }
-
-        // Initialize Test Mode
         initializeTestMode();
     });
 
-    // Event listener for the Reset Test button
+    // Event listener for the Reset Test button (now below the heading)
     resetTestButton.addEventListener('click', () => {
         resetTest();
     });
 
     // Event listener for the Flip button
     flipButton.addEventListener('click', () => {
-        if (isAnimating) return; // Prevent flipping during animation
+        if (isAnimating) return;
         flashcard.classList.toggle('flipped');
         adjustFlashcardHeight();
     });
@@ -573,7 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Keyboard Navigation
     document.addEventListener('keydown', (event) => {
-        if (isAnimating) return; // Prevent actions during animation
+        if (isAnimating) return;
         switch(event.key) {
             case 'ArrowLeft':
                 prevButton.click();
@@ -596,13 +613,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize the application
     initializeApp();
 
-    // Adjust height when the window is resized to ensure proper fit
+    // Adjust height when the window is resized
     window.addEventListener('resize', () => {
         adjustFlashcardHeight();
         adjustTestGridHeight();
     });
 
-    // Initial adjustment on window load
     window.addEventListener('load', () => {
         adjustTestGridHeight();
     });
