@@ -460,3 +460,9 @@
 .reset-button:active {
     transform: translateY(0);
 }
+
+.reset-button {
+  display: block;
+  margin: 20px auto;
+  z-index: 10; /* ensure it appears on top */
+}
