@@ -6,6 +6,32 @@
   <!-- The title will be set dynamically based on assignmentId -->
   <title>Zuordnen</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Force the test layout columns to remain side-by-side */
+    .test-layout {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+    /* Reduce the width of the questions column by 50% */
+    #test-questions {
+      width: 50%;
+      box-sizing: border-box;
+      padding: 10px;
+      white-space: normal;
+      word-break: break-word;
+    }
+    /* Make the answers column occupy the center 50% */
+    #test-answers {
+      width: 50%;
+      box-sizing: border-box;
+      padding: 10px;
+      margin: 0 auto;
+      text-align: center;
+      white-space: normal;
+      word-break: break-word;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -13,7 +39,7 @@
     <h1 id="page-title"></h1>
     <!-- Test Mode Container -->
     <div class="test-container" id="test-container" style="display: none;">
-      <div class="test-layout" style="display: flex; flex-wrap: nowrap; overflow-x: auto;">
+      <div class="test-layout">
         <div class="test-column" id="test-questions">
           <h2>Questions</h2>
           <p>Select an answer to match with the corresponding question.</p>
