@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultElem = document.getElementById('result');
     const questionCounterElem = document.getElementById('question-counter');
     const printButton = document.getElementById('print-button');
+    const setupContainer = document.getElementById('setup-container');
+    const testContainer = document.querySelector('.test-4-container');
+    const startTestButton = document.getElementById('start-test');
+    const numCardsInput = document.getElementById('num-cards');
   
     // Open the print dialog when the Print button is clicked
     printButton.addEventListener('click', function() {
@@ -148,6 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
       questionCounterElem.textContent = '';
       const percentage = Math.round((correctCount / totalQuestions) * 100);
       resultElem.textContent = `You got ${correctCount} out of ${totalQuestions} correct. (${percentage}%)`;
+      // Show the print button at the end
+      printButton.style.display = 'block';
     }
   
     // Retrieve the assignmentId from the URL parameters
@@ -183,6 +189,13 @@ document.addEventListener('DOMContentLoaded', function() {
       displayQuestion();
     }
   
-    initTest4();
+    // Start the test when the user clicks the Start Test button
+    startTestButton.addEventListener('click', function() {
+      totalQuestions = parseInt(numCardsInput.value, 10) || 10;
+      // Hide the setup container and show the test container
+      setupContainer.style.display = 'none';
+      testContainer.style.display = 'block';
+      initTest4();
+    });
   });
   

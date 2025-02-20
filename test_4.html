@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Additional styles specific to Test Mode 4 */
+    .setup-container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
     .test-4-container {
       max-width: 600px;
       margin: 30px auto;
@@ -14,6 +23,7 @@
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: none; /* Hidden until test starts */
     }
     #question-counter {
       font-size: 16px;
@@ -60,7 +70,7 @@
       margin-bottom: 20px;
     }
     .print-button {
-      display: block;
+      display: none; /* Will be shown only at the end */
       margin: 0 auto;
       padding: 10px 20px;
       font-size: 16px;
@@ -79,6 +89,15 @@
 <body>
   <div class="container">
     <h1 id="page-title">Test Mode 4</h1>
+    
+    <!-- Setup Container: Choose number of cards -->
+    <div class="setup-container" id="setup-container">
+      <label for="num-cards">How many cards do you want to play?</label>
+      <input type="number" id="num-cards" min="1" value="10" style="width: 60px; margin-left: 10px;">
+      <button id="start-test" class="option-button" style="margin-left: 10px;">Start Test</button>
+    </div>
+
+    <!-- Test Container -->
     <div class="test-4-container">
       <div id="question-counter"></div>
       <div class="card-back" id="card-back">Card Back</div>
@@ -90,7 +109,7 @@
     </div>
   </div>
   
-  <!-- Include the new script for this test mode -->
+  <!-- Include the new script for Test Mode 4 -->
   <script src="test_4_script.js"></script>
 </body>
 </html>
