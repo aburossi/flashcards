@@ -9,8 +9,8 @@
 </head>
 <body>
   <div class="container">
-    <!-- The page title will be updated via script -->
-    <h1 id="page-title">Loading...</h1>
+    <!-- The page title will be updated via script.js -->
+    <h1 id="page-title"></h1>
     
     <!-- Navigation controls moved above the flashcard container -->
     <div class="controls" id="controls">
@@ -37,37 +37,7 @@
   <script>
     window.appMode = 'learn';
   </script>
-
-  <!-- Implementation script -->
-  <script>
-    // Helper function to replace all ß with ss in a string.
-    function cleanText(text) {
-      return text.replace(/ß/g, 'ss');
-    }
-
-    // Fetch JSON data for learn mode from data_learn.json.
-    // The JSON is expected to have keys: title, question, and answer.
-    fetch('data_learn.json')
-      .then(response => response.text())
-      .then(rawText => {
-        // Clean the raw JSON text.
-        const cleanedText = cleanText(rawText);
-        // Parse the cleaned text into a JSON object.
-        const data = JSON.parse(cleanedText);
-
-        // Update the page title if provided.
-        if (data.title) {
-          document.getElementById('page-title').innerText = cleanText(data.title);
-        }
-        // Update the flashcard content.
-        if (data.question) {
-          document.getElementById('front').innerText = cleanText(data.question);
-        }
-        if (data.answer) {
-          document.getElementById('back').innerText = cleanText(data.answer);
-        }
-      })
-      .catch(error => console.error('Error loading JSON data:', error));
-  </script>
+  <!-- Include the shared script -->
+  <script src="script.js"></script>
 </body>
 </html>
