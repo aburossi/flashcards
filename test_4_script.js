@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
       optionsElem.innerHTML = '';
       resultElem.textContent = '';
       // Update question counter
-      questionCounterElem.textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+      questionCounterElem.textContent = `Frage ${currentQuestionIndex + 1} von ${totalQuestions}`;
       
       const currentCard = testCards[currentQuestionIndex];
       let displayAnswer;
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
           return;
         }
       }
-      document.getElementById('page-title').textContent = `Test Mode 4: ${subject}`;
+      document.getElementById('page-title').textContent = `${subject}`;
       const success = await fetchFlashcards(subject);
       if (!success) return;
       prepareTestCards();
