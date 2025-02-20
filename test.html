@@ -7,23 +7,24 @@
   <title>Zuordnen</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Ensure the layout remains side-by-side */
+    /* Force the test layout columns to remain in a row */
     .test-layout {
       display: flex;
+      flex-direction: row;
       flex-wrap: nowrap;
-      overflow-x: auto;
+      width: 100%;
     }
-    /* Questions column takes 25% of the screen */
+    /* Questions column: 25% of the width */
     #test-questions {
-      width: 25%;
+      flex: 0 0 25%;
       box-sizing: border-box;
       padding: 10px;
       white-space: normal;
       word-break: break-word;
     }
-    /* Answers column takes 75% of the screen */
+    /* Answers column: 75% of the width */
     #test-answers {
-      width: 75%;
+      flex: 0 0 75%;
       box-sizing: border-box;
       padding: 10px;
       text-align: center;
