@@ -1,62 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Flashcards App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flashcards Startseite</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styles for the landing page */
+    .landing-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+    .landing-title {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .assignment-display {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    .mode-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 80%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .mode-button {
+      padding: 15px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: block;
+    }
+    .mode-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1 id="page-title">Flashcards</h1>
-    <!-- Reset button placed directly below the heading; initially hidden -->
-    <button id="reset-test" class="reset-button" style="display:none;">Reset Test</button>
-    
-    <div class="selector" id="subject-selector">
-      <label for="subject">Choose a subject:</label>
-      <select id="subject">
-        <option value="">--Select--</option>
-        <!-- Options will be populated dynamically -->
-      </select>
-      <button id="start">Start</button>
+  <div class="landing-container">
+    <h1 class="landing-title">Willkommen zu den Lernkarteien</h1>
+    <div id="assignmentDisplay" class="assignment-display"></div>
+    <p>Wähle deinen Modus:</p>
+    <div class="mode-buttons">
+      <a href="learn.html" class="mode-button">Lernmodus</a>
+      <a href="test.html" class="mode-button">Einfacher Testmodus</a>
+      <a href="advanced_test.html" class="mode-button">Herausfordernder Testmodus</a>
     </div>
-    
-    <!-- Mode Selection Section -->
-    <div class="mode-selection" id="mode-selection" style="display: none;">
-      <button id="learn-mode" class="mode-button">Learn</button>
-      <button id="test-mode" class="mode-button">Take a Test</button>
-    </div>
-    
-    <!-- Controls Above Flashcards -->
-    <div class="controls" id="controls" style="display: none;">
-      <button id="prev" title="Previous (←)" aria-label="Previous">&#8592;</button>
-      <button id="flip" title="Flip (↑/↓)" aria-label="Flip">&#8593;&#8595;</button>
-      <button id="next" title="Next (→)" aria-label="Next">&#8594;</button>
-    </div>
-    
-    <!-- Flashcard Container for Learn Mode -->
-    <div class="flashcard-container" id="flashcard-container" style="display: none;">
-      <div class="flashcard" id="flashcard">
-        <div class="front" id="front">Question</div>
-        <div class="back" id="back">Answer</div>
-      </div>
-    </div>
-    
-    <!-- Test Mode Container -->
-    <div class="test-container" id="test-container" style="display: none;">
-      <div class="test-layout">
-        <div class="test-column" id="test-questions">
-          <h2>Questions</h2>
-          <!-- Question Cards will be generated dynamically here -->
-        </div>
-        <div class="test-column large" id="test-answers">
-          <h2>Answers</h2>
-          <!-- Answer Cards will be generated dynamically here -->
-        </div>
-      </div>
-    </div>
-  
   </div>
-  
-  <script src="script.js"></script>
+
+  <script>
+    // Retrieve assignmentId from URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const assignmentId = params.get('assignmentId') || 'defaultSubject';
+
+    // Display the assignment id on the landing page
+    document.getElementById('assignmentDisplay').textContent = `Lernen: ${assignmentId}`;
+
+    // Append the assignmentId to each mode button's link
+    document.querySelectorAll('.mode-button').forEach(link => {
+      const originalHref = link.getAttribute('href');
+      link.href = `${originalHref}?assignmentId=${encodeURIComponent(assignmentId)}`;
+    });
+  </script>
 </body>
 </html>
