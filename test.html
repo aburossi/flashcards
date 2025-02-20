@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- The title will be set dynamically based on assignmentId -->
+  <title>Zuordnen</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- The page title will be updated via script.js -->
+    <h1 id="page-title"></h1>
+    <!-- Test Mode Container -->
+    <div class="test-container" id="test-container" style="display: none;">
+      <div class="test-layout">
+        <div class="test-column" id="test-questions">
+          <h2>Questions</h2>
+          <p>Select an answer to match with the corresponding question.</p>
+        </div>
+        <div class="test-column large" id="test-answers">
+          <h2>Answers</h2>
+          <p>Select a question to match with the selected answer.</p>
+        </div>
+      </div>
+      <button id="reset-test" class="reset-button">Reset Test</button>
+    </div>
+  </div>
+
+  <!-- Set a global flag to signal test mode -->
+  <script>
+    window.appMode = 'test';
+  </script>
+  <!-- Include the shared script -->
+  <script src="script.js"></script>
+</body>
+</html>
