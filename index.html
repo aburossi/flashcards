@@ -57,9 +57,9 @@
     <div id="assignmentDisplay" class="assignment-display"></div>
     <p>Wähle deinen Modus:</p>
     <div class="mode-buttons">
-      <a href="learn.html" class="mode-button">Lernmodus</a>
-      <a href="test.html" class="mode-button">Einfacher Testmodus</a>
-      <a href="advanced_test.html" class="mode-button">Herausfordernder Testmodus</a>
+      <a href="learn.html" class="mode-button">Lernkarteien</a>
+      <a href="test.html" class="mode-button">Zuordnen Basics</a>
+      <a href="advanced_test.html" class="mode-button">Zuordnen Advanced</a>
     </div>
   </div>
 
@@ -69,7 +69,7 @@
     const assignmentId = params.get('assignmentId') || 'defaultSubject';
 
     // Display the assignment id on the landing page
-    document.getElementById('assignmentDisplay').textContent = `Lernen: ${assignmentId}`;
+    document.getElementById('assignmentDisplay').textContent = `Thema: ${assignmentId}`;
 
     // Append the assignmentId to each mode button's link
     document.querySelectorAll('.mode-button').forEach(link => {
