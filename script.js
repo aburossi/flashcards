@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // ===== Utility Functions =====
   
-    // Fetch flashcards JSON for a given subject (assignmentId)
+    // Fetch flashcards JSON for a given subject
     async function fetchFlashcards(subject) {
       const url = `./flashcards/${subject}.json`;
       try {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       flashcardContainer.style.height = 'auto';
       const isFlipped = flashcard.classList.contains('flipped');
       const visibleSide = isFlipped ? back : front;
-      const newHeight = visibleSide.scrollHeight + 40;
+      const newHeight = visibleSide.scrollHeight + 40; // add padding
       flashcardContainer.style.height = `${newHeight}px`;
     }
   
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       adjustFlashcardHeight();
     }
   
-    // Animate flashcard transition (for next/prev buttons)
+    // Animate flashcard transition (for next/prev)
     function displayFlashcardWithAnimation(direction) {
       if (isAnimating) return;
       isAnimating = true;
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         flashcard.removeEventListener('animationend', handleAnimationEnd);
         flashcard.classList.remove(direction === 'next' ? 'slide-out-left' : 'slide-out-right');
   
-        // Update index based on direction
+        // Update index
         if (direction === 'next') {
           currentIndex++;
         } else if (direction === 'prev') {
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   
-    // Shuffle array (used in test mode)
+    // Shuffle an array (used in test mode)
     function shuffle(array) {
       let currentIndex = array.length, temporaryValue, randomIndex;
       while (currentIndex !== 0) {
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return cardElement;
     }
   
-    // Generate the test columns for questions and answers
+    // Generate test columns for questions and answers
     function generateTestColumns(shuffledQuestions, shuffledAnswers) {
       if (testQuestions) {
         testQuestions.innerHTML = '<h2>Questions</h2><p>Select an answer to match with the corresponding question.</p>';
@@ -172,12 +172,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   
-    // Check if the test is completed (all matching pairs have been removed)
+    // Check if the test is completed (all matching pairs removed)
     function checkTestCompletion() {
       if (!testContainer) return;
       const remainingCards = testContainer.querySelectorAll('.test-card:not(.correct)');
       if (remainingCards.length === 0) {
-        const idealMoves = 6; // for the matching pairs
+        const idealMoves = 6; // for matching pairs
         const efficiency = (idealMoves / moveCount) * 100;
         alert(`Congratulations! You have matched all the cards.\nTotal Moves: ${moveCount}\nEfficiency: ${efficiency.toFixed(2)}%`);
       }
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         secondCard = clickedCard;
       }
-      // If both a question and answer are selected, check for a match.
+      // If both a question and an answer are selected, check for a match.
       if (firstCard && secondCard) {
         moveCount++;
         lockBoard = true;
@@ -256,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.container').classList.add('test-mode');
   
       // Prepare test cards from flashcards.
-      // Use 6 matching pairs and 4 additional questions.
       const matchingPairs = 6;
       const additionalFronts = 4;
       const shuffledFlashcards = shuffle([...flashcards]);
@@ -300,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // ===== Event Listeners =====
   
-    // Learn Mode controls (only attach if elements exist)
+    // Learn Mode controls
     if (flipButton) {
       flipButton.addEventListener('click', () => {
         if (isAnimating) return;
@@ -349,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   
-    // Test Mode: attach click handler to the test container if it exists
+    // Test Mode: attach click handler if testContainer exists
     if (testContainer) {
       testContainer.addEventListener('click', handleTestCardClick);
     }
@@ -359,20 +358,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     // ===== Initialization =====
-    // Get assignmentId from URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const assignmentId = urlParams.get('assignmentId');
-    if (assignmentId) {
-      currentSubject = assignmentId;
-      // Update page title based on the app mode
+  
+    // Function to initialize the app with a given subject
+    function initApp(subject) {
+      currentSubject = subject;
       if (window.appMode === 'learn') {
-        pageTitle.textContent = `Lernkarteien: ${assignmentId}`;
+        pageTitle.textContent = `Lernkarteien: ${subject}`;
       } else if (window.appMode === 'test') {
-        pageTitle.textContent = `Zuordnen: ${assignmentId}`;
+        pageTitle.textContent = `Zuordnen: ${subject}`;
       } else {
-        pageTitle.textContent = assignmentId;
+        pageTitle.textContent = subject;
       }
-      // Load flashcards and then initialize the proper mode
       fetchFlashcards(currentSubject).then(success => {
         if (!success) return;
         if (window.appMode === 'learn') {
@@ -390,8 +386,29 @@ document.addEventListener('DOMContentLoaded', () => {
           initializeTestMode();
         }
       });
+    }
+  
+    // Get assignmentId from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    let assignmentId = urlParams.get('assignmentId');
+  
+    if (assignmentId) {
+      initApp(assignmentId);
     } else {
-      alert('No assignmentId provided in the URL.');
+      // For learn mode, if no assignmentId is provided, use the first subject from subjects.json as a default.
+      fetch('./subjects.json')
+        .then(response => response.json())
+        .then(subjects => {
+          if (subjects && subjects.length > 0) {
+            initApp(subjects[0]);
+          } else {
+            alert('No subjects available.');
+          }
+        })
+        .catch(err => {
+          console.error('Error loading subjects.json:', err);
+          alert('Error loading subjects.');
+        });
     }
   });
   

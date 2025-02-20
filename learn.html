@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- The title will be set dynamically based on assignmentId or default subject -->
+  <title>Lernkarteien</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- The page title will be updated via script.js -->
+    <h1 id="page-title"></h1>
+
+    <!-- Flashcard container (Learn Mode only) -->
+    <div class="flashcard-container" id="flashcard-container">
+      <div class="flashcard" id="flashcard">
+        <div class="front" id="front">Question</div>
+        <div class="back" id="back">Answer</div>
+      </div>
+    </div>
+    
+    <!-- Navigation controls for flashcards -->
+    <div class="controls" id="controls">
+      <button id="prev" title="Previous (←)">←</button>
+      <button id="flip" title="Flip (↑/↓)">Flip</button>
+      <button id="next" title="Next (→)">→</button>
+    </div>
+  </div>
+
+  <!-- Set a global flag to signal learn mode -->
+  <script>
+    window.appMode = 'learn';
+  </script>
+  <!-- Include the shared script -->
+  <script src="script.js"></script>
+</body>
+</html>
