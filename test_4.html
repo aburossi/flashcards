@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Mode 4</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styles specific to Test Mode 4 */
+    .test-4-container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    #question-counter {
+      font-size: 16px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .card-back {
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .option-button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: 2px solid #007BFF;
+      border-radius: 4px;
+      background-color: #fff;
+      transition: background-color 0.3s;
+    }
+    .option-button.correct {
+      background-color: #28a745;
+      border-color: #28a745;
+      color: #fff;
+    }
+    .option-button.incorrect {
+      background-color: #dc3545;
+      border-color: #dc3545;
+      color: #fff;
+    }
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .print-button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #007BFF;
+      color: #fff;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .print-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="page-title">Test Mode 4</h1>
+    <div class="test-4-container">
+      <div id="question-counter"></div>
+      <div class="card-back" id="card-back">Card Back</div>
+      <div class="options" id="options">
+        <!-- Option buttons will be generated here -->
+      </div>
+      <div class="result" id="result"></div>
+      <button class="print-button" id="print-button">Print Results</button>
+    </div>
+  </div>
+  
+  <!-- Include the new script for this test mode -->
+  <script src="test_4_script.js"></script>
+</body>
+</html>
