@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flashcards Startseite</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styles for the landing page */
+    .landing-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+    .landing-title {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .mode-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 80%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .mode-button {
+      padding: 15px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: block;
+    }
+    .mode-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="landing-container">
+    <h1 class="landing-title">Willkommen zu den Lernkarteien</h1>
+    <p>Wähle deinen Modus:</p>
+    <div class="mode-buttons">
+      <a href="learn.html" class="mode-button">Lernmodus</a>
+      <a href="test.html" class="mode-button">Einfacher Testmodus</a>
+      <a href="advanced_test.html" class="mode-button">Herausfordernder Testmodus</a>
+    </div>
+  </div>
+</body>
+</html>
