@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Barzahlung",
+    "answer": "📌 Eine direkte Zahlungsmethode, bei der Bargeld gegen eine Ware oder Dienstleistung getauscht wird.\n🔍 Erfordert keine Bankverbindung und wird sofort abgeschlossen.\n👉 Beim Kauf eines Sandwiches im Kiosk wird der Betrag direkt in Münzen oder Scheinen bezahlt."
+  },
+  {
+    "question": "Debitkarte",
+    "answer": "📌 Eine Bankkarte, mit der Zahlungen und Bargeldbezüge direkt vom eigenen Konto abgebucht werden.\n🔍 Sie ermöglicht bargeldloses Bezahlen und Geldabhebungen weltweit.\n👉 Beim Einkaufen im Supermarkt wird der Betrag direkt vom Bankkonto abgezogen."
+  },
+  {
+    "question": "Kreditkarte",
+    "answer": "📌 Eine Karte, die dem Inhaber ermöglicht, Zahlungen auf Kredit zu tätigen, die erst später beglichen werden.\n🔍 Die Abrechnung erfolgt meist monatlich, und es können zusätzliche Gebühren anfallen.\n👉 Eine Person bezahlt ihre Hotelbuchung mit einer Kreditkarte und begleicht die Rechnung erst am Monatsende."
+  },
+  {
+    "question": "Dauerauftrag",
+    "answer": "📌 Eine automatische Zahlung, die regelmässig zu einem festgelegten Zeitpunkt durchgeführt wird.\n🔍 Wird oft für wiederkehrende Zahlungen wie Miete oder Krankenkassenprämien genutzt.\n👉 Die monatliche Miete wird automatisch vom Bankkonto überwiesen, ohne dass man sich darum kümmern muss."
+  },
+  {
+    "question": "Lastschriftverfahren (LSV)",
+    "answer": "📌 Eine Zahlung, bei der ein Unternehmen berechtigt wird, Beträge direkt vom Bankkonto abzubuchen.\n🔍 Praktisch für Rechnungen mit variablen Beträgen, wie Strom- oder Handyrechnungen.\n👉 Die Handyrechnung wird jeden Monat automatisch vom Konto abgebucht, ohne manuelle Überweisung."
+  },
+  {
+    "question": "QR-Rechnung",
+    "answer": "📌 Eine Rechnung mit einem QR-Code, der alle Zahlungsinformationen enthält.\n🔍 Erleichtert das Bezahlen durch einfaches Scannen mit der Bank-App oder E-Banking.\n👉 Eine Person scannt den QR-Code auf einer Rechnung und bestätigt die Zahlung mit einem Klick."
+  },
+  {
+    "question": "Twint",
+    "answer": "📌 Eine mobile App, mit der Zahlungen per Smartphone getätigt werden können.\n🔍 Ermöglicht das direkte Überweisen von Geld an andere Nutzer oder das Bezahlen in Geschäften.\n👉 Eine Person bezahlt ihr Mittagessen kontaktlos mit Twint an der Kasse."
+  },
+  {
+    "question": "Kundenkarten",
+    "answer": "📌 Karten, die von Unternehmen ausgegeben werden, um Kunden Rabatte und Vorteile zu bieten.\n🔍 Oft werden damit Kaufdaten erfasst, um personalisierte Werbung zu ermöglichen.\n👉 Eine Supermarktkette bietet Rabatte für Kunden, die ihre Kundenkarte bei jedem Einkauf nutzen."
+  },
+  {
+    "question": "Bargeldbezug im Ausland",
+    "answer": "📌 Das Abheben von Bargeld an ausländischen Geldautomaten kann mit zusätzlichen Kosten verbunden sein.\n🔍 Gebühren können für Wechselkurse oder Transaktionskosten anfallen.\n👉 Beim Abheben von Bargeld in Frankreich werden Umrechnungsgebühren berechnet."
+  },
+  {
+    "question": "Nachteile bargeldloser Zahlungsmittel",
+    "answer": "📌 Können zu schlechterer Kostenkontrolle und erhöhtem Risiko von Datenmissbrauch führen.\n🔍 Erfordern oft eine stabile Internetverbindung oder eine funktionierende Karte.\n👉 Eine Person verliert ihre Karte und ein Fremder könnte unbefugt Geld abheben."
+  }
+]
