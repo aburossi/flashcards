@@ -52,15 +52,15 @@ def process_files(folder_path, subject_name=None):
 
 def save_flashcards(subject, flashcards):
     """
-    Saves flashcards to a JSON file in the flashcards folder.
+    Saves flashcards to a JSON file in the 'flashcards' subfolder located in the same directory as this script.
     """
-    flashcards_dir = 'flashcards'
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    flashcards_dir = os.path.join(script_dir, 'flashcards')
     if not os.path.exists(flashcards_dir):
         os.makedirs(flashcards_dir)
     
-    # Sanitize subject name to create a valid filename
-    subject_filename = ''.join(c for c in subject if c.isalnum() or c in (' ', '_', '-')).rstrip()
-    json_filename = f"{subject_filename.lower().replace(' ', '_')}.json"
+    # Use the exact subject name for the filename (e.g., "2.1 Lohn" becomes "2.1 Lohn.json")
+    json_filename = f"{subject}.json"
     json_path = os.path.join(flashcards_dir, json_filename)
     
     with open(json_path, 'w', encoding='utf-8') as jf:
@@ -113,7 +113,7 @@ def create_gui():
     global paste_text_area, subject_entry  # Declare as global to be accessible in paste_flashcards
     root = tk.Tk()
     root.title("Flashcards Converter")
-    root.geometry("700x600")
+    root.geometry("600x400")
     
     # Tabs
     tab_control = ttk.Notebook(root)
@@ -136,7 +136,7 @@ def create_gui():
     instruction_label = ttk.Label(tab2, text="Paste your flashcards below:\n\nEach flashcard should be in the following format:\nFront of flashcard\nBack of flashcard (can be multiple lines)\n\nSeparate each flashcard with an empty line.")
     instruction_label.pack(pady=10)
     
-    paste_text_area = scrolledtext.ScrolledText(tab2, wrap=tk.WORD, width=80, height=25)
+    paste_text_area = scrolledtext.ScrolledText(tab2, wrap=tk.WORD, width=60, height=15)
     paste_text_area.pack(padx=10, pady=10)
     
     subject_label = ttk.Label(tab2, text="Subject Name:")

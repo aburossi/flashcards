@@ -1,0 +1,50 @@
+[
+  {
+    "question": "Bundesstaat",
+    "answer": "📌 Mehrere Teilstaaten schliessen sich zu einem gemeinsamen Staatsgebilde zusammen.\n🔍 Die Teilstaaten behalten gewisse eigene Rechte, während übergeordnete Aufgaben zentral geregelt werden.\n👉 Die Schweiz seit 1848, Deutschland und die USA sind Beispiele für diese Staatsform."
+  },
+  {
+    "question": "Einheitsstaat",
+    "answer": "📌 Der gesamte Staat wird von einer einzigen Regierung zentral verwaltet.\n🔍 Im ganzen Land gelten dieselben Gesetze, ohne eigenständige Teilstaaten.\n👉 Frankreich und Italien sind Beispiele für diese Regierungsform."
+  },
+  {
+    "question": "Staatenbund",
+    "answer": "📌 Mehrere souveräne Staaten schliessen sich für gemeinsame Aufgaben zusammen.\n🔍 Jeder Staat bleibt unabhängig, doch sie kooperieren in bestimmten Bereichen.\n👉 Die UNO, NATO oder OPEC sind bekannte Beispiele für diese Form."
+  },
+  {
+    "question": "Föderalismus",
+    "answer": "📌 Die Macht wird zwischen verschiedenen staatlichen Ebenen aufgeteilt.\n🔍 Der Bund übernimmt nationale Aufgaben, während Kantone und Gemeinden eigene Zuständigkeiten haben.\n👉 Bildung, Gesundheitswesen und Polizei sind oft kantonale Aufgaben, während die Armee oder Aussenpolitik Sache des Bundes sind."
+  },
+  {
+    "question": "Direkte Demokratie",
+    "answer": "📌 Die Bevölkerung entscheidet direkt über Gesetze und Verfassungsänderungen.\n🔍 Abstimmungen ermöglichen eine unmittelbare Einflussnahme auf politische Entscheidungen.\n👉 Die Landsgemeinden in Appenzell Innerrhoden und Glarus sind Beispiele für dieses System."
+  },
+  {
+    "question": "Repräsentative Demokratie",
+    "answer": "📌 Das Volk wählt Vertreter, die politische Entscheidungen treffen.\n🔍 Die Regierung wird von gewählten Parlamentariern geführt, ohne direkte Volksentscheide.\n👉 Deutschland, Grossbritannien und Frankreich nutzen diese Form der Demokratie."
+  },
+  {
+    "question": "Halbdirekte Demokratie",
+    "answer": "📌 Eine Mischung aus direkter und repräsentativer Demokratie.\n🔍 Das Volk wählt das Parlament, kann aber durch Referenden und Initiativen direkt Einfluss nehmen.\n👉 Die Schweiz nutzt dieses Modell durch Volksabstimmungen und Gesetzesreferenden."
+  },
+  {
+    "question": "Konkordanzdemokratie",
+    "answer": "📌 Alle grossen politischen Parteien sind in der Regierung vertreten.\n🔍 Politische Entscheide basieren auf Konsens und Kompromiss zwischen verschiedenen Interessen.\n👉 Die Schweiz nutzt dieses System, um Stabilität und Mitbestimmung zu fördern."
+  },
+  {
+    "question": "Konkurrenzdemokratie",
+    "answer": "📌 Die Regierung setzt sich aus der Mehrheit im Parlament zusammen, während die Opposition Kontrollfunktion hat.\n🔍 Regierungswechsel erfolgen nach Wahlen, oft mit deutlichem Machtwechsel.\n👉 Die USA und Grossbritannien sind Beispiele für dieses System."
+  },
+  {
+    "question": "Demokratie vs. Diktatur",
+    "answer": "📌 In der Demokratie entscheiden das Volk und es gibt Gewaltenteilung, in der Diktatur herrscht eine Einzelperson oder Gruppe uneingeschränkt.\n🔍 In der Demokratie gibt es freie Wahlen, Meinungsfreiheit und Rechtsstaatlichkeit, während in einer Diktatur Opposition unterdrückt wird.\n👉 Nordkorea ist eine Diktatur, während die Schweiz eine demokratische Republik ist."
+  },
+  {
+    "question": "Gewaltenteilung",
+    "answer": "📌 Die Macht des Staates ist in drei unabhängige Bereiche aufgeteilt.\n🔍 Gesetzgebung, Regierung und Gerichte kontrollieren sich gegenseitig, um Machtmissbrauch zu verhindern.\n👉 In der Schweiz sind National- und Ständerat für Gesetze zuständig, der Bundesrat regiert und das Bundesgericht urteilt."
+  },
+  {
+    "question": "Meinungsfreiheit und Medien",
+    "answer": "📌 In einer Demokratie darf jeder seine Meinung frei äussern.\n🔍 Unabhängige Medien ermöglichen kritische Berichterstattung und politische Kontrolle.\n👉 In Diktaturen werden Medien staatlich kontrolliert, um die öffentliche Meinung zu steuern."
+  }
+]
