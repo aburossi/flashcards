@@ -1,0 +1,34 @@
+[
+  {
+    "question": "Bruttolohn",
+    "answer": "📌 Der vereinbarte Betrag, den ein Arbeitnehmer vor Abzügen erhält.\n🔍 Beinhaltet mögliche Zuschläge wie Überstunden, 13. Monatslohn oder Naturallohn.\n👉 Der Betrag auf dem Arbeitsvertrag vor Sozialversicherungsabzügen."
+  },
+  {
+    "question": "Nettolohn",
+    "answer": "📌 Der tatsächliche Lohn, der nach allen Abzügen ausbezahlt wird.\n🔍 Wird vom Bruttolohn abgeleitet, nachdem Beiträge für Sozialversicherungen und andere Abzüge abgezogen wurden.\n👉 Der Betrag, der auf das Konto des Arbeitnehmers überwiesen wird."
+  },
+  {
+    "question": "Lohnabzüge",
+    "answer": "📌 Beträge, die vom Bruttolohn abgezogen werden, bevor der Nettolohn ausbezahlt wird.\n🔍 Können Sozialversicherungsbeiträge, Nichtberufsunfallversicherung oder Beiträge zur beruflichen Vorsorge umfassen.\n👉 Ein Lernender über 18 Jahre zahlt AHV, IV, EO und ALV-Beiträge von seinem Lohn."
+  },
+  {
+    "question": "Sozialversicherungsbeiträge",
+    "answer": "📌 Gesetzlich vorgeschriebene Abgaben, die zur Absicherung von Arbeitnehmern dienen.\n🔍 Arbeitnehmer und Arbeitgeber teilen sich diese Kosten für Altersvorsorge, Invalidität und Arbeitslosigkeit.\n👉 Ein Teil des Lohns geht an die AHV, um die Rente später zu sichern."
+  },
+  {
+    "question": "Kinder- und Familienzulagen",
+    "answer": "📌 Finanzielle Unterstützung für Arbeitnehmer mit Kindern.\n🔍 Wird zusätzlich zum Gehalt ausgezahlt und kann je nach Kanton variieren.\n👉 Eine lernende Person mit einem Kind erhält monatlich eine finanzielle Unterstützung zusätzlich zum Lohn."
+  },
+  {
+    "question": "Berufliche Vorsorge (BVG)",
+    "answer": "📌 Eine obligatorische Versicherung zur Sicherung der Altersvorsorge neben der AHV.\n🔍 Beiträge werden vom Lohn abgezogen, um später eine zusätzliche Rente zu gewährleisten.\n👉 Eine 25-jährige Arbeitnehmerin zahlt in die Pensionskasse ein, um im Alter eine Rente zu erhalten."
+  },
+  {
+    "question": "Spesenentschädigung",
+    "answer": "📌 Erstattungen für Ausgaben, die ein Arbeitnehmer im Rahmen seiner Arbeit hat.\n🔍 Sind nicht Teil des regulären Lohns und werden gesondert aufgeführt.\n👉 Ein Mitarbeiter erhält Geld für Reisekosten, wenn er beruflich unterwegs ist."
+  },
+  {
+    "question": "Kontoauszug",
+    "answer": "📌 Eine Übersicht über alle Transaktionen eines Bankkontos in einem bestimmten Zeitraum.\n🔍 Zeigt Geldeingänge, Ausgaben und den aktuellen Kontostand an.\n👉 Eine Person überprüft ihre Lohnzahlung anhand der monatlichen Übersicht ihrer Bank."
+  }
+]
