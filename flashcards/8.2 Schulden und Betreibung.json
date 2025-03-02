@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Verschuldung",
+    "answer": "📌  beschreibt die Situation, in der Personen mehr Geld ausgeben, als sie einnehmen. Dies führt dazu, dass finanzielle Verpflichtungen nicht mehr erfüllt werden können.\n🔍  entsteht oft durch ein Ungleichgewicht zwischen Einnahmen und Ausgaben und kann besonders junge Menschen in der Konsumgesellschaft betreffen.\n👉  Wenn man am Ende des Monats feststellt, dass das Konto leer ist, obwohl noch Tage bis zum nächsten Lohn fehlen, spricht man von __________"
+  },
+  {
+    "question": "Budget",
+    "answer": "📌  ist ein Finanzplan, der Einnahmen und Ausgaben gegenüberstellt, um einen Überblick über die finanzielle Situation zu bekommen. Es hilft,  die Kontrolle über das Geld zu behalten und finanzielle Ziele zu erreichen.\n🔍  dient als Steuerungsinstrument für die persönlichen Finanzen, um Ausgaben zu planen, Sparziele zu definieren und Schulden zu vermeiden.\n👉  Wer seine Finanzen im Griff haben will, erstellt am besten ein __________"
+  },
+  {
+    "question": "Sparkonto",
+    "answer": "📌  ist ein separates Konto, auf dem Geld zurückgelegt wird, das nicht für laufende Ausgaben bestimmt ist. Es dient dem Aufbau von Ersparnissen für zukünftige Anschaffungen oder unvorhergesehene Ausgaben.\n🔍  ermöglicht es, Gelder gezielt zu sparen und vom täglichen Ausgabekonto zu trennen, oft verbunden mit dem Vorteil von Zinserträgen.\n👉  Um Geld für den nächsten Urlaub oder unerwartete Reparaturen zu sparen, ist es sinnvoll, ein __________ zu eröffnen."
+  },
+  {
+    "question": "Betreibung",
+    "answer": "📌  ist ein staatliches Verfahren zur Durchsetzung von Geldforderungen. Es ermöglicht Gläubigern, offene Rechnungen auch gegen den Willen des Schuldners einzufordern.\n🔍  wird durch das Bundesgesetz über Schuldbetreibung und Konkurs (SchKG) geregelt und von Betreibungsämtern durchgeführt.\n👉  Wenn eine Rechnung trotz Mahnungen nicht bezahlt wird, kann der Gläubiger eine __________ einleiten."
+  },
+  {
+    "question": "SchKG",
+    "answer": "📌  ist die Abkürzung für das Bundesgesetz über Schuldbetreibung und Konkurs. Es bildet die rechtliche Grundlage für das Betreibungswesen und Konkursverfahren in der Schweiz.\n🔍  regelt die Verfahrensschritte, Fristen und Zuständigkeiten im Zusammenhang mit der Eintreibung von Schulden und der Abwicklung von Zahlungsunfähigkeiten.\n👉  Die gesetzlichen Grundlagen für Betreibungen sind im __________ festgelegt."
+  },
+  {
+    "question": "Betreibungsarten",
+    "answer": "📌  bezeichnet die unterschiedlichen Verfahrensweisen, nach denen eine Betreibung durchgeführt werden kann.  Die Wahl der Art hängt von der Situation des Schuldners und der Art der Forderung ab.\n🔍  unterscheidet man hauptsächlich drei Formen: Betreibung auf Pfändung, Betreibung auf Pfandverwertung und Betreibung auf Konkurs, jede mit spezifischen Anwendungsbereichen.\n👉  Je nachdem, ob es sich um eine Privatperson oder eine Firma handelt, kommen unterschiedliche __________ zur Anwendung."
+  },
+  {
+    "question": "Betreibung auf Pfändung",
+    "answer": "📌  ist eine Form der Zwangsvollstreckung, die bei einzelnen, natürlichen Personen angewendet wird. Dabei werden Vermögenswerte des Schuldners beschlagnahmt und verwertet, um die Schuld zu begleichen.\n🔍  beschränkt sich auf so viel Vermögen, wie zur Deckung der Schuld und der Verfahrenskosten notwendig ist, wobei das Existenzminimum des Schuldners geschützt wird.\n👉  Wenn eine Privatperson ihre Schulden nicht bezahlt, wird üblicherweise die __________ eingeleitet, bei der beispielsweise Lohn oder Bankkonten gepfändet werden können."
+  },
+  {
+    "question": "Rechtsvorschlag",
+    "answer": "📌  ist das Recht des Schuldners, einer Betreibung zu widersprechen.  Erhebt der Schuldner Einspruch, so wird das Betreibungsverfahren vorläufig gestoppt.\n🔍  muss innerhalb einer bestimmten Frist beim Betreibungsamt eingereicht werden und ermöglicht es dem Schuldner, die Rechtmässigkeit der Forderung überprüfen zu lassen.\n👉  Wenn man mit einer Forderung nicht einverstanden ist, kann man __________ erheben, um das Betreibungsverfahren zu stoppen."
+  },
+  {
+    "question": "Pfändung",
+    "answer": "📌  ist die Beschlagnahmung von Vermögenswerten des Schuldners durch das Betreibungsamt im Rahmen einer Betreibung auf Pfändung.  Gepfändet werden können beispielsweise Lohn, Bankkonten oder Wertgegenstände.\n🔍  dient dazu,  Vermögen zu sichern, das später verwertet wird, um die Schulden des Schuldners zu begleichen.  Es gibt jedoch Grenzen, um das Existenzminimum zu schützen.\n👉  Im Betreibungsverfahren kann es zur __________ kommen, bei der beispielsweise das Auto oder das Sparkonto beschlagnahmt werden, um die Schulden zu begleichen."
+  },
+  {
+    "question": "Verlustschein",
+    "answer": "📌  ist eine Urkunde, die dem Gläubiger ausgestellt wird, wenn die Betreibung erfolglos verlaufen ist und die Forderung nicht vollständig gedeckt werden konnte.  Er bestätigt den verbleibenden Schuldbetrag.\n🔍  berechtigt den Gläubiger, während 20 Jahren die Betreibung erneut einzuleiten, falls der Schuldner zu neuem Vermögen kommt.\n👉  Wenn eine Betreibung nicht erfolgreich ist, erhält der Gläubiger einen __________, der ihm ermöglicht, die Forderung später erneut geltend zu machen."
+  }
+]

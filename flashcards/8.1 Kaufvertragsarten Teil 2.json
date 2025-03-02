@@ -1,0 +1,74 @@
+[
+  {
+    "question": "Leasing",
+    "answer": "📌  ist eine Nutzungsüberlassung eines Gegenstandes gegen Gebühr, wobei das Objekt nicht in den Besitz des Nutzers übergeht.\n🔍  ähnelt einer Miete, jedoch oft über längere Zeiträume und für spezifische Güter wie Fahrzeuge oder Maschinen.\n👉  Auto-Abo, Geräte-Miete"
+  },
+  {
+    "question": "Leasinggeberin",
+    "answer": "📌  ist die Partei, die beim Leasing einen Gegenstand zum Gebrauch überlässt und dafür eine Gebühr erhält.\n🔍  behält das Eigentum am Objekt und trägt das wirtschaftliche Risiko des Wertverlusts.\n👉  Bank, Autogarage"
+  },
+  {
+    "question": "Leasingnehmer",
+    "answer": "📌  ist die Partei, die beim Leasing einen Gegenstand nutzt und dafür regelmässig eine Gebühr bezahlt.\n🔍  erhält das Nutzungsrecht am Objekt, ohne Eigentümer zu werden, und trägt Kosten für Betrieb und Unterhalt.\n👉  Du, ich"
+  },
+  {
+    "question": "Leasingrate",
+    "answer": "📌  ist die regelmässige Zahlung, die der Nutzer für die Gebrauchsüberlassung eines Gegenstandes an den Eigentümer entrichtet.\n🔍  deckt die Wertminderung, Zinsen und Verwaltungskosten des Objekts während der Nutzungsdauer ab.\n👉  Monatliche Zahlung, Gebühr"
+  },
+  {
+    "question": "Konsumkreditgesetz (KKG)",
+    "answer": "📌  ist ein Schweizer Gesetz, das den Konsumenten bei Kreditverträgen und ähnlichen Finanzierungsformen schützt.\n🔍  regelt unter anderem die Kreditfähigkeitsprüfung, das Rücktrittsrecht und die maximal zulässigen Zinsen.\n👉  Schutzgesetz, Rechte für Kreditnehmer"
+  },
+  {
+    "question": "Direktes Leasing",
+    "answer": "📌  bezeichnet eine Form des Leasings, bei der der Leasinggeber und der Lieferant des Objekts identisch sind.\n🔍  vereinfacht den Prozess, da der Nutzer direkt mit dem Hersteller oder Händler des Objekts kontrahiert.\n👉  Leasing vom Autohändler"
+  },
+  {
+    "question": "Indirektes Leasing",
+    "answer": "📌  bezeichnet eine Form des Leasings, bei der ein separates Finanzierungsunternehmen als Leasinggeber zwischengeschaltet ist.\n🔍  ermöglicht es Lieferanten, Leasing anzubieten, ohne selbst Finanzdienstleistungen erbringen zu müssen.\n👉  Bank als Vermittler"
+  },
+  {
+    "question": "Miet-Kauf-Vertrag",
+    "answer": "📌  ist eine Vertragsform, die Miete und Kauf kombiniert, wobei Mietzahlungen später auf den Kaufpreis angerechnet werden können.\n🔍  bietet die Option, einen Gegenstand zuerst zu nutzen und ihn bei Gefallen später zu erwerben.\n👉  Mieten mit Kaufoption, Ratenanrechnung"
+  },
+  {
+    "question": "Eigentumsvorbehalt",
+    "answer": "📌  ist eine Klausel, die besagt, dass das Eigentum an einer Ware bis zur vollständigen Bezahlung beim Verkäufer verbleibt.\n🔍  dient als Sicherheit für den Verkäufer bei Ratenkäufen oder Konsumkreditverträgen.\n👉  Ware bleibt Sicherheit, bis alles bezahlt ist"
+  },
+  {
+    "question": "Konsumkreditvertrag",
+    "answer": "📌  ist ein Vertrag, bei dem ein Kreditgeber einem Konsumenten einen Kredit für den Konsum von Gütern oder Dienstleistungen gewährt.\n🔍  unterliegt dem KKG und beinhaltet Regelungen zu Rücktrittsrecht, Kreditprüfung und Vertragsinhalt.\n👉  Ratenzahlung, Kredit für Konsum"
+  },
+  {
+    "question": "Kleindarlehen",
+    "answer": "📌  sind kleinere Barkredite, die oft von Banken an Privatpersonen vergeben werden und für Konsumzwecke gedacht sind.\n🔍  sind meist ungesichert und daher mit höheren Zinsen verbunden, unterliegen aber auch dem KKG.\n👉  Barkredit, Sofortkredit"
+  },
+  {
+    "question": "Bonitätsprüfung",
+    "answer": "📌  ist die Überprüfung der finanziellen Situation und Kreditwürdigkeit einer Person vor Abschluss eines Kredit- oder Leasingvertrages.\n🔍  dient der Risikoeinschätzung des Kreditgebers und dem Schutz des Konsumenten vor Überschuldung.\n👉  Kreditcheck, finanzielle Sicherheit prüfen"
+  },
+  {
+    "question": "Informationsstelle für Konsumkredit (IKO)",
+    "answer": "📌  ist eine zentrale Stelle in der Schweiz, an die Kreditgeber gewährte Konsumkredite melden müssen.\n🔍  dient der Sammlung von Daten zur Kreditaufnahme und soll zur Vermeidung von Überschuldung beitragen.\n👉  Zentrale Datenbank, Meldepflicht"
+  },
+  {
+    "question": "Abschreibung (Leasing)",
+    "answer": "📌  bezeichnet die Wertminderung des Leasingobjekts während der Leasingdauer, die in die Leasinggebühr einkalkuliert wird.\n🔍  berücksichtigt den Wertverlust des Objekts durch Nutzung und Zeitablauf.\n👉  Wertverlust, Nutzungsdauer berücksichtigt"
+  },
+  {
+    "question": "Effektiver Jahreszins",
+    "answer": "📌  ist der tatsächliche jährliche Zinssatz eines Kredits oder Leasings, der alle Kosten wie Gebühren und Spesen berücksichtigt.\n🔍  ermöglicht einen transparenten Vergleich verschiedener Kreditangebote, da er die Gesamtkosten pro Jahr angibt.\n👉  Gesamtkosten in Prozent pro Jahr, Vergleichszahl"
+  },
+  {
+    "question": "Rücktrittsrecht (KKG)",
+    "answer": "📌  ist das Recht des Konsumenten, einen Konsumkredit- oder Leasingvertrag innerhalb einer bestimmten Frist ohne Angabe von Gründen zu widerrufen.\n🔍  schützt Konsumenten vor übereilten Vertragsabschlüssen und ermöglicht eine nachträgliche Überprüfung der Entscheidung.\n👉  14 Tage Bedenkzeit, Vertrag widerrufen"
+  },
+  {
+    "question": "Eigentumsverhältnis (Leasing)",
+    "answer": "📌  beschreibt, wer rechtlich der Inhaber eines Gegenstandes ist. Beim Leasing verbleibt dies stets beim Leasinggeber.\n🔍  unterscheidet sich wesentlich vom Kauf, bei dem das Recht am Objekt auf den Käufer übergeht.\n👉  Wer ist der Besitzer?, Rechtliche Inhaberschaft"
+  },
+  {
+    "question": "Vorzeitige Auflösung (Leasing)",
+    "answer": "📌  bezeichnet die Beendigung eines Leasingvertrages vor dem vereinbarten Vertragsende.\n🔍  führt oft zu einer Neuberechnung der Leasingraten und kann erhebliche Nachzahlungen für den Leasingnehmer verursachen.\n👉  Vertragsbruch, Kostenfalle"
+  }
+]
