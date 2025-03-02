@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Energie",
+    "answer": "📌 ist die Fähigkeit, Arbeit zu verrichten oder Wärme zu erzeugen und ist grundlegend für Wirtschaft und Alltag.\n🔍  existiert in verschiedenen Formen wie Bewegungsenergie, Wärmeenergie oder elektrische Energie und kann von einer Form in eine andere umgewandelt werden.\n👉  Ohne __________ würde kein Auto fahren, kein Licht brennen und keine Fabrik produzieren."
+  },
+  {
+    "question": "Erneuerbare Energiequellen",
+    "answer": "📌  sind Energieformen, die sich auf natürliche Weise immer wieder erneuern oder unbegrenzt verfügbar sind.\n🔍  umfassen Ressourcen wie Sonnenlicht, Wind, Wasser und Erdwärme, die nachhaltig genutzt werden können, ohne zu versiegen.\n👉  __________ wie Sonne und Wind stehen uns langfristig zur Verfügung und schonen die Umwelt."
+  },
+  {
+    "question": "Nicht erneuerbare Energiequellen",
+    "answer": "📌  sind begrenzte Energievorräte, die sich über geologische Zeiträume bilden und nicht kurzfristig erneuert werden können.\n🔍  umfassen fossile Brennstoffe wie Erdöl, Erdgas und Kohle sowie Kernbrennstoffe, deren Nutzung zur Erschöpfung der Ressourcen und Umweltbelastung beiträgt.\n👉  __________ wie Erdöl und Kohle sind zwar aktuell wichtig, aber ihre Reserven sind endlich."
+  },
+  {
+    "question": "Wasserkraft",
+    "answer": "📌  nutzt die Bewegungsenergie von fliessendem Wasser, um mechanische Energie und daraus Strom zu gewinnen.\n🔍  basiert auf dem natürlichen Kreislauf des Wassers und ist eine etablierte Technologie zur sauberen Stromerzeugung, besonders in wasserreichen Gebieten.\n👉  __________ macht sich die Kraft von Flüssen und Seen zunutze, um Elektrizität zu produzieren."
+  },
+  {
+    "question": "Windenergie",
+    "answer": "📌  wandelt die Bewegungsenergie des Windes mithilfe von Windkraftanlagen in mechanische und dann elektrische Energie um.\n🔍  ist eine saubere und zunehmend kostengünstige Energiequelle, deren Nutzung jedoch von den Windverhältnissen und der Landschaft abhängt.\n👉  __________ nutzt die Kraft des Luftstroms, um umweltfreundlichen Strom zu erzeugen."
+  },
+  {
+    "question": "Sonnenenergie",
+    "answer": "📌  bezeichnet die Energie, die aus der Strahlung der Sonne gewonnen wird und vielfältig nutzbar ist.\n🔍  kann direkt in Wärme oder über Photovoltaik in Strom umgewandelt werden und bietet ein grosses Potenzial, besonders in sonnenreichen Regionen.\n👉  __________ fängt das Licht der Sonne ein und macht es für uns als Wärme oder Strom nutzbar."
+  },
+  {
+    "question": "Erdwärme (Geothermie)",
+    "answer": "📌  nutzt die im Erdinneren gespeicherte Wärme, die im zugänglichen Teil der Erdkruste nutzbar ist.\n🔍  ist eine konstant verfügbare und umweltfreundliche Wärmequelle, die zum Heizen und zur Stromerzeugung verwendet werden kann, besonders in vulkanisch aktiven Gebieten.\n👉  __________ zapft die natürliche Hitze aus dem Boden an, um Häuser zu heizen oder Strom zu erzeugen."
+  },
+  {
+    "question": "Biomasse",
+    "answer": "📌  umfasst organische Materialien, die zur Energiegewinnung genutzt werden können, meist durch Verbrennung oder Vergärung.\n🔍  kann aus nachwachsenden Rohstoffen oder Abfällen gewonnen werden und bietet eine vielseitige Möglichkeit zur Nutzung gespeicherter Sonnenenergie in Pflanzen.\n👉  __________ verwandelt Pflanzenreste oder Bioabfälle in brennbare Stoffe oder Gas, um Energie zu gewinnen."
+  },
+  {
+    "question": "Kernenergie",
+    "answer": "📌  gewinnt Energie durch die Spaltung von Atomkernen, meist Uran, in Kernkraftwerken.\n🔍  erzeugt grosse Mengen an Energie ohne direkte CO2-Emissionen, birgt aber Risiken durch radioaktiven Abfall und mögliche Unfälle.\n👉  __________ nutzt die Kraft der Atomspaltung, um grosse Mengen Strom zu erzeugen, hat aber auch Risiken."
+  },
+  {
+    "question": "Graue Energie",
+    "answer": "📌  bezeichnet die gesamte Energiemenge, die für die Herstellung, den Transport, die Nutzung und die Entsorgung eines Produkts aufgewendet wird.\n🔍  umfasst die versteckten Energiekosten von Konsumgütern und macht oft einen erheblichen Teil des Gesamtenergieverbrauchs aus, auch wenn sie nicht direkt sichtbar ist.\n👉  __________ ist wie ein unsichtbarer Rucksack an Energie, den jedes Produkt mit sich trägt, von der Produktion bis zum Abfall."
+  }
+]

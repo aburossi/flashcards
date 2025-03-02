@@ -1,0 +1,58 @@
+[
+  {
+    "question": "Arbeitslosigkeit",
+    "answer": "📌 beschreibt den Zustand, in dem sich Personen befinden, die keine Stelle haben, aber Arbeit suchen und sofort verfügbar wären.\n🔍 betrifft Menschen in jedem Staat und Alter, wobei junge Erwachsene nach der Ausbildung besonders häufig betroffen sind.\n👉 Wenn jemand seinen Job verliert und sich beim RAV meldet, ist er __________"
+  },
+  {
+    "question": "Jugendarbeitslosigkeit",
+    "answer": "📌 bezieht sich speziell auf Personen im Alter von 15 bis 24 Jahren, die keine Stelle haben und Arbeit suchen.\n🔍 die Quote misst den Anteil der Arbeitslosen an den gleichaltrigen Erwerbspersonen, nicht an der Gesamtbevölkerung dieser Altersgruppe.\n👉 Wenn ein junger Mensch nach der Lehre keine Stelle findet, fällt das unter __________"
+  },
+  {
+    "question": "RAV (Regionale Arbeitsvermittlungszentren)",
+    "answer": "📌 sind Institutionen in der Schweiz, die Arbeitslose registrieren und bei der Stellensuche unterstützen.\n🔍 sie zählen alle Personen, die keine Stelle haben, sofort vermittelbar sind und sich dort melden, um Unterstützung zu erhalten.\n👉 Wer in der Schweiz seinen Job verliert, sollte sich so rasch wie möglich beim __________ melden."
+  },
+  {
+    "question": "ILO (Internationale Arbeitsorganisation)",
+    "answer": "📌 ist eine Organisation, die weltweit Standards für die Messung der Erwerbstätigkeit und Arbeitslosigkeit festlegt.\n🔍 ihre Erhebungen basieren auf Umfragen und ermöglichen einen internationalen Vergleich der Arbeitslosenquoten.\n👉 Um Arbeitslosenzahlen international vergleichbar zu machen, werden die Standards der __________ verwendet."
+  },
+  {
+    "question": "Friktionelle Arbeitslosigkeit",
+    "answer": "📌 entsteht durch den Übergang von einer Arbeitsstelle zur nächsten und ist meist von kurzer Dauer.\n🔍 diese Form ist unvermeidlich, da Jobwechsel normal sind und es Zeit braucht, bis Arbeitnehmende und Arbeitgeber zueinanderfinden.\n👉 Wenn jemand kündigt, um eine neue Herausforderung anzunehmen, entsteht kurzzeitig __________"
+  },
+  {
+    "question": "Konjunkturelle Arbeitslosigkeit",
+    "answer": "📌 tritt auf, wenn die Wirtschaft schwächelt und die Nachfrage nach Gütern und Dienstleistungen sinkt.\n🔍 in solchen Zeiten entlassen Unternehmen Mitarbeitende, was zu einem Anstieg der Arbeitslosigkeit in vielen Branchen führt.\n👉 Wenn die Wirtschaft in eine Rezession gerät, steigt die __________"
+  },
+  {
+    "question": "Kurzarbeitsentschädigung",
+    "answer": "📌 ist eine Leistung in der Schweiz, die Unternehmen in wirtschaftlich schwierigen Zeiten unterstützt, um Entlassungen zu vermeiden.\n🔍 sie übernimmt einen Teil des Lohnes, sodass Betriebe Mitarbeitende behalten können, auch wenn weniger Arbeit vorhanden ist.\n👉 Um in Krisenzeiten Entlassungen zu verhindern, gibt es die __________"
+  },
+  {
+    "question": "Strukturelle Arbeitslosigkeit",
+    "answer": "📌 entsteht durch langfristige Veränderungen in der Wirtschaft, wie den Wandel von Industrie zu Dienstleistungen oder technologischen Fortschritt.\n🔍  sie erfordert von den Betroffenen oft eine berufliche Neuorientierung und Weiterbildung, um in neuen Branchen Fuss zu fassen.\n👉 Wenn Berufe durch neue Technologien überflüssig werden, spricht man von __________"
+  },
+  {
+    "question": "Sektorwandel",
+    "answer": "📌 bezeichnet die Verschiebung des wirtschaftlichen Schwerpunkts von einem Wirtschaftsbereich zum anderen.\n🔍  historisch gesehen verlief dieser Wandel vom Agrar- über den Industriesektor zum Dienstleistungssektor, was neue Anforderungen an Arbeitnehmende stellt.\n👉 Der Übergang von einer Agrar- zu einer Industriegesellschaft ist ein Beispiel für __________"
+  },
+  {
+    "question": "Technologischer Fortschritt",
+    "answer": "📌 umfasst die Entwicklung neuer Technologien und Automatisierung, die Arbeitsplätze verändern oder ersetzen können.\n🔍  insbesondere die Digitalisierung und der Einsatz von Robotern führen dazu, dass gewisse Tätigkeiten von Maschinen übernommen werden.\n👉 Der vermehrte Einsatz von Robotern in der Produktion ist ein Beispiel für __________"
+  },
+  {
+    "question": "Regionale Verschiebungen",
+    "answer": "📌  bezeichnen die Verlagerung von Wirtschaftszweigen oder Unternehmen aus einer Region in eine andere.\n🔍  wenn eine Region an Attraktivität verliert, können Betriebe abwandern und lokale Arbeitslosigkeit verursachen, da Arbeitnehmende ortsgebunden sind.\n👉 Wenn Firmen aus einer Bergregion in die Stadt ziehen, kann es in den Bergen zu __________ kommen."
+  },
+  {
+    "question": "Langzeitarbeitslosigkeit",
+    "answer": "📌  bezeichnet einen Zustand, in dem Personen über einen längeren Zeitraum, meistens über ein Jahr hinaus, arbeitslos sind.\n🔍  je länger die Dauer, desto schwieriger wird es oft, wieder eine Stelle zu finden, da Qualifikationen veralten können und Arbeitgeber Vorbehalte haben.\n👉 Wenn jemand über ein Jahr keine Stelle findet, spricht man von __________"
+  },
+  {
+    "question": "Saisonale Arbeitslosigkeit",
+    "answer": "📌  tritt in Branchen auf, deren Nachfrage stark von der Jahreszeit abhängt, wie im Tourismus oder Baugewerbe.\n🔍  in der Nebensaison können nicht alle Mitarbeitenden beschäftigt werden, was zu vorübergehender Arbeitslosigkeit führt.\n👉 Im Winter, wenn es wenig Touristen gibt, kann es im Gastgewerbe zu __________ kommen."
+  },
+  {
+    "question": "Arbeitslosenversicherung (ALV)",
+    "answer": "📌 ist eine obligatorische Versicherung in der Schweiz, die finanzielle Unterstützung bei Arbeitslosigkeit bietet.\n🔍  sie zahlt Arbeitslosengeld an Personen, die ihren Job verloren haben und bestimmte Voraussetzungen erfüllen, um den Lebensunterhalt zu sichern.\n👉 Wer in der Schweiz arbeitslos wird und Beiträge geleistet hat, erhält Leistungen von der __________."
+  }
+]

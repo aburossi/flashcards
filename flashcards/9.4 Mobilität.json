@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Verkehrswachstum",
+    "answer": "📌 Die Zunahme der Anzahl Fahrzeuge und der zurückgelegten Strecken wird in den kommenden Jahren erwartet.\n🔍  Prognosen zeigen, dass sowohl der öffentliche als auch der private Verkehr in der Schweiz zunehmen werden, was zu grösseren Belastungen der Infrastruktur führt.\n👉 Mehr Autos auf der Strasse führen zu längeren Staus und volleren Zügen."
+  },
+  {
+    "question": "Herausforderungen für Städte",
+    "answer": "📌  Städtische Gebiete in der Schweiz stehen vor grossen Aufgaben in Bezug auf Mobilität und Infrastruktur.\n🔍  Wachsende Bevölkerung und Wirtschaft in Städten erfordern innovative Lösungen, um den Verkehr zu bewältigen und die Lebensqualität zu erhalten.\n👉  In Zürich, Basel oder Genf wird es immer schwieriger, sich reibungslos fortzubewegen, ohne im Stau zu stehen."
+  },
+  {
+    "question": "Energieverbrauch des Verkehrs",
+    "answer": "📌  Der Sektor Mobilität ist ein bedeutender Konsument von Energie in der Schweiz.\n🔍  Ein grosser Teil des gesamten Energieverbrauchs des Landes entfällt auf den Betrieb von Fahrzeugen, was vor allem von Erdölprodukten abhängig ist.\n👉  Tanken für Auto, Zug oder Flugzeug macht einen grossen Teil des gesamten Energieverbrauchs der Schweiz aus."
+  },
+  {
+    "question": "CO2-Emissionen des Verkehrs",
+    "answer": "📌  Der Verkehrssektor trägt massgeblich zum Ausstoss von Treibhausgasen in der Schweiz bei.\n🔍  Fahrzeuge mit Verbrennungsmotoren setzen Kohlenstoffdioxid frei, welches das Klima beeinflusst und einen erheblichen Anteil der nationalen Emissionen ausmacht.\n👉  Autoabgase sind ein wichtiger Faktor für den Klimawandel in der Schweiz."
+  },
+  {
+    "question": "Mobility Pricing",
+    "answer": "📌  Ein Konzept zur Neugestaltung der Verkehrsfinanzierung, bei dem die Kosten variabel sind.\n🔍  Die Nutzung von Strassen und Schienen soll zu unterschiedlichen Zeiten und je nach Auslastung mehr oder weniger kosten, um Verkehrsspitzen zu reduzieren.\n👉  Je nach Uhrzeit und Strecke könnte Autofahren teurer oder billiger werden, ähnlich wie beim Strompreis."
+  },
+  {
+    "question": "Elektromobilität",
+    "answer": "📌  Die Nutzung von elektrisch betriebenen Fahrzeugen nimmt zu und gilt als wichtiger Trend.\n🔍  Von E-Bikes bis zu E-Autos und Bahnen –  elektrische Antriebe sollen helfen,  den Verkehr umweltfreundlicher und nachhaltiger zu gestalten.\n👉  Statt Benzin oder Diesel tanken,  wird Strom genutzt,  um Autos und andere Verkehrsmittel anzutreiben."
+  },
+  {
+    "question": "E-Bikes",
+    "answer": "📌  Elektrisch unterstützte Fahrräder erfreuen sich grosser Beliebtheit und verzeichnen hohe Zuwachsraten.\n🔍  Sie ermöglichen es,  längere Strecken oder Hügel leichter zu bewältigen und sind besonders im Freizeitbereich und im städtischen Verkehr populär.\n👉  Mit dem __________  kommt man weniger verschwitzt zur Arbeit oder zur Schule,  auch wenn es mal bergauf geht."
+  },
+  {
+    "question": "E-Autos",
+    "answer": "📌  Elektroautos gewinnen zunehmend an Bedeutung und Marktanteil.\n🔍  Angetrieben von Batterien oder in Hybridformen,  bieten sie eine Alternative zu Verbrennungsmotoren und tragen zur Reduktion von Emissionen im Strassenverkehr bei.\n👉  Immer mehr Leute entscheiden sich beim Autokauf für ein Modell, das mit Strom fährt statt mit Benzin."
+  },
+  {
+    "question": "Carsharing",
+    "answer": "📌  Das gemeinschaftliche Nutzen von Autos als Alternative zum eigenen Fahrzeugbesitz.\n🔍  Besonders in Städten und Agglomerationen sinnvoll,  da Autos oft die meiste Zeit ungenutzt herumstehen und durch Teilen effizienter genutzt werden können.\n👉  Anstatt ein eigenes Auto zu kaufen,  kann man bei Bedarf ein Auto  __________ und spart so Kosten und Ressourcen."
+  },
+  {
+    "question": "Autonomes Fahren",
+    "answer": "📌  Fahrzeuge, die Aufgaben der Fahrzeugführung selbstständig übernehmen können.\n🔍  Reicht von Assistenzsystemen bis zuLevel 4, wo das Fahrzeug komplett ohne menschliches Eingreifen fährt, was  Potenzial für mehr Sicherheit und Effizienz bietet.\n👉  In Zukunft könnten Autos  von alleine fahren,  ohne dass man selber lenken oder Gas geben muss."
+  }
+]

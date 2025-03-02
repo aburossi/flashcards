@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Wohlfahrt",
+    "answer": "📌 beschreibt die allgemeine Lebensqualität eines Menschen, die mehr als nur materiellen Reichtum umfasst.\n🔍 beinhaltet Aspekte wie Gesundheit, soziale Gerechtigkeit, intakte Umwelt und persönliche Freiheit.\n👉  Lebensqualität in der Schweiz,  mehr als nur Geld"
+  },
+  {
+    "question": "Wohlstand",
+    "answer": "📌  bezieht sich auf den materiellen Lebensstandard und den Reichtum einer Bevölkerung oder einer Person.\n🔍  ist messbarer als Wohlfahrt und konzentriert sich auf den Zugang zu Gütern und Dienstleistungen.\n👉  Materieller Reichtum,  Lebensstandard"
+  },
+  {
+    "question": "Bruttoinlandprodukt (BIP)",
+    "answer": "📌  ist ein Mass für die wirtschaftliche Leistung eines Landes innerhalb eines Jahres.\n🔍  erfasst den Wert aller im Inland produzierten Güter und Dienstleistungen abzüglich Vorleistungen.\n👉  Wirtschaftsleistung der Schweiz,  jährlicher Wert aller Produkte"
+  },
+  {
+    "question": "Nominales BIP",
+    "answer": "📌  wird zu aktuellen Marktpreisen eines bestimmten Jahres berechnet.\n🔍  zeigt den Wert der Produktion in Geld ausgedrückt, ohne Preisänderungen durch Inflation zu berücksichtigen.\n👉  BIP zu aktuellen Preisen,  nicht inflationsbereinigt"
+  },
+  {
+    "question": "Reales BIP",
+    "answer": "📌  wird inflationsbereinigt berechnet, um die tatsächliche Mengenveränderung der Produktion darzustellen.\n🔍  ermöglicht einen besseren Vergleich der Wirtschaftsleistung über verschiedene Jahre hinweg, da Preissteigerungen herausgerechnet werden.\n👉  BIP mit Inflationsbereinigung,  echtes Wirtschaftswachstum"
+  },
+  {
+    "question": "BIP pro Kopf",
+    "answer": "📌  errechnet sich aus dem realen BIP geteilt durch die Bevölkerungszahl eines Landes.\n🔍  dient als Indikator für den durchschnittlichen Wohlstand pro Einwohner und ermöglicht internationale Vergleiche.\n👉  Durchschnittlicher Wohlstand,  Ländervergleich"
+  },
+  {
+    "question": "Wirtschaftswachstum",
+    "answer": "📌  beschreibt die prozentuale Zunahme des realen BIP über einen bestimmten Zeitraum, meist ein Jahr.\n🔍  ist ein wichtiger Indikator für die Steigerung des materiellen Wohlstands und der wirtschaftlichen Leistungsfähigkeit eines Landes.\n👉  Zunahme des realen BIP,  mehr Wohlstand"
+  },
+  {
+    "question": "Konjunkturschwankungen",
+    "answer": "📌  sind kurzfristige, wellenförmige Auf- und Abbewegungen der Wirtschaft um den langfristigen Wachstumstrend.\n🔍  werden in Konjunkturzyklen gemessen und beeinflussen Faktoren wie Beschäftigung und Investitionen.\n👉  Auf und Ab der Wirtschaft,  Konjunkturzyklus"
+  },
+  {
+    "question": "Lorenzkurve",
+    "answer": "📌  ist eine grafische Darstellung, die die Verteilung von Einkommen oder Vermögen in einer Gesellschaft zeigt.\n🔍  visualisiert Ungleichheit: je weiter die Kurve von der Diagonalen entfernt ist, desto ungleicher die Verteilung.\n👉  Grafik der Einkommensverteilung,  ungleiche Verteilung sichtbar"
+  },
+  {
+    "question": "Soziale Marktwirtschaft",
+    "answer": "📌  ist eine Wirtschaftsordnung, die freie Märkte mit staatlicher Steuerung und sozialer Sicherung verbindet.\n🔍  der Staat greift regulierend ein, um soziale Gerechtigkeit zu gewährleisten und Marktversagen zu korrigieren.\n👉  Schweizer Wirtschaftsordnung,  Staat und Markt"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Inflation",
+    "answer": "📌 beschreibt eine Situation, in der die Preise für Waren und Dienstleistungen in einer Wirtschaft über einen längeren Zeitraum hinweg steigen.\n🔍  führt dazu, dass man für den gleichen Geldbetrag weniger kaufen kann, was die Kaufkraft des Geldes verringert.\n👉 Wenn euer Lieblingssnack plötzlich mehr kostet als früher, nennt man das __________"
+  },
+  {
+    "question": "Deflation",
+    "answer": "📌  bezeichnet eine Situation, in der das allgemeine Preisniveau in einer Wirtschaft sinkt.\n🔍  kann zwar kurzfristig zu günstigeren Preisen führen, birgt aber Risiken für die Wirtschaft, wie zögerliche Konsumausgaben.\n👉 Wenn die Preise für Elektronik oder Kleidung fallen, spricht man von __________"
+  },
+  {
+    "question": "Kaufkraft",
+    "answer": "📌  beschreibt den Wert des Geldes, also die Menge an Gütern und Dienstleistungen, die man für einen bestimmten Geldbetrag erwerben kann.\n🔍  sinkt bei steigenden Preisen (Inflation) und steigt bei sinkenden Preisen (Deflation).\n👉 Wenn man sich mit 100 CHF weniger leisten kann als früher, hat die __________ abgenommen"
+  },
+  {
+    "question": "Landesindex der Konsumentenpreise (LIK)",
+    "answer": "📌  ein Messinstrument, das die Preisentwicklung eines Warenkorbs in der Schweiz erfasst.\n🔍  zeigt, wie sich die Preise für Güter und Dienstleistungen verändern, die typische Haushalte konsumieren.\n👉  Um die Teuerung in der Schweiz zu messen, verwendet man den __________"
+  },
+  {
+    "question": "Warenkorb",
+    "answer": "📌  eine Zusammenstellung von Gütern und Dienstleistungen, die repräsentativ für die Ausgaben der privaten Haushalte ist.\n🔍  dient als Grundlage zur Berechnung des Landesindexes der Konsumentenpreise (LIK), indem die Preisentwicklung dieser Güter verfolgt wird.\n👉  Für den LIK wird ein __________ definiert, der typische Ausgaben der Haushalte abbildet"
+  },
+  {
+    "question": "Schweizerische Nationalbank (SNB)",
+    "answer": "📌  die Zentralbank der Schweiz, verantwortlich für die Geldpolitik des Landes.\n🔍  hat das Ziel, die Preisstabilität zu gewährleisten, was bedeutet, Inflation niedrig zu halten und Deflation zu vermeiden.\n👉  Die __________ steuert die Geldpolitik der Schweiz, um stabile Preise zu fördern"
+  },
+  {
+    "question": "Staatsverschuldung",
+    "answer": "📌  die Gesamtheit der Schulden des Staates gegenüber Gläubigern.\n🔍  entsteht, wenn der Staat mehr Ausgaben als Einnahmen hat und sich Geld leihen muss, um diese Differenz auszugleichen.\n👉 Wenn der Staat mehr ausgibt als einnimmt, führt das zu einer Erhöhung der __________"
+  },
+  {
+    "question": "Schuldenbremse",
+    "answer": "📌  ein in der Schweizer Verfassung verankertes Prinzip, das die Aufnahme von neuen Schulden durch den Bund begrenzt.\n🔍  soll sicherstellen, dass die Staatsfinanzen langfristig nachhaltig sind, indem sie vorschreibt, dass Ausgaben und Einnahmen über einen Konjunkturzyklus hinweg ausgeglichen sein müssen.\n👉  Um die Staatsverschuldung zu begrenzen, wurde in der Schweiz die __________ eingeführt"
+  },
+  {
+    "question": "Geldstrom",
+    "answer": "📌  bezeichnet die Menge an Geld, die in einer Volkswirtschaft im Umlauf ist und für Transaktionen zur Verfügung steht.\n🔍  ein übermässig grosser __________ im Verhältnis zum Güterstrom kann zu Inflation führen, da mehr Geld auf eine begrenzte Menge an Gütern trifft.\n👉  Wenn zu viel __________ im Verhältnis zu den verfügbaren Produkten vorhanden ist, kann Inflation entstehen"
+  },
+  {
+    "question": "Güterstrom",
+    "answer": "📌  bezeichnet die Menge an produzierten und verfügbaren Waren und Dienstleistungen in einer Volkswirtschaft.\n🔍  ein übermässig grosser __________ im Verhältnis zum Geldstrom kann zu Deflation führen, da das Angebot die Nachfrage übersteigt.\n👉  Wenn der __________ grösser ist als die Nachfrage, kann Deflation die Folge sein"
+  }
+]
