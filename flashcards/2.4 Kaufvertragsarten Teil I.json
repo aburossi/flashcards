@@ -1,0 +1,86 @@
+[
+  {
+    "question": "Vertragsrecht",
+    "answer": "📌 Eine rechtliche Übereinkunft, die durch die gegenseitige Willensäusserung zweier oder mehrerer Parteien entsteht.\n🔍 Der Abschluss setzt voraus, dass alle Beteiligten mit den wesentlichen Vertragsinhalten einverstanden sind.\n👉 Beim Kauf eines Smartphones im Laden erfolgt diese Übereinkunft an der Kasse, wenn der Kunde den Preis akzeptiert und bezahlt."
+  },
+  {
+    "question": "Vertragsfähigkeit",
+    "answer": "📌 Die rechtliche Möglichkeit, selbstständig gültige Vereinbarungen einzugehen.\n🔍 Minderjährige dürfen nur über Beträge verfügen, die sie durch Lohn oder Taschengeld erworben haben.\n👉 Eine 16-jährige Person kann mit ihrem Lehrlingslohn eigenständig Musikabonnements bezahlen."
+  },
+  {
+    "question": "Vertragsformen",
+    "answer": "📌 Beschreibt, ob eine Vereinbarung mündlich, schriftlich oder mit öffentlicher Beurkundung abgeschlossen werden muss.\n🔍 In vielen Fällen sind mündliche Abmachungen gültig, es sei denn, das Gesetz verlangt eine spezielle Form.\n👉 Ein Mietvertrag sollte aus Beweisgründen schriftlich abgeschlossen werden."
+  },
+  {
+    "question": "Einfache Schriftlichkeit",
+    "answer": "📌 Eine Vertragsform, bei der der Vertrag in schriftlicher Form vorliegt und eigenhändig unterschrieben sein muss.\n🔍 Häufig für Kaufverträge oder Kündigungen von Arbeitsverhältnissen erforderlich.\n👉 Ein Handyvertrag im Geschäft muss vom Kunden mit einer Unterschrift bestätigt werden."
+  },
+  {
+    "question": "Qualifizierte Schriftlichkeit",
+    "answer": "📌 Eine Vertragsform, die neben der Unterschrift noch weitere handschriftliche Bestandteile verlangt.\n🔍 Diese zusätzlichen Angaben erhöhen die Beweiskraft des Dokuments.\n👉 Beim Abschluss einer Bürgschaft bis 2000 CHF muss der Bürge den Betrag selbst von Hand eintragen."
+  },
+  {
+    "question": "Öffentliche Beurkundung",
+    "answer": "📌 Eine Vertragsform, bei der eine amtliche Person den Vertrag prüft und bestätigt.\n🔍 Wird für besonders wichtige Verträge, wie Erbverträge oder Grundstückskäufe, verlangt.\n👉 Beim Kauf eines Hauses muss der Vertrag von einer Notarin beglaubigt werden."
+  },
+  {
+    "question": "Nichtige Verträge",
+    "answer": "📌 Vereinbarungen, die ungültig sind und nicht durchgesetzt werden können.\n🔍 Sie sind entweder unmöglich zu erfüllen, rechtswidrig oder verstossen gegen gute Sitten.\n👉 Ein Vertrag über den Verkauf eines Sterns wäre nicht gültig, da die Ware nicht tatsächlich verkauft werden kann."
+  },
+  {
+    "question": "Anfechtbare Verträge",
+    "answer": "📌 Verträge, die unter bestimmten Bedingungen rückgängig gemacht werden können.\n🔍 Dazu gehören Fälle wie Irrtum, Täuschung oder Drohung.\n👉 Wer ein Auto kauft, das fälschlicherweise als unfallfrei angepriesen wurde, kann den Kauf anfechten."
+  },
+  {
+    "question": "Übervorteilung",
+    "answer": "📌 Eine Situation, in der eine Person aufgrund einer Notlage oder Unerfahrenheit stark benachteiligt wird.\n🔍 Das Gesetz erlaubt in solchen Fällen eine Annullierung des Vertrags.\n👉 Eine Person, die dringend Geld benötigt, nimmt ein Darlehen mit 20% Zinsen auf – dies könnte als übermässige Benachteiligung gelten."
+  },
+  {
+    "question": "Verjährung",
+    "answer": "📌 Die rechtliche Frist, nach der eine Forderung nicht mehr eingeklagt werden kann.\n🔍 Je nach Vertragsart gelten unterschiedliche Fristen, meist zwischen 2 und 10 Jahren.\n👉 Eine offene Zahnarztrechnung kann nach fünf Jahren nicht mehr eingefordert werden."
+  },
+  {
+    "question": "Verbindliche Offerte",
+    "answer": "📌 Ein Angebot, das nach Annahme durch den Kunden nicht mehr widerrufen werden kann.\n🔍 Schaufensterauslagen oder schriftliche Offerten sind in der Regel verbindlich.\n👉 Ein Laptop mit einem Preisschild im Elektronikgeschäft kann zum angegebenen Preis gekauft werden."
+  },
+  {
+    "question": "Unverbindliche Offerte",
+    "answer": "📌 Ein Angebot, das nicht bindend ist und noch geändert werden kann.\n🔍 Katalogpreise oder Werbeprospekte zählen dazu.\n👉 Ein Online-Shop kann den Preis eines Produkts noch anpassen, solange die Bestellung nicht bestätigt wurde."
+  },
+  {
+    "question": "Barkauf",
+    "answer": "📌 Eine Kaufabwicklung, bei der Ware und Zahlung gleichzeitig erfolgen.\n🔍 Der Käufer wird sofort Eigentümer des gekauften Gegenstands.\n👉 Beim Bezahlen eines Burgers an der Kasse gehört er direkt dem Käufer."
+  },
+  {
+    "question": "Kreditkauf",
+    "answer": "📌 Eine Kaufart, bei der die Zahlung erst später erfolgt.\n🔍 Der Käufer erhält die Ware sofort, muss den Betrag aber innerhalb einer festgelegten Frist begleichen.\n👉 Ein Möbelstück wird geliefert, die Rechnung kann aber erst in 30 Tagen bezahlt werden."
+  },
+  {
+    "question": "Lieferverzug",
+    "answer": "📌 Eine Situation, in der die vereinbarte Lieferfrist nicht eingehalten wird.\n🔍 Der Käufer muss eine Nachfrist setzen und kann bei erneutem Verzug vom Vertrag zurücktreten.\n👉 Wenn ein Hochzeitskleid nicht rechtzeitig ankommt, kann der Kauf storniert werden."
+  },
+  {
+    "question": "Mangelhafte Lieferung",
+    "answer": "📌 Eine Ware, die nicht der vereinbarten Qualität entspricht.\n🔍 Der Käufer muss den Mangel sofort melden, um Ansprüche geltend zu machen.\n👉 Ein Smartphone mit einem Displayfehler kann zurückgegeben oder ausgetauscht werden."
+  },
+  {
+    "question": "Gewährleistung/Garantie",
+    "answer": "📌 Die gesetzliche oder vertragliche Verpflichtung, für Mängel einer Ware aufzukommen.\n🔍 Ohne zusätzliche Vereinbarung gilt in der Schweiz eine gesetzliche Frist von zwei Jahren.\n👉 Ein defektes Haushaltsgerät wird innerhalb der Garantiefrist kostenlos repariert."
+  },
+  {
+    "question": "Zahlungsverzug",
+    "answer": "📌 Eine verspätete Zahlung, die nach Fristablauf Mahngebühren oder Verzugszinsen nach sich ziehen kann.\n🔍 Der Gläubiger kann bei weiterem Verzug rechtliche Schritte einleiten.\n👉 Wer die Miete nicht rechtzeitig überweist, kann eine Mahnung erhalten."
+  },
+  {
+    "question": "Quittung",
+    "answer": "📌 Ein Beleg, der bestätigt, dass eine Zahlung erfolgt ist.\n🔍 Sollte alle wichtigen Angaben wie Betrag, Datum und Unterschrift enthalten.\n👉 Beim Kauf eines Fahrrads kann eine handschriftliche Quittung ausgestellt werden."
+  },
+  {
+    "question": "Internetkauf",
+    "answer": "📌 Ein Kauf, der über eine digitale Plattform erfolgt.\n🔍 In den meisten Fällen ist die Bestellung bindend und ein Rücktrittsrecht besteht nur selten.\n👉 Ein Smartphone wird mit einem Klick in einem Online-Shop bestellt."
+  },
+  {
+    "question": "Rücktrittsrecht bei Haustürgeschäften",
+    "answer": "📌 Die Möglichkeit, einen Kaufvertrag innerhalb von 14 Tagen zu widerrufen.\n🔍 Gilt für Verträge, die ausserhalb eines Geschäftslokals abgeschlossen wurden.\n👉 Ein Staubsauger, der bei einer Werbeveranstaltung gekauft wurde, kann innerhalb der Frist zurückgegeben werden."
+  }
+]

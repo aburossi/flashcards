@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Werkvertrag",
+    "answer": "📌 Eine Vereinbarung, bei der ein bestimmtes Werk nach individuellen Wünschen hergestellt oder verändert wird.\n🔍 Die ausführende Person ist für die sorgfältige und mängelfreie Fertigstellung verantwortlich.\n👉 Die Anfertigung eines massgeschneiderten Anzugs oder die Reparatur eines Autos fällt unter diese Kategorie."
+  },
+  {
+    "question": "Formvorschrift beim Werkvertrag",
+    "answer": "📌 Diese Vereinbarung ist grundsätzlich ohne besondere Form gültig.\n🔍 Kann mündlich oder schriftlich abgeschlossen werden, wobei schriftliche Verträge aus Beweisgründen empfohlen werden.\n👉 Die Bestellung einer massgefertigten Küche kann durch eine mündliche Absprache erfolgen, sollte aber besser schriftlich dokumentiert werden."
+  },
+  {
+    "question": "Haftung beim Werkvertrag",
+    "answer": "📌 Der Ersteller haftet für die fachgerechte und rechtzeitige Ausführung des Werks.\n🔍 Treten Mängel auf, hat der Auftraggeber das Recht auf Nachbesserung, Preisminderung oder Rücktritt bei schweren Mängeln.\n👉 Wenn eine neu eingebaute Treppe unsicher ist, muss der Handwerker sie ohne zusätzliche Kosten nachbessern."
+  },
+  {
+    "question": "Vergütung beim Werkvertrag",
+    "answer": "📌 Die Bezahlung kann als Festpreis oder nach Aufwand erfolgen.\n🔍 Wurde ein fixer Betrag vereinbart, bleibt dieser unabhängig vom tatsächlichen Aufwand bestehen.\n👉 Beim Bau eines Gartenhauses wird ein vereinbarter Preis gezahlt, auch wenn die Materialien teurer wurden."
+  },
+  {
+    "question": "Rücktritt vom Werkvertrag",
+    "answer": "📌 Der Auftraggeber kann jederzeit vom Vertrag zurücktreten.\n🔍 Bereits erbrachte Leistungen und entstandene Kosten müssen jedoch vergütet werden.\n👉 Wenn ein massgeschneiderter Anzug storniert wird, muss der Kunde trotzdem für die bereits verwendeten Stoffe aufkommen."
+  },
+  {
+    "question": "Einfacher Auftrag",
+    "answer": "📌 Eine Vereinbarung über die Erbringung einer Dienstleistung ohne Garantie auf ein konkretes Ergebnis.\n🔍 Die ausführende Person muss sorgfältig arbeiten, schuldet aber keinen bestimmten Erfolg.\n👉 Ein Arztbesuch oder eine Fahrstunde gehört zu dieser Vertragsart."
+  },
+  {
+    "question": "Formvorschrift beim einfachen Auftrag",
+    "answer": "📌 Grundsätzlich ist diese Vereinbarung an keine besondere Form gebunden.\n🔍 Kann mündlich oder schriftlich abgeschlossen werden, wobei schriftliche Vereinbarungen Missverständnisse vermeiden.\n👉 Ein Coiffeurbesuch erfordert keine schriftliche Bestätigung, kann aber durch eine Terminbuchung abgesichert sein."
+  },
+  {
+    "question": "Haftung beim einfachen Auftrag",
+    "answer": "📌 Der Dienstleister haftet nur für sorgfältige Ausführung, nicht für den Erfolg.\n🔍 Fahrlässige oder unsorgfältige Arbeit kann dennoch zu einer Haftung führen.\n👉 Ein Steuerberater haftet nicht für eine Steuererstattung, aber für korrekt ausgefüllte Unterlagen."
+  },
+  {
+    "question": "Vergütung beim einfachen Auftrag",
+    "answer": "📌 Die Bezahlung erfolgt, wenn sie vereinbart wurde oder üblich ist.\n🔍 Auch notwendige Auslagen müssen erstattet werden, sofern keine abweichende Regelung getroffen wurde.\n👉 Eine Zahnärztin erhält ein Honorar für ihre Behandlung, unabhängig vom Ergebnis der Heilung."
+  },
+  {
+    "question": "Rücktritt vom einfachen Auftrag",
+    "answer": "📌 Beide Seiten können den Vertrag jederzeit kündigen.\n🔍 Eine Kündigung zum falschen Zeitpunkt kann jedoch zu Schadenersatzforderungen führen.\n👉 Wer eine Fahrstunde kurzfristig absagt, muss unter Umständen trotzdem bezahlen."
+  }
+]

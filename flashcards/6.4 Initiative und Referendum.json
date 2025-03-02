@@ -1,0 +1,34 @@
+[
+  {
+    "question": "Referendum",
+    "answer": "📌 Ermöglicht es der Bevölkerung, über bestimmte Parlamentsbeschlüsse an der Urne zu entscheiden.\n🔍 Gibt Bürgerinnen und Bürgern eine direkte Mitbestimmungsmöglichkeit über gesetzliche oder verfassungsrechtliche Änderungen.\n👉 Abstimmung über das Covid-19-Gesetz durch eine Unterschriftensammlung."
+  },
+  {
+    "question": "Obligatorisches Referendum",
+    "answer": "📌 Bestimmte Parlamentsentscheide müssen zwingend dem Volk zur Abstimmung vorgelegt werden.\n🔍 Eine Annahme erfordert sowohl die Mehrheit der Stimmen als auch die Mehrheit der Kantone.\n👉 Verfassungsänderungen oder ein EU-Beitritt müssen immer dem Volk vorgelegt werden."
+  },
+  {
+    "question": "Fakultatives Referendum",
+    "answer": "📌 Gibt der Bevölkerung die Möglichkeit, über ein vom Parlament beschlossenes Gesetz abzustimmen.\n🔍 Erfordert eine Unterschriftensammlung von mindestens 50'000 Stimmberechtigten oder acht Kantonen innerhalb von 100 Tagen.\n👉 Ein neues Steuergesetz kann durch eine solche Unterschriftensammlung zur Volksabstimmung gebracht werden."
+  },
+  {
+    "question": "Referendumsdemokratie",
+    "answer": "📌 Bezeichnet eine Regierungsform, in der die Bevölkerung durch Referenden direkten Einfluss auf die Gesetzgebung hat.\n🔍 Bereits die Möglichkeit eines Vetos kann die Gestaltung neuer Gesetze beeinflussen.\n👉 In der Schweiz versucht das Parlament oft, Kompromisse zu finden, um eine Ablehnung durch die Bevölkerung zu vermeiden."
+  },
+  {
+    "question": "Volksinitiative",
+    "answer": "📌 Ermöglicht Bürgerinnen und Bürgern, eine Abstimmung über eine Verfassungsänderung zu erzwingen.\n🔍 Erfordert 100'000 gültige Unterschriften, die innerhalb von 18 Monaten gesammelt werden müssen.\n👉 Die „Steuergerechtigkeits-Initiative“ zur Individualbesteuerung wurde durch eine solche Sammlung eingereicht."
+  },
+  {
+    "question": "Doppeltes Mehr",
+    "answer": "📌 Voraussetzung für die Annahme bestimmter Abstimmungen, bei denen sowohl die Mehrheit der Bevölkerung als auch der Kantone zustimmen muss.\n🔍 Wird bei obligatorischen Referenden und Volksinitiativen benötigt.\n👉 Eine Änderung der Bundesverfassung kann nur mit dieser Mehrheit umgesetzt werden."
+  },
+  {
+    "question": "Gesetzesinitiative",
+    "answer": "📌 Eine kantonale Möglichkeit, Änderungen auf Gesetzesstufe zu beantragen.\n🔍 Wird durch Unterschriftensammlungen auf kantonaler Ebene initiiert.\n👉 Eine solche Initiative könnte eine Anpassung der kantonalen Steuerpolitik vorschlagen."
+  },
+  {
+    "question": "Petitionsrecht",
+    "answer": "📌 Gibt jeder urteilsfähigen Person das Recht, schriftlich Bitten oder Beschwerden an Behörden zu richten.\n🔍 Behörden sind verpflichtet, eine solche Eingabe zur Kenntnis zu nehmen, müssen aber nicht darauf antworten.\n👉 Eine Petition gegen eine Umweltverschmutzung könnte an eine Gemeinde eingereicht werden."
+  }
+]
