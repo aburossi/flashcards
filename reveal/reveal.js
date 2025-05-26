@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (answer) {
         answer.style.display = 'block';
         button.style.display = 'none';
+
+        // 🛠️ Wichtig: Layout neu berechnen, damit Reveal.js die Slide-Größe anpasst
+        setTimeout(() => {
+          if (Reveal && Reveal.layout) {
+            Reveal.layout();
+          }
+        }, 150); // kurz warten, damit CSS wirken kann
       }
     });
   });
