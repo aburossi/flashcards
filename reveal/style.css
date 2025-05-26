@@ -32,8 +32,10 @@ p[style*="display:none"] {
   border-left: 4px solid #4a90e2;
   border-radius: 6px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.08);
-  font-size: 0.65em;
-  text-align: left;
+
+  /* ✅ Updated styles */
+  font-size: 0.7em;       /* ~30% smaller */
+  text-align: left;       /* Left alignment */
   font-style: italic;
   font-weight: bold;
 }
