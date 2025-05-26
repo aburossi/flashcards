@@ -1,12 +1,9 @@
 .reveal section {
-  font-size: 1.3em;
+  font-size: 1.1em;
   line-height: 1.6;
   padding: 1em;
-}
-
-.reveal .slides {
   max-width: 900px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .reveal-button {
@@ -35,13 +32,29 @@ p[style*="display:none"] {
   border-left: 4px solid #4a90e2;
   border-radius: 6px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.08);
-  font-size: 1.1em;
+  font-size: 0.95em;
+}
+
+@media (max-width: 768px) {
+  .reveal section {
+    font-size: 0.95em;
+  }
+
+  .reveal-button {
+    font-size: 0.9em;
+    padding: 0.5em 1em;
+  }
+
+  p[style*="display:none"] {
+    font-size: 0.9em;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   .reveal-button {
     background-color: #1e88e5;
   }
+
   p[style*="display:none"] {
     background-color: #1a1a1a;
     color: #ddd;
