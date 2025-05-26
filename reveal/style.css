@@ -1,22 +1,50 @@
-
-body {
-  font-family: system-ui, sans-serif;
-  max-width: 800px;
-  margin: auto;
-  padding: 2em;
-  background-color: #f9f9f9;
+.reveal section {
+  font-size: 1.3em;
+  line-height: 1.6;
+  padding: 1em;
 }
 
-details {
-  margin-bottom: 1em;
-  padding: 0.5em;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+.reveal .slides {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-summary {
-  cursor: pointer;
+.reveal-button {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
   font-weight: bold;
+  color: #fff;
+  background-color: #4a90e2;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.reveal-button:hover {
+  background-color: #357abd;
+}
+
+p[style*="display:none"] {
+  background-color: #f7f9fc;
+  padding: 1em;
+  margin-top: 1.5em;
+  border-left: 4px solid #4a90e2;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+  font-size: 1.1em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .reveal-button {
+    background-color: #1e88e5;
+  }
+  p[style*="display:none"] {
+    background-color: #1a1a1a;
+    color: #ddd;
+    border-left-color: #90caf9;
+  }
 }
