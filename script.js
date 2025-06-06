@@ -4,16 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let currentSubject = "";
     let isAnimating = false;
-  
+
     // Variables for Test Mode
     let moveCount = 0;
     let firstCard = null;
     let secondCard = null;
     let lockBoard = false;
-  
+
     // ===== DOM Elements =====
     const pageTitle = document.getElementById('page-title');
-  
+    const audioContainer = document.getElementById('audio-container');
+    const audioPlayer = document.getElementById('audio-player');
+
     // Learn Mode elements (may be absent on test.html)
     const flashcardContainer = document.getElementById('flashcard-container');
     const flashcard = document.getElementById('flashcard');
@@ -22,15 +24,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevButton = document.getElementById('prev');
     const flipButton = document.getElementById('flip');
     const nextButton = document.getElementById('next');
-  
+
     // Test Mode elements (may be absent on learn.html)
     const testContainer = document.getElementById('test-container');
     const testQuestions = document.getElementById('test-questions');
     const testAnswers = document.getElementById('test-answers');
     const resetTestButton = document.getElementById('reset-test');
-  
+
     // ===== Utility Functions =====
-  
+
+    // Load audio file corresponding to the subject
+    async function loadAudio(subject) {
+        if (!audioPlayer || !audioContainer) return;
+
+        const mp3Path = `./audio/${subject}.mp3`;
+        const wavPath = `./audio/${subject}.wav`;
+
+        // Reset audio player state
+        audioContainer.style.display = 'none';
+        audioPlayer.src = '';
+
+        // Function to check if a URL exists using fetch HEAD request
+        const checkUrlExists = async (url) => {
+            try {
+                // Use HEAD request to check for file existence without downloading it
+                const response = await fetch(url, { method: 'HEAD' });
+                return response.ok;
+            } catch (error) {
+                // Network errors, etc.
+                console.error(`Error checking URL ${url}:`, error);
+                return false;
+            }
+        };
+
+        // Check for MP3 first, then WAV, and update the player
+        if (await checkUrlExists(mp3Path)) {
+            audioPlayer.src = mp3Path;
+            audioContainer.style.display = 'block';
+            console.log(`Loading audio: ${mp3Path}`);
+        } else if (await checkUrlExists(wavPath)) {
+            audioPlayer.src = wavPath;
+            audioContainer.style.display = 'block';
+            console.log(`Loading audio: ${wavPath}`);
+        } else {
+            console.log(`No audio file found for subject: ${subject}`);
+        }
+    }
+
     // Fetch flashcards JSON for a given subject
     async function fetchFlashcards(subject) {
       const url = `./flashcards/${subject}.json`;
@@ -53,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return false;
       }
     }
-  
+
     // Adjust the flashcard container's height based on content
     function adjustFlashcardHeight() {
       if (!flashcardContainer) return;
@@ -63,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const newHeight = visibleSide.scrollHeight + 40; // add padding
       flashcardContainer.style.height = `${newHeight}px`;
     }
-  
+
     // Display the current flashcard (Learn Mode)
     function displayFlashcard() {
       if (flashcards.length === 0) return;
@@ -73,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       flashcard.classList.remove('flipped');
       adjustFlashcardHeight();
     }
-  
+
     // Animate flashcard transition (for next/prev)
     function displayFlashcardWithAnimation(direction) {
       if (isAnimating) return;
@@ -86,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       flashcard.addEventListener('animationend', function handleAnimationEnd() {
         flashcard.removeEventListener('animationend', handleAnimationEnd);
         flashcard.classList.remove(direction === 'next' ? 'slide-out-left' : 'slide-out-right');
-  
+
         // Update index
         if (direction === 'next') {
           currentIndex++;
@@ -97,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         front.innerHTML = card.question;
         back.innerHTML = card.answer.replace(/\n/g, '<br>');
         flashcard.classList.remove('flipped');
-  
+
         // Add slide-in animation
         if (direction === 'next') {
           flashcard.classList.add('slide-in-right');
@@ -111,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true });
       });
     }
-  
+
     // Shuffle an array (used in test mode)
     function shuffle(array) {
       let currentIndex = array.length, temporaryValue, randomIndex;
@@ -124,9 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       return array;
     }
-  
+
     // ===== Test Mode Functions =====
-  
+
     // Reset test state and clear test columns
     function resetTestState() {
       moveCount = 0;
@@ -140,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         testAnswers.innerHTML = '<h2>Answers</h2><p>Select a question to match with the selected answer.</p>';
       }
     }
-  
+
     // Create a test card element from a card object
     function createTestCard(card) {
       const cardElement = document.createElement('div');
@@ -153,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cardElement.innerHTML = card.content;
       return cardElement;
     }
-  
+
     // Generate test columns for questions and answers
     function generateTestColumns(shuffledQuestions, shuffledAnswers) {
       if (testQuestions) {
@@ -171,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     }
-  
+
     // Check if the test is completed (all matching pairs removed)
     function checkTestCompletion() {
       if (!testContainer) return;
@@ -182,12 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
         alert(`Congratulations! You have matched all the cards.\nTotal Moves: ${moveCount}\nEfficiency: ${efficiency.toFixed(2)}%`);
       }
     }
-  
+
     // Handle clicks on test cards
     function handleTestCardClick(e) {
       const clickedCard = e.target.closest('.test-card');
       if (!clickedCard || lockBoard || clickedCard.classList.contains('correct') || clickedCard.classList.contains('no-match')) return;
-  
+
       // If the same card is clicked again, deselect it.
       if (clickedCard.classList.contains('selected')) {
         clickedCard.classList.remove('selected');
@@ -219,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         moveCount++;
         lockBoard = true;
         const isMatch = firstCard.dataset.id === secondCard.dataset.matchId ||
-                        secondCard.dataset.id === firstCard.dataset.matchId;
+                          secondCard.dataset.id === firstCard.dataset.matchId;
         if (isMatch) {
           firstCard.classList.add('correct');
           secondCard.classList.add('correct');
@@ -244,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
-  
+
     // Initialize test mode by hiding learn elements, showing test UI, and building test cards.
     function initializeTestMode() {
       resetTestState();
@@ -254,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (nextButton) nextButton.style.display = 'none';
       if (testContainer) testContainer.style.display = 'block';
       document.querySelector('.container').classList.add('test-mode');
-  
+
       // Prepare test cards from flashcards.
       const matchingPairs = 6;
       const additionalFronts = 4;
@@ -263,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const selectedAdditionalFlashcards = shuffledFlashcards.slice(matchingPairs, matchingPairs + additionalFronts);
       let questions = [];
       let answers = [];
-  
+
       selectedMatchingFlashcards.forEach((card, index) => {
         questions.push({
           id: `front-${index}`,
@@ -277,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
           matchId: `front-${index}`
         });
       });
-  
+
       selectedAdditionalFlashcards.forEach((card, index) => {
         questions.push({
           id: `front-extra-${index}`,
@@ -285,20 +325,20 @@ document.addEventListener('DOMContentLoaded', () => {
           type: 'question'
         });
       });
-  
+
       const shuffledQuestions = shuffle(questions);
       const shuffledAnswers = shuffle(answers);
       generateTestColumns(shuffledQuestions, shuffledAnswers);
     }
-  
+
     // Reset test mode completely.
     function resetTest() {
       resetTestState();
       initializeTestMode();
     }
-  
+
     // ===== Event Listeners =====
-  
+
     // Learn Mode controls
     if (flipButton) {
       flipButton.addEventListener('click', () => {
@@ -347,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
-  
+
     // Test Mode: attach click handler if testContainer exists
     if (testContainer) {
       testContainer.addEventListener('click', handleTestCardClick);
@@ -356,14 +396,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (resetTestButton) {
       resetTestButton.addEventListener('click', resetTest);
     }
-  
+
     // ===== Initialization =====
-  
+
     // Function to initialize the app with a given subject
     function initApp(subject) {
       currentSubject = subject;
       if (window.appMode === 'learn') {
         pageTitle.textContent = `Lernkarteien: ${subject}`;
+        loadAudio(currentSubject); // Load audio for the subject
       } else if (window.appMode === 'test') {
         pageTitle.textContent = `Zuordnen: ${subject}`;
       } else {
@@ -387,11 +428,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
-  
+
     // Get assignmentId from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     let assignmentId = urlParams.get('assignmentId');
-  
+
     if (assignmentId) {
       initApp(assignmentId);
     } else {
@@ -411,4 +452,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
   });
-  
